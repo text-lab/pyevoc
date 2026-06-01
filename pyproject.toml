@@ -10,9 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [
-  {name = "Michelangelo Misuraca"},
-  {name = "Luca D'Aniello"},
-  {name = "Maria Spano"}
+  {name = "Michelangelo Misuraca"}
 ]
 keywords = ["social representations", "hierarchical evocation method", "text mining", "digital discourse"]
 dependencies = [
