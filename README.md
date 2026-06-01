@@ -1,11 +1,8 @@
 # PyEvoc
 
-<p align="center">
-  <img src="assets/pyevoc_logo.png" width="260">
-</p>
+![PyEvoc](assets/pyevoc_logo.png)
 
 <p align="center">
-<b>PyEvoc</b><br>
 A Python Framework for Hierarchical Evocation Analysis in Large-Scale Digital Corpora
 </p>
 
@@ -69,9 +66,7 @@ Together, AFE and AOE provide the basis for EVOC quadrant assignment.
 
 ## Computational Workflow
 
-<p align="center">
-<img src="assets/pipeline.jpeg" width="100%">
-</p>
+![Pipeline](assets/pipeline.jpeg)
 
 The PyEvoc pipeline consists of the following stages:
 
@@ -274,9 +269,7 @@ plot_sankey(tokens)
 
 ## EVOC Quadrants
 
-<p align="center">
-<img src="assets/evoc_q.png" width="75%">
-</p>
+![EVOC Quadrants](assets/evoc_q.png)
 
 The representational structure is organised into four quadrants.
 
@@ -310,39 +303,27 @@ Represents contextual, flexible, and evolving representational elements.
 
 ### EVOC Map – Nouns
 
-<p align="center">
-<img src="assets/evoctarget_N.jpeg" width="95%">
-</p>
+![EVOC Target Nouns](assets/evoctarget_N.jpeg)
 
 ### EVOC Map – Adjectives
 
-<p align="center">
-<img src="assets/evoctarget_A.jpeg" width="95%">
-</p>
+![EVOC Target Adjectives](assets/evoctarget_A.jpeg)
 
 ### Semantic Tree – Nouns
 
-<p align="center">
-<img src="assets/evoctree_N.jpeg" width="95%">
-</p>
+![Semantic Trees Nouns](assets/evoctree_N.jpeg)
 
 ### Semantic Tree – Adjectives
 
-<p align="center">
-<img src="assets/evoctree_A.jpeg" width="95%">
-</p>
+![Semantic Trees Adjectives](assets/evoctree_A.jpeg)
 
 ### Emoji EVOC Map
 
-<p align="center">
-<img src="assets/emoji_map.png" width="95%">
-</p>
+![Emoji Map](assets/emoji_map.png)
 
 ### Temporal Stability
 
-<p align="center">
-<img src="assets/temp_sankey.png" width="95%">
-</p>
+![Temporal Stability Sankey](assets/temp_sankey.png)
 
 ---
 
