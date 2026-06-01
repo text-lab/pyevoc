@@ -1,6 +1,6 @@
-# PyEvoc
-
-![PyEvoc](assets/pyevoc_logo.png)
+<p align="center">
+  <img src="assets/pyevoc_logo.png" width="95%">
+</p>
 
 <p align="center">
 A Python Framework for Hierarchical Evocation Analysis in Large-Scale Digital Corpora
