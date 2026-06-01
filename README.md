@@ -333,21 +333,11 @@ These resources are automatically loaded when not explicitly specified by the us
 
 ---
 
-## Documentation
+## Methodological Foundations
 
-Detailed documentation is available in:
+A detailed mathematical description of the framework is available in:
 
-```text
-docs/documentation.md
-```
-
-including:
-
-- complete API reference;
-- parameter descriptions;
-- advanced workflows;
-- reproducibility guidelines;
-- output interpretation.
+- [Methodology](docs/methodology.md)
 
 ---
 
