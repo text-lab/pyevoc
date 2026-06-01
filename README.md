@@ -39,14 +39,6 @@ PyEvoc provides a complete, end-to-end workflow: from corpus ingestion and lingu
 
 ---
 
-## Installation
-
-```bash
-pip install pyevoc
-```
-
----
-
 ## Expected Input Structure
 
 PyEvoc requires a `pandas.DataFrame` with at least four columns:
@@ -225,14 +217,6 @@ models/
 ## Reproducibility
 
 PyEvoc is designed to support transparent and reproducible computational social science research. The framework preserves metadata throughout the workflow, records processing parameters, exports intermediate outputs, and generates human-readable HTML reports alongside publication-ready figures.
-
----
-
-## Methodological Documentation
-
-A full mathematical description of the framework — covering positional and structural salience, representational diffusion, AFE/AOE thresholds, and quadrant assignment — is available in:
-
-📄 [docs/methodology.md](docs/methodology.md)
 
 ---
 
