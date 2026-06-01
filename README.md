@@ -18,55 +18,11 @@ The package provides a complete workflow from corpus ingestion to representation
 
 ---
 
-## Theoretical Background
-
-The Hierarchical Evocation Method (HEM) is rooted in the structural approach to Social Representation Theory.
-
-Classical HEM relies on two dimensions:
-
-- Frequency of Evocation (AFE)
-- Average Order of Evocation (AOE)
-
-These indicators are used to identify the internal organisation of social representations through a four-quadrant structure composed of:
-
-1. Central nucleus
-2. First periphery
-3. Contrast zone
-4. Peripheral system
-
-PyEvoc computationally reconstructs these dimensions from naturally occurring discourse.
-
-### AFE: Diffusion
-
-AFE measures the collective diffusion of a lexical unit.
-
-In PyEvoc, diffusion is typically computed at the user level:
-
-\[
-AFE(w)=|\{u\in U:w\in V(u)\}|
-\]
-
-where a term is counted only once for each user, regardless of repetition.
-
-This indicator captures representational consensus and collective dissemination.
-
-### AOE: Salience
-
-AOE is reconstructed through a composite salience indicator that integrates:
-
-- positional prominence;
-- structural foregrounding;
-- rhetorical emphasis.
-
-Lower AOE values indicate greater representational salience.
-
-Together, AFE and AOE provide the basis for EVOC quadrant assignment.
-
----
-
 ## Computational Workflow
 
-![Pipeline](assets/pipeline.jpeg)
+<p align="center">
+  <img src="assets/pipeline.png" width="35%">
+</p>
 
 The PyEvoc pipeline consists of the following stages:
 
@@ -269,7 +225,9 @@ plot_sankey(tokens)
 
 ## EVOC Quadrants
 
-![EVOC Quadrants](assets/evoc_q.png)
+<p align="center">
+  <img src="assets/evoc_q.png" width="35%">
+</p>
 
 The representational structure is organised into four quadrants.
 
@@ -303,27 +261,39 @@ Represents contextual, flexible, and evolving representational elements.
 
 ### EVOC Map – Nouns
 
-![EVOC Target Nouns](assets/evoctarget_N.jpeg)
+<p align="center">
+  <img src="assets/evoctarget_N.png" width="35%">
+</p>
 
 ### EVOC Map – Adjectives
 
-![EVOC Target Adjectives](assets/evoctarget_A.jpeg)
+<p align="center">
+  <img src="assets/evoctarget_A.png" width="35%">
+</p>
 
 ### Semantic Tree – Nouns
 
-![Semantic Trees Nouns](assets/evoctree_N.jpeg)
+<p align="center">
+  <img src="assets/evoctree_N.png" width="35%">
+</p>
 
 ### Semantic Tree – Adjectives
 
-![Semantic Trees Adjectives](assets/evoctree_A.jpeg)
+<p align="center">
+  <img src="assets/evoctree_A.png" width="35%">
+</p>
 
 ### Emoji EVOC Map
 
-![Emoji Map](assets/emoji_map.png)
+<p align="center">
+  <img src="assets/emoji_map.png" width="35%">
+</p>
 
 ### Temporal Stability
 
-![Temporal Stability Sankey](assets/temp_sankey.png)
+<p align="center">
+  <img src="assets/temp_sankey.png" width="35%">
+</p>
 
 ---
 
