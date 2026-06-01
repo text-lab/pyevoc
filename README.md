@@ -274,19 +274,19 @@ Represents contextual, flexible, and evolving representational elements.
 ### Semantic Tree – Nouns
 
 <p align="center">
-  <img src="assets/evoctree_N.png" width="35%">
+  <img src="assets/evoctree_N.png" width="50%">
 </p>
 
 ### Semantic Tree – Adjectives
 
 <p align="center">
-  <img src="assets/evoctree_A.png" width="35%">
+  <img src="assets/evoctree_A.png" width="50%">
 </p>
 
 ### Emoji EVOC Map
 
 <p align="center">
-  <img src="assets/emoji_map.png" width="35%">
+  <img src="assets/emoji_map.png" width="50%">
 </p>
 
 ### Temporal Stability
