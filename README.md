@@ -230,7 +230,7 @@ If you use PyEvoc in academic work, please cite:
   author       = {Misuraca, Michelangelo},
   title        = {PyEvoc: Computational Hierarchical Evocation Analysis for Digital Corpora},
   year         = {2026},
-  version      = {1.0.0},
+  version      = {0.1.0},
   publisher    = {Zenodo},
   doi          = {10.5281/zenodo.20493284},
   url          = {https://doi.org/10.5281/zenodo.20493284}
