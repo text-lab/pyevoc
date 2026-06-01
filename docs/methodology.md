@@ -174,14 +174,14 @@ The joint distribution of diffusion and salience defines a two-dimensional repre
 For each term $w$ belonging to POS category $p$, with POS-specific thresholds $\theta_F(p)$ (AFE) and $\theta_R(p)$ (AOE):
 
 $$
-\text{Quadrant}(w) =
+\textbf{Quadrant}(w) =
 \begin{cases}
 \textbf{Central Nucleus}, 
- & F_{\mathrm{user}}(w)\ge \theta_F(p) \;\text{ and }\; R(w) \le \theta_R(p),\\[6pt]
+ & F_{\mathrm{user}}(w)\ge \theta_F(p) \;\text{ and }\; R(w) \le \theta_R(p),\\
 \textbf{First Periphery}, 
- & F_{\mathrm{user}}(w)\ge \theta_F(p) \;\text{ and }\; R(w) > \theta_R(p),\\[6pt]
+ & F_{\mathrm{user}}(w)\ge \theta_F(p) \;\text{ and }\; R(w) > \theta_R(p),\\
 \textbf{Contrast Zone}, 
- & F_{\mathrm{user}}(w)< \theta_F(p) \;\text{ and }\; R(w) \le \theta_R(p),\\[6pt]
+ & F_{\mathrm{user}}(w)< \theta_F(p) \;\text{ and }\; R(w) \le \theta_R(p),\\
 \textbf{Peripheral System},
  & F_{\mathrm{user}}(w)< \theta_F(p) \;\text{ and }\; R(w) > \theta_R(p).
 \end{cases}
