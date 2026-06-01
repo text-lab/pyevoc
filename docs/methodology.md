@@ -55,13 +55,13 @@ Discursive salience approximates the cognitive prominence of a lexical unit with
 
 Tokens appearing earlier in a post are assumed to reflect greater communicative foregrounding. For a token occurrence $w$ within a document $d$ containing $L_d$ tokens, positional salience is defined as:
 
-$
+$$
 r_{\mathrm{pos}}(w,d)=
 \begin{cases}
 1, & L_d = 1, \\[4pt]
 1 - \dfrac{\mathrm{position}(w,d)-1}{L_d-1}, & L_d > 1.
 \end{cases}
-$
+$$
 
 This assigns a salience of 1 to the first token and decreases linearly to 0 for the last token.
 
@@ -78,7 +78,7 @@ A second component captures rhetorical foregrounding via discourse-specific comm
 
 Structural salience is then:
 
-$
+$$
 r_{\mathrm{str}}(w,d)
 =
 \eta_1 I_{\mathrm{first}}(w,d)
@@ -88,7 +88,7 @@ r_{\mathrm{str}}(w,d)
 \eta_3 I_{\mathrm{list}}(w,d)
 +
 \eta_4 I_{\mathrm{intens}}(w,d),
-$
+$$
 
 where the weights $\eta_j \in [0,1]$ satisfy $\sum_{j=1}^{4} \eta_j = 1$ and are configurable by the user.
 
@@ -131,9 +131,7 @@ Diffusion measures how broadly a lexical unit circulates across the discursive c
 The primary formulation privileges **user-level diffusion** to capture the breadth of collective sharing independently of corpus size or posting frequency:
 
 $$
-F_{\mathrm{user}}(w)
-=
-\frac{\bigl|\{u \in \mathcal{U} : w \in \mathcal{V}(u)\}\bigr|}{|\mathcal{U}|},
+F_{\mathrm{user}}(w) = \frac{\bigl|\{u \in \mathcal{U} : w \in \mathcal{V}(u)\}\bigr|}{|\mathcal{U}|},
 $$
 
 where $\mathcal{V}(u)$ is the set of lexical units used at least once by user $u$. This measures the *proportion of distinct users* who employ a given term.
@@ -143,9 +141,7 @@ where $\mathcal{V}(u)$ is the set of lexical units used at least once by user $u
 An alternative formulation computes diffusion at the post level:
 
 $$
-F_{\mathrm{comm}}(w)
-=
-\frac{\bigl|\{d \in \mathcal{D} : w \in d\}\bigr|}{|\mathcal{D}|}.
+F_{\mathrm{comm}}(w) = \frac{\bigl|\{d \in \mathcal{D} : w \in d\}\bigr|}{|\mathcal{D}|}.
 $$
 
 This measures the proportion of posts containing the term. User-level diffusion is the default and recommended setting, as it is less sensitive to prolific individual users dominating the frequency signal.
@@ -179,7 +175,7 @@ The joint distribution of diffusion and salience defines a two-dimensional repre
 For each term $w$ belonging to POS category $p$, with POS-specific thresholds $\theta_F(p)$ (AFE) and $\theta_R(p)$ (AOE):
 
 $$
-\operatorname{Quadrant}(w) =
+\text{Quadrant}(w) =
 \begin{cases}
 \textbf{Central Nucleus}, 
  & F_{\mathrm{user}}(w)\ge \theta_F(p) \;\text{ and }\; R(w) \le \theta_R(p),\\[6pt]
@@ -200,30 +196,6 @@ The substantive interpretation of each zone is as follows:
 | **First Periphery** | High | Low | Widely shared but contextually flexible elements |
 | **Contrast Zone** | Low | High | Salient minority positions or emerging framings |
 | **Peripheral System** | Low | Low | Weakly structured, contextually variable elements |
-
-The figure below illustrates the resulting quadrant structure:
-
-```
-                    High Salience (low R)
-                           ↑
-         ┌─────────────────┼─────────────────┐
-         │                 │                 │
-         │  CENTRAL        │  CONTRAST       │
-High     │  NUCLEUS        │  ZONE           │
-Diffusion│                 │                 │
-(F≥AFE)  │                 │                 │
-         ├─────────────────┼─────────────────┤
-         │                 │                 │
-Low      │  FIRST          │  PERIPHERAL     │
-Diffusion│  PERIPHERY      │  SYSTEM         │
-(F<AFE)  │                 │                 │
-         │                 │                 │
-         └─────────────────┼─────────────────┘
-                           ↓
-                    Low Salience (high R)
-                    ←──────────────────────→
-                  High R              Low R
-```
 
 ---
 
