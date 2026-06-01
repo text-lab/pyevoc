@@ -226,13 +226,16 @@ PyEvoc is designed to support transparent and reproducible computational social 
 If you use PyEvoc in academic work, please cite:
 
 ```bibtex
-@software{pyevoc,
-  title  = {{PyEvoc}: A Python Framework for Hierarchical Evocation Analysis in Large-Scale Digital Corpora},
-  note   = {Zenodo DOI will be assigned upon release}
+@software{misuraca2026pyevoc,
+  author       = {Misuraca, Michelangelo},
+  title        = {PyEvoc: Computational Hierarchical Evocation Analysis for Digital Corpora},
+  year         = {2026},
+  version      = {1.0.0},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20493284},
+  url          = {https://doi.org/10.5281/zenodo.20493284}
 }
 ```
-
-A Zenodo DOI will be assigned upon publication of the first stable release.
 
 ---
 
