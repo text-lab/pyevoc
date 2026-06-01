@@ -12,7 +12,7 @@ license = {text = "MIT"}
 authors = [
   {name = "Michelangelo Misuraca"}
 ]
-keywords = ["social representations", "hierarchical evocation method", "text mining", "digital discourse"]
+keywords = ["social representations", "hierarchical evocation method", "text mining", "digital discourse", "social media"]
 dependencies = [
   "pandas>=2.0",
   "numpy>=1.24",
