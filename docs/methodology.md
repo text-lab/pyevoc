@@ -58,7 +58,7 @@ Tokens appearing earlier in a post are assumed to reflect greater communicative 
 $$
 r_{\mathrm{pos}}(w,d)=
 \begin{cases}
-1, & L_d = 1, \\[4pt]
+1, & L_d = 1, \\
 1 - \dfrac{\mathrm{position}(w,d)-1}{L_d-1}, & L_d > 1.
 \end{cases}
 $$
@@ -79,8 +79,7 @@ A second component captures rhetorical foregrounding via discourse-specific comm
 Structural salience is then:
 
 $$
-r_{\mathrm{str}}(w,d)
-=
+r_{\mathrm{str}}(w,d) =
 \eta_1 I_{\mathrm{first}}(w,d)
 +
 \eta_2 I_{\mathrm{emph}}(w,d)
