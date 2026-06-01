@@ -3,134 +3,80 @@
 </p>
 
 <p align="center">
-A Python Framework for Hierarchical Evocation Analysis in Large-Scale Digital Corpora
+  <strong>A Python Framework for Hierarchical Evocation Analysis in Large-Scale Digital Corpora</strong>
+</p>
+
+<p align="center">
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="docs/methodology.md"><img src="https://img.shields.io/badge/methodology-docs-green.svg" alt="Methodology"></a>
 </p>
 
 ---
 
 ## Overview
 
-PyEvoc is an open-source Python framework designed to operationalise the Hierarchical Evocation Method (HEM) within large-scale digital communication environments.
+**PyEvoc** is an open-source Python framework that operationalises the **Hierarchical Evocation Method (HEM)** for large-scale digital communication environments.
 
-The framework extends classical approaches developed within Social Representation Theory (SRT) by enabling the reconstruction of representational structures directly from naturally occurring online discourse. Rather than relying on elicitation tasks, PyEvoc analyses large textual corpora and combines lexical diffusion, positional salience, rhetorical foregrounding, semantic association, and temporal dynamics to identify central and peripheral elements of public representations.
+The framework extends classical approaches developed within **Social Representation Theory (SRT)** by reconstructing representational structures directly from naturally occurring online discourse — without relying on elicitation tasks. It combines lexical diffusion, positional salience, rhetorical foregrounding, semantic association, and temporal dynamics to identify the central and peripheral elements of public representations.
 
-The package provides a complete workflow from corpus ingestion to representational mapping, collocation analysis, temporal stability assessment, and interactive visualisation.
+PyEvoc provides a complete, end-to-end workflow: from corpus ingestion and linguistic annotation, through EVOC quadrant assignment and collocation analysis, to temporal stability assessment and interactive visualisation.
 
----
-
-## Computational Workflow
-
-<p align="center">
-  <img src="assets/pipeline.png" width="35%">
-</p>
-
-The PyEvoc pipeline consists of the following stages:
-
-1. Dataset ingestion
-2. Language identification
-3. Thematic filtering
-4. Corpus diagnostics
-5. Linguistic annotation
-6. Emoji processing
-7. Structural foregrounding
-8. Term-level indicators
-9. Concreteness labelling
-10. EVOC quadrant assignment
-11. Collocation extraction
-12. Named Entity Recognition
-13. Temporal stability analysis
-14. Interactive reporting
-15. Visual analytics
+> A detailed mathematical description of the framework is available in [docs/methodology.md](docs/methodology.md).
 
 ---
 
-## Main Features
+## Features
 
-### Corpus Construction
+| Module | Capabilities |
+|---|---|
+| **Corpus Construction** | Flexible CSV ingestion, date filtering, metadata preservation, schema mapping |
+| **Language Processing** | fastText language identification, Stanza annotation, lemmatisation, POS tagging, dependency parsing |
+| **Thematic Extraction** | Anchor-based filtering, semantic expansion, domain-specific subcorpus generation |
+| **Representational Analysis** | AFE/AOE reconstruction, EVOC quadrant assignment, central nucleus and peripheral structure identification |
+| **Semantic Analysis** | Collocations, named entities, semantic trees, entity–term overlap |
+| **Longitudinal Analysis** | Temporal EVOC structures, quadrant transitions, stability indices, Sankey evolution diagrams |
+| **Reporting** | Interactive HTML outputs, publication-ready figures |
 
-- Flexible CSV ingestion
-- Date filtering
-- Metadata preservation
-- Generic schema mapping
+---
 
-### Language Processing
+## Installation
 
-- fastText language identification
-- Stanza linguistic annotation
-- Lemmatisation
-- POS tagging
-- Dependency parsing
-
-### Thematic Extraction
-
-- Anchor-based filtering
-- Semantic expansion
-- Domain-specific subcorpus generation
-
-### Representational Analysis
-
-- AFE reconstruction
-- AOE reconstruction
-- EVOC quadrants
-- Central nucleus identification
-- Peripheral structure analysis
-
-### Semantic Analysis
-
-- Collocations
-- Named entities
-- Semantic trees
-- Entity-term overlap
-
-### Longitudinal Analysis
-
-- Temporal EVOC structures
-- Quadrant transitions
-- Stability indices
-- Sankey evolution diagrams
-
-### Reporting
-
-- HTML outputs
-- Interactive graphics
-- Publication-ready figures
+```bash
+pip install pyevoc
+```
 
 ---
 
 ## Expected Input Structure
 
-PyEvoc requires a pandas DataFrame containing at least four columns.
+PyEvoc requires a `pandas.DataFrame` with at least four columns:
 
 | Column | Description |
-|----------|------------|
-| user_id | User identifier |
-| document_id | Document identifier |
-| time | Datetime variable |
-| text | Raw textual content |
+|---|---|
+| `user_id` | User identifier |
+| `document_id` | Document identifier |
+| `time` | Datetime variable |
+| `text` | Raw textual content |
 
-Example:
+Additional metadata columns are automatically preserved throughout the pipeline.
 
 ```python
 import pandas as pd
 
 df = pd.DataFrame({
-    "user_id": ["u1", "u2"],
+    "user_id":     ["u1", "u2"],
     "document_id": ["d1", "d2"],
-    "time": ["2025-01-01", "2025-01-02"],
-    "text": ["Example text", "Another text"]
+    "time":        ["2025-01-01", "2025-01-02"],
+    "text":        ["Example text", "Another text"]
 })
 ```
-
-Additional metadata columns are automatically retained.
 
 ---
 
 ## Quick Start
 
-The following example illustrates the minimal workflow.
-
 ```python
-from pyevoc.dataset import load_dataset
+from pyevoc.dataset  import load_dataset
 from pyevoc.language import language_filter
 from pyevoc.thematic import thematic_filter
 
@@ -142,22 +88,18 @@ df = load_dataset(
     time_column="time"
 )
 
-df = language_filter(df)
-
-subcorpus = thematic_filter(
-    df,
-    anchor_file="anchors.txt"
-)
+df        = language_filter(df)
+subcorpus = thematic_filter(df, anchor_file="anchors.txt")
 ```
 
 ---
 
-## Complete Workflow Example
+## Complete Workflow
 
 ```python
 from pyevoc import *
 
-# Load dataset
+# --- Ingestion ---
 df = load_dataset(
     path="corpus.csv",
     text_column="text",
@@ -166,55 +108,34 @@ df = load_dataset(
     time_column="time"
 )
 
-# Language filtering
-df = language_filter(df)
-
-# Thematic filtering
-subcorpus = thematic_filter(
-    df,
-    anchor_file="anchors.txt"
-)
-
-# Corpus diagnostics
+# --- Preprocessing ---
+df        = language_filter(df)
+subcorpus = thematic_filter(df, anchor_file="anchors.txt")
+subcorpus = clean_text(subcorpus)
 compute_subcorpus_statistics(subcorpus)
 
-# Basic cleaning
-subcorpus = clean_text(subcorpus)
-
-# Linguistic annotation
+# --- Linguistic annotation ---
 tokens = annotate_corpus(subcorpus)
-
-# Emoji assignment
 tokens = assign_emojis(tokens)
-
-# Structural foregrounding
 tokens = compute_foregrounding(tokens)
 
-# Term-level indicators
+# --- Term-level indicators ---
 terms = compute_term_indices(tokens)
-
-# Concreteness labelling
 terms = label_concreteness(terms)
-
-# Emoji descriptions
 terms = label_emojis(terms)
 
-# EVOC quadrants
+# --- Representational mapping ---
 quadrants = assign_quadrants(terms)
 
-# Collocations
+# --- Semantic analysis ---
 compute_collocations(tokens)
-
-# Named entities
 compute_ner(tokens)
 
-# Temporal stability
+# --- Temporal analysis ---
 analyse_temporal_stability(tokens)
 
-# Reports
+# --- Output ---
 export_html_reports(quadrants)
-
-# Visualisations
 plot_evoc_map(quadrants)
 plot_semantic_tree(tokens)
 plot_emoji_map(quadrants)
@@ -223,77 +144,51 @@ plot_sankey(tokens)
 
 ---
 
-## EVOC Quadrants
+## Computational Pipeline
 
 <p align="center">
-  <img src="assets/evoc_q.png" width="35%">
+  <img src="assets/pipeline.png" width="50%">
 </p>
 
-The representational structure is organised into four quadrants.
+The pipeline consists of 15 stages: dataset ingestion → language identification → thematic filtering → corpus diagnostics → linguistic annotation → emoji processing → structural foregrounding → term-level indicators → concreteness labelling → EVOC quadrant assignment → collocation extraction → named entity recognition → temporal stability analysis → interactive reporting → visual analytics.
 
-### Central Nucleus
+---
 
-High diffusion and high salience.
+## EVOC Quadrant Structure
 
-Represents the most stable and collectively shared elements of a representation.
+<p align="center">
+  <img src="assets/evoc_q.png" width="40%">
+</p>
 
-### First Periphery
+Lexical units are positioned in a two-dimensional space defined by **representational diffusion** (AFE) and **discursive salience** (AOE), yielding four analytically distinct zones:
 
-High salience but lower diffusion.
+| Zone | Diffusion | Salience | Interpretation |
+|---|---|---|---|
+| **Central Nucleus** | High | High | Stable, consensual core of the representation |
+| **First Periphery** | High | Low | Widely shared but contextually flexible elements |
+| **Contrast Zone** | Low | High | Minority positions or emerging framings |
+| **Peripheral System** | Low | Low | Contextually variable, weakly structured elements |
 
-Contains important representational elements that remain less consensual.
-
-### Contrast Zone
-
-Low diffusion and high salience.
-
-May indicate subgroup-specific meanings or emerging interpretative positions.
-
-### Peripheral System
-
-Low salience and low diffusion.
-
-Represents contextual, flexible, and evolving representational elements.
+Thresholds are computed separately for each POS category (nouns, adjectives, emojis) to avoid artefacts from grammatical frequency asymmetries.
 
 ---
 
 ## Example Outputs
 
-### EVOC Map – Nouns
-
-<p align="center">
-  <img src="assets/evoctarget_N.png" width="35%">
-</p>
-
-### EVOC Map – Adjectives
-
-<p align="center">
-  <img src="assets/evoctarget_A.png" width="35%">
-</p>
-
-### Semantic Tree – Nouns
-
-<p align="center">
-  <img src="assets/evoctree_N.png" width="50%">
-</p>
-
-### Semantic Tree – Adjectives
-
-<p align="center">
-  <img src="assets/evoctree_A.png" width="50%">
-</p>
-
-### Emoji EVOC Map
-
-<p align="center">
-  <img src="assets/emoji_map.png" width="50%">
-</p>
-
-### Temporal Stability
-
-<p align="center">
-  <img src="assets/temp_sankey.png" width="35%">
-</p>
+<table>
+  <tr>
+    <td align="center"><strong>EVOC Map — Nouns</strong><br><img src="assets/evoctarget_N.png" width="100%"></td>
+    <td align="center"><strong>EVOC Map — Adjectives</strong><br><img src="assets/evoctarget_A.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Semantic Tree — Nouns</strong><br><img src="assets/evoctree_N.png" width="100%"></td>
+    <td align="center"><strong>Semantic Tree — Adjectives</strong><br><img src="assets/evoctree_A.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>Emoji EVOC Map</strong><br><img src="assets/emoji_map.png" width="100%"></td>
+    <td align="center"><strong>Temporal Stability (Sankey)</strong><br><img src="assets/temp_sankey.png" width="100%"></td>
+  </tr>
+</table>
 
 ---
 
@@ -301,57 +196,43 @@ Represents contextual, flexible, and evolving representational elements.
 
 ```text
 PyEvoc/
-│
-├── pyevoc/
-├── models/
-├── assets/
-├── docs/
-├── examples/
-├── tests/
-│
+├── pyevoc/           # Core library
+├── models/           # Bundled resources (see below)
+├── assets/           # Logo, figures
+├── docs/             # methodology.md and additional documentation
+├── examples/         # Worked examples
+├── tests/            # Test suite
 ├── README.md
 ├── LICENSE
 ├── CITATION.cff
 └── pyproject.toml
 ```
 
----
+### Bundled Models
 
-## Models Included
-
-The package distributes all required resources locally.
+All required resources are distributed locally and loaded automatically:
 
 ```text
 models/
-├── lid.176.bin
-├── emoji_lookup.csv
-├── concreteness.csv
+├── lid.176.bin         # fastText language identification model
+├── emoji_lookup.csv    # Emoji–description mapping
+├── concreteness.csv    # Concreteness norms
 └── ...
 ```
-
-These resources are automatically loaded when not explicitly specified by the user.
-
----
-
-## Methodological Foundations
-
-A detailed mathematical description of the framework is available in:
-
-- [Methodology](docs/methodology.md)
 
 ---
 
 ## Reproducibility
 
-PyEvoc is designed to support transparent and reproducible computational social science research.
+PyEvoc is designed to support transparent and reproducible computational social science research. The framework preserves metadata throughout the workflow, records processing parameters, exports intermediate outputs, and generates human-readable HTML reports alongside publication-ready figures.
 
-The framework:
+---
 
-- preserves metadata throughout the workflow;
-- records processing parameters;
-- exports intermediate outputs;
-- produces publication-ready figures;
-- generates human-readable HTML reports.
+## Methodological Documentation
+
+A full mathematical description of the framework — covering positional and structural salience, representational diffusion, AFE/AOE thresholds, and quadrant assignment — is available in:
+
+📄 [docs/methodology.md](docs/methodology.md)
 
 ---
 
@@ -359,8 +240,11 @@ The framework:
 
 If you use PyEvoc in academic work, please cite:
 
-```text
-Citation information will be added upon software release.
+```bibtex
+@software{pyevoc,
+  title  = {{PyEvoc}: A Python Framework for Hierarchical Evocation Analysis in Large-Scale Digital Corpora},
+  note   = {Zenodo DOI will be assigned upon release}
+}
 ```
 
 A Zenodo DOI will be assigned upon publication of the first stable release.
@@ -369,10 +253,4 @@ A Zenodo DOI will be assigned upon publication of the first stable release.
 
 ## License
 
-MIT License.
-
----
-
-## Authors
-
-PyEvoc was developed to support computational applications of Social Representation Theory and Hierarchical Evocation Analysis in large-scale digital communication environments.
+This project is licensed under the [MIT License](LICENSE).
