@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "PyEvoc: Computational Hierarchical Evocation Analysis for Digital Corpora"
+message: "If you use PyEvoc, please cite this software release."
+type: software
+authors:
+  - family-names: Misuraca
+    given-names: Michelangelo
+version: 0.1.0
+date-released: 2026-06-01
+license: MIT
+repository-code: "https://github.com/text-lab/pyevoc"
+abstract: "PyEvoc is a research-oriented Python framework for adapting the Hierarchical Evocation Method to large-scale digital textual corpora."
