@@ -1,307 +1,264 @@
-# Methodology
+# PyEvoc — Methodology
 
-## Introduction
-
-PyEvoc implements a computational adaptation of the Hierarchical Evocation Method (HEM) grounded in Social Representation Theory (SRT).
-
-Traditional HEM relies on elicitation procedures in which participants explicitly generate and rank lexical associations. In contrast, digital communication environments generate large volumes of naturally occurring discourse in which representational salience is not directly observable and must be inferred from interactional behaviour.
-
-PyEvoc extends the logic of HEM to large-scale textual corpora by reconstructing the concepts of Average Frequency of Evocation (AFE) and Average Order of Evocation (AOE) through diffusion, positional prominence, and rhetorical foregrounding.
-
-The framework is designed for social media data, online discussions, news comments, survey responses, forums, and other large textual collections.
+This document describes the computational and representational framework underlying **PyEvoc**, a Python library for the analysis of social representations in large-scale social media discourse. The approach extends the classical **Hierarchical Evocation Method (HEM)** to naturally occurring, user-generated corpora by reformulating its core constructs — evocation frequency and evocation order — through discursive diffusion and textual salience.
 
 ---
 
-# Notation
+## Table of Contents
 
-Let
-
-D = {d₁, d₂, ..., dN} 
-
-denote the collection of documents.
-
-Let
-
-U = {u₁, u₂, ..., uM} 
-
-be the set of distinct users.
-
-Each document is associated with:
-
-x(d) = textual content    t(d) = timestamp    u(d) = author 
-
-Let
-
-V = {w₁, w₂, ..., wK} 
-
-denote the vocabulary retained after preprocessing.
+1. [Theoretical Background](#1-theoretical-background)
+2. [Corpus and Notation](#2-corpus-and-notation)
+3. [Discursive Salience](#3-discursive-salience)
+   - 3.1 [Positional Salience](#31-positional-salience)
+   - 3.2 [Structural Salience](#32-structural-salience)
+   - 3.3 [Composite Salience Score](#33-composite-salience-score)
+   - 3.4 [Rank Transformation](#34-rank-transformation)
+4. [Representational Diffusion](#4-representational-diffusion)
+   - 4.1 [User-Level Diffusion](#41-user-level-diffusion)
+   - 4.2 [Comment-Level Diffusion](#42-comment-level-diffusion)
+5. [Structural Thresholds: AFE and AOE](#5-structural-thresholds-afe-and-aoe)
+6. [Four-Quadrant Representational Structure](#6-four-quadrant-representational-structure)
+7. [POS-Specific Thresholding](#7-pos-specific-thresholding)
+8. [Summary](#8-summary)
+9. [References](#9-references)
 
 ---
 
-# Positional Salience
+## 1. Theoretical Background
 
-The first component of representational salience is positional prominence.
+The **Hierarchical Evocation Method** (Vergès, 1992) is a classical technique in Social Representations Theory (SRT) for mapping the internal structure of a social representation. In traditional elicitation studies, participants freely associate words in response to an inductor term, ranking each association by order of importance. The joint distribution of *average frequency of evocation* (AFE) and *average order of evocation* (AOE) is then used to partition the lexical space into four structurally distinct zones: the **central nucleus**, the **first periphery**, the **contrast zone**, and the **peripheral system**.
 
-For a lexical unit occurring in document d containing Ld tokens:
+PyEvoc adapts this logic to large-scale online discourse, where explicit elicitation is unavailable and representational salience must instead be inferred from naturally occurring communicative behaviour. The framework operationalises:
 
-r_pos(w,d) = 1                                    if Ld = 1  r_pos(w,d) = 1 - (position(w,d)-1)/(Ld-1)        if Ld > 1 
-
-where:
-
-- position(w,d) is the token position within the document;
-- earlier occurrences receive greater salience.
-
-This formulation assumes that terms introduced earlier in discourse tend to occupy more prominent communicative positions.
+- **AFE** → *representational diffusion*: the breadth of collective circulation of a lexical unit across distinct users.
+- **AOE** → *discursive salience*: the prominence of a lexical unit within individual posts, derived from its textual position and rhetorical marking.
 
 ---
 
-# Structural Salience
+## 2. Corpus and Notation
 
-A second component captures rhetorical foregrounding.
+Let $\mathcal{D} = \{d_1, d_2, \dots, d_N\}$ denote the collection of social media posts, and $\mathcal{U} = \{u_1, u_2, \dots, u_M\}$ the set of distinct users producing them. Each post $d_i$ is associated with:
 
-Four binary indicators are considered:
+- $x(d_i)$: textual content,
+- $t(d_i)$: timestamp,
+- $u(d_i)$: user identifier.
 
-I_first I_emph I_list I_intens 
-
-representing whether a token occurs:
-
-- in the opening sentence;
-- in emphasised spans;
-- in lists or quotations;
-- in typographically intensified segments.
-
-Structural salience is computed as:
-
-r_str(w,d) = η₁ I_first(w,d) + η₂ I_emph(w,d) + η₃ I_list(w,d) + η₄ I_intens(w,d) 
-
-subject to:
-
-η₁ + η₂ + η₃ + η₄ = 1 
-
-and
-
-0 ≤ ηj ≤ 1 
-
-for all j.
-
-Default implementation:
-
-η₁ = 0.40 η₂ = 0.30 η₃ = 0.15 η₄ = 0.15 
-
-These values can be modified by the user.
+Let $\mathcal{V} = \{w_1, w_2, \dots, w_K\}$ denote the vocabulary of retained lexical units after preprocessing and linguistic annotation (tokenisation, lemmatisation, POS tagging, stopword removal).
 
 ---
 
-# Average Salience
+## 3. Discursive Salience
 
-For each lexical unit w:
+Discursive salience approximates the cognitive prominence of a lexical unit within a post by combining two complementary components: **positional salience** and **structural salience**.
 
-r̄_pos(w) = (1 / |I(w)|) Σ r_pos(w,d) 
+### 3.1 Positional Salience
 
-and
+Tokens appearing earlier in a post are assumed to reflect greater communicative foregrounding. For a token occurrence $w$ within a document $d$ containing $L_d$ tokens, positional salience is defined as:
 
-r̄_str(w) = (1 / |I(w)|) Σ r_str(w,d) 
+$$
+r_{\mathrm{pos}}(w,d)=
+\begin{cases}
+1, & L_d = 1, \\[4pt]
+1 - \dfrac{\mathrm{position}(w,d)-1}{L_d-1}, & L_d > 1.
+\end{cases}
+$$
 
-where I(w) denotes the set of all occurrences of w.
+This assigns a salience of 1 to the first token and decreases linearly to 0 for the last token.
 
----
+### 3.2 Structural Salience
 
-# Composite Salience
+A second component captures rhetorical foregrounding via discourse-specific communicative markers. Let the following binary indicators be defined for token $w$ in document $d$:
 
-The two dimensions are integrated into a composite salience score:
+| Indicator | Meaning |
+|---|---|
+| $I_{\mathrm{first}}(w,d)$ | $w$ appears in the opening sentence |
+| $I_{\mathrm{emph}}(w,d)$ | $w$ appears within emphasised spans (e.g., bold, italic) |
+| $I_{\mathrm{list}}(w,d)$ | $w$ appears inside a list or quotation |
+| $I_{\mathrm{intens}}(w,d)$ | $w$ appears in typographically intensified segments (e.g., all-caps) |
 
-S(w) = π r̄_pos(w) + (1−π) r̄_str(w) 
+Structural salience is then:
 
-with
+$$
+r_{\mathrm{str}}(w,d)
+=
+\eta_1 I_{\mathrm{first}}(w,d)
++
+\eta_2 I_{\mathrm{emph}}(w,d)
++
+\eta_3 I_{\mathrm{list}}(w,d)
++
+\eta_4 I_{\mathrm{intens}}(w,d),
+$$
 
-0 ≤ π ≤ 1 
+where the weights $\eta_j \in [0,1]$ satisfy $\sum_{j=1}^{4} \eta_j = 1$ and are configurable by the user.
 
-Default implementation:
+### 3.3 Composite Salience Score
 
-π = 0.50 
+For each lexical unit $w \in \mathcal{V}$, average positional and structural salience are computed over all its corpus occurrences $I(w)$:
 
-This weighting gives equal importance to positional and structural prominence.
+$$
+\bar{r}_{\mathrm{pos}}(w) = \frac{1}{|I(w)|} \sum_{(w,d)\in I(w)} r_{\mathrm{pos}}(w,d),
+\qquad
+\bar{r}_{\mathrm{str}}(w) = \frac{1}{|I(w)|} \sum_{(w,d)\in I(w)} r_{\mathrm{str}}(w,d).
+$$
 
----
+These are combined into a single **composite salience score**:
 
-# Reconstruction of AOE
+$$
+S(w) = \pi\,\bar{r}_{\mathrm{pos}}(w) + (1-\pi)\,\bar{r}_{\mathrm{str}}(w), \qquad \pi \in [0,1],
+$$
 
-Classical HEM relies on the Average Order of Evocation.
+where $\pi$ is a user-configurable mixing parameter controlling the relative weight of positional versus structural information.
 
-PyEvoc reconstructs this concept through a rank-like transformation:
+### 3.4 Rank Transformation
 
-R(w) = 1 + (1 − S(w))(Rmax − 1) 
+To preserve the interpretative logic of AOE — where lower ranks indicate greater salience — the composite score is transformed into a rank-like indicator:
 
-where:
+$$
+R(w) = 1 + \bigl(1 - S(w)\bigr)(R_{\max} - 1),
+$$
 
-- larger salience implies lower rank values;
-- lower rank values indicate greater representational prominence.
-
-The corpus-level AOE threshold is:
-
-AOE = (1 / |V|) Σ R(w) 
-
-This threshold separates highly salient lexical units from less salient ones.
-
----
-
-# Reconstruction of AFE
-
-Representational diffusion is measured through user-level circulation.
-
-For each lexical unit:
-
-F_user(w) = |{u ∈ U : w ∈ V(u)}| / |U| 
-
-where:
-
-- V(u) is the vocabulary used by user u;
-- each user contributes at most once.
-
-This measure captures the breadth of collective sharing independently of raw repetition.
-
----
-
-# Alternative Comment-Based Diffusion
-
-PyEvoc also supports a document-based formulation:
-
-F_comm(w) = |{d ∈ D : w ∈ d}| / |D| 
-
-This version measures diffusion across documents rather than users.
+where $R_{\max}$ is the maximum admissible rank value. Lower $R(w)$ corresponds to higher discursive salience.
 
 ---
 
-# AFE Threshold
+## 4. Representational Diffusion
 
-The Average Frequency of Evocation threshold is computed as:
+Diffusion measures how broadly a lexical unit circulates across the discursive community, operationalising the AFE at the collective rather than individual level.
 
-AFE = (1 / |V|) Σ F_user(w) 
+### 4.1 User-Level Diffusion
 
-where:
+The primary formulation privileges **user-level diffusion** to capture the breadth of collective sharing independently of corpus size or posting frequency:
 
-- terms above the threshold are considered highly diffused;
-- terms below the threshold are considered weakly diffused.
+$$
+F_{\mathrm{user}}(w)
+=
+\frac{\bigl|\{u \in \mathcal{U} : w \in \mathcal{V}(u)\}\bigr|}{|\mathcal{U}|},
+$$
 
-Thresholds are computed separately for each POS category.
+where $\mathcal{V}(u)$ is the set of lexical units used at least once by user $u$. This measures the *proportion of distinct users* who employ a given term.
 
----
+### 4.2 Comment-Level Diffusion
 
-# EVOC Quadrants
+An alternative formulation computes diffusion at the post level:
 
-Lexical units are assigned to four representational regions.
+$$
+F_{\mathrm{comm}}(w)
+=
+\frac{\bigl|\{d \in \mathcal{D} : w \in d\}\bigr|}{|\mathcal{D}|}.
+$$
 
-Let:
-
-θF(p) 
-
-be the POS-specific AFE threshold.
-
-Let:
-
-θR(p) 
-
-be the POS-specific AOE threshold.
-
-For a lexical unit w:
-
-## Central Nucleus
-
-F_user(w) ≥ θF(p) and R(w) ≤ θR(p) 
-
-Represents highly diffused and highly salient elements.
+This measures the proportion of posts containing the term. User-level diffusion is the default and recommended setting, as it is less sensitive to prolific individual users dominating the frequency signal.
 
 ---
 
-## First Periphery
+## 5. Structural Thresholds: AFE and AOE
 
-F_user(w) ≥ θF(p) and R(w) > θR(p) 
+Following the logic of classical HEM, two corpus-level thresholds are computed to partition the lexical space.
 
-Represents widely shared but less salient elements.
+The **Average Frequency of Evocation (AFE)** is defined as the mean diffusion score across the retained vocabulary:
 
----
+$$
+\mathrm{AFE} = \frac{1}{|\mathcal{V}|} \sum_{w \in \mathcal{V}} F_{\mathrm{user}}(w).
+$$
 
-## Contrast Zone
+The **Average Order of Evocation (AOE)** is the mean rank value across the retained vocabulary:
 
-F_user(w) < θF(p) and R(w) ≤ θR(p) 
+$$
+\mathrm{AOE} = \frac{1}{|\mathcal{V}|} \sum_{w \in \mathcal{V}} R(w).
+$$
 
-Represents salient but weakly diffused elements.
-
----
-
-## Peripheral System
-
-F_user(w) < θF(p) and R(w) > θR(p) 
-
-Represents low-salience and low-diffusion elements.
+In the empirical implementation, both thresholds are computed **separately within each POS category** to account for the distributional asymmetries between grammatical classes (see [Section 7](#7-pos-specific-thresholding)).
 
 ---
 
-# POS-Specific Thresholding
+## 6. Four-Quadrant Representational Structure
 
-PyEvoc computes thresholds separately for different lexical categories.
+The joint distribution of diffusion and salience defines a two-dimensional representational space. Using the AFE and AOE as structural thresholds, each lexical unit is assigned to one of four analytically distinct zones.
 
-Current implementation supports:
+For each term $w$ belonging to POS category $p$, with POS-specific thresholds $\theta_F(p)$ (AFE) and $\theta_R(p)$ (AOE):
 
-- Nouns
-- Adjectives
-- Emojis
+$$
+\operatorname{Quadrant}(w) =
+\begin{cases}
+\textbf{Central Nucleus}, 
+ & F_{\mathrm{user}}(w)\ge \theta_F(p) \;\text{ and }\; R(w) \le \theta_R(p),\\[6pt]
+\textbf{First Periphery}, 
+ & F_{\mathrm{user}}(w)\ge \theta_F(p) \;\text{ and }\; R(w) > \theta_R(p),\\[6pt]
+\textbf{Contrast Zone}, 
+ & F_{\mathrm{user}}(w)< \theta_F(p) \;\text{ and }\; R(w) \le \theta_R(p),\\[6pt]
+\textbf{Peripheral System},
+ & F_{\mathrm{user}}(w)< \theta_F(p) \;\text{ and }\; R(w) > \theta_R(p).
+\end{cases}
+$$
 
-This choice reflects the fact that different grammatical categories fulfil different communicative functions and exhibit distinct diffusion and salience distributions.
+The substantive interpretation of each zone is as follows:
 
-### Nouns
+| Zone | Diffusion | Salience | Interpretation |
+|---|---|---|---|
+| **Central Nucleus** | High | High | Stable, consensual core elements of the representation |
+| **First Periphery** | High | Low | Widely shared but contextually flexible elements |
+| **Contrast Zone** | Low | High | Salient minority positions or emerging framings |
+| **Peripheral System** | Low | Low | Weakly structured, contextually variable elements |
 
-Typically associated with objectification processes and referential stability.
+The figure below illustrates the resulting quadrant structure:
 
-### Adjectives
-
-Primarily encode evaluative and normative dimensions.
-
-### Emojis
-
-Capture affective, interactional, and paralinguistic information.
-
-POS-specific thresholding reduces artefacts caused by grammatical frequency asymmetries and improves interpretability.
-
----
-
-# Temporal Stability Analysis
-
-PyEvoc includes longitudinal diagnostics for assessing representational evolution.
-
-Available indicators include:
-
-- quadrant transitions;
-- nucleus continuity;
-- diffusion stability;
-- rank stability;
-- temporal Sankey diagrams;
-- period-specific EVOC structures.
-
-These measures allow researchers to investigate the emergence, persistence, transformation, and disappearance of representational elements over time.
-
----
-
-# Parameterisation
-
-The framework adopts default values for:
-
-π η₁ η₂ η₃ η₄ 
-
-based on theoretical considerations concerning positional prominence and rhetorical foregrounding.
-
-These values should be interpreted as operational parameters rather than universal constants.
-
-Future developments may include dedicated sensitivity analyses exploring the robustness of representational structures under alternative parameterisations.
+```
+                    High Salience (low R)
+                           ↑
+         ┌─────────────────┼─────────────────┐
+         │                 │                 │
+         │  CENTRAL        │  CONTRAST       │
+High     │  NUCLEUS        │  ZONE           │
+Diffusion│                 │                 │
+(F≥AFE)  │                 │                 │
+         ├─────────────────┼─────────────────┤
+         │                 │                 │
+Low      │  FIRST          │  PERIPHERAL     │
+Diffusion│  PERIPHERY      │  SYSTEM         │
+(F<AFE)  │                 │                 │
+         │                 │                 │
+         └─────────────────┼─────────────────┘
+                           ↓
+                    Low Salience (high R)
+                    ←──────────────────────→
+                  High R              Low R
+```
 
 ---
 
-# References
+## 7. POS-Specific Thresholding
 
-Abric, J.-C. (2003). La recherche du noyau central et de la zone muette des représentations sociales.
+A key methodological feature of PyEvoc is the application of **POS-specific thresholds**. Lexical units belonging to different grammatical categories fulfil distinct communicative and representational functions in online discourse and consequently exhibit different frequency and salience distributions. Conflating them under a single global threshold would introduce artefactual prominence effects driven by grammatical asymmetries rather than representational structure.
 
-Vergès, P. (1992). L'évocation de l'argent: Une méthode pour la définition du noyau central d'une représentation.
+PyEvoc focuses on three primary POS categories:
 
-Moliner, P., Rateau, P., & Cohen-Scali, V. (2002). Les représentations sociales.
+- **Nouns** — support objectification processes by stabilising socially recognisable referents.
+- **Adjectives** — encode evaluative and normative dimensions of the representation.
+- **Emojis** — convey affective and interactional information in digital communicative contexts.
 
-PyEvoc extends these principles to large-scale digital corpora through computational reconstruction of salience and diffusion indicato
+For each category $p$, the thresholds $\theta_F(p)$ and $\theta_R(p)$ are computed from the within-category distributions of $F_{\mathrm{user}}$ and $R$, respectively. This preserves the interpretability of the representational structure and ensures that quadrant assignment reflects genuine representational dynamics rather than artefacts of grammatical frequency.
+
+---
+
+## 8. Summary
+
+The table below summarises the correspondence between classical HEM constructs and their computational counterparts in PyEvoc:
+
+| Classical HEM | PyEvoc Operationalisation |
+|---|---|
+| Frequency of evocation | User-level diffusion $F_{\mathrm{user}}(w)$ |
+| Order of evocation | Composite salience rank $R(w)$ |
+| AFE threshold | Mean $F_{\mathrm{user}}$ within POS category |
+| AOE threshold | Mean $R$ within POS category |
+| Quadrant assignment | Joint thresholding on $F$ and $R$ |
+
+The framework is designed for digital discourse environments where social representations emerge from fragmented, decentralised, and continuously evolving communicative exchanges. By integrating the SRT interpretative logic with scalable computational procedures, PyEvoc enables systematic exploration of how public understandings, symbolic framings, and evaluative orientations surrounding complex social objects are collectively constructed and negotiated in online environments.
+
+---
+
+## 9. References
+
+- Moscovici, S. (1961). *La psychanalyse, son image et son public*. Presses Universitaires de France.
+- Vergès, P. (1992). L'evocation de l'argent: Une méthode pour la définition du noyau central d'une représentation. *Bulletin de Psychologie*, 45(405), 203–209.
+- Abric, J.-C. (1994). *Pratiques sociales et représentations*. Presses Universitaires de France.
