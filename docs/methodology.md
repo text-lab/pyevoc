@@ -55,13 +55,13 @@ Discursive salience approximates the cognitive prominence of a lexical unit with
 
 Tokens appearing earlier in a post are assumed to reflect greater communicative foregrounding. For a token occurrence $w$ within a document $d$ containing $L_d$ tokens, positional salience is defined as:
 
-$$
+$
 r_{\mathrm{pos}}(w,d)=
 \begin{cases}
 1, & L_d = 1, \\[4pt]
 1 - \dfrac{\mathrm{position}(w,d)-1}{L_d-1}, & L_d > 1.
 \end{cases}
-$$
+$
 
 This assigns a salience of 1 to the first token and decreases linearly to 0 for the last token.
 
@@ -78,7 +78,7 @@ A second component captures rhetorical foregrounding via discourse-specific comm
 
 Structural salience is then:
 
-$$
+$
 r_{\mathrm{str}}(w,d)
 =
 \eta_1 I_{\mathrm{first}}(w,d)
@@ -88,7 +88,7 @@ r_{\mathrm{str}}(w,d)
 \eta_3 I_{\mathrm{list}}(w,d)
 +
 \eta_4 I_{\mathrm{intens}}(w,d),
-$$
+$
 
 where the weights $\eta_j \in [0,1]$ satisfy $\sum_{j=1}^{4} \eta_j = 1$ and are configurable by the user.
 
