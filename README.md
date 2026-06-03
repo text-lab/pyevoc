@@ -168,6 +168,18 @@ Thresholds are computed separately for each POS category (nouns, adjectives, emo
 
 ## Example Outputs
 
+The examples presented in this repository use the **AGI dataset** introduced by Xie and He (2025). The dataset originally contains **53,649 social media posts** related to Artificial General Intelligence (AGI).
+The dataset is publicly available at: <a href="https://github.com/BIMSA-DATA/FGPO/blob/main/AGI.xlsx">https://github.com/BIMSA-DATA/FGPO/blob/main/AGI.xlsx</a>
+
+If you use this dataset in your research, please cite:
+
+> Xie, H., & He, M. (2025). *Tracking Fine-Grained Public Opinions: Two Datasets from Online Discourse on Trending Topics*. Mathematics, 13(21), 3433. doi: <a href="https://doi.org/10.3390/math13213433">10.3390/math13213433</a>
+
+> [!IMPORTANT]
+> The AGI dataset is **not distributed as part of PyEvoc** and remains the intellectual property of its original authors. It is used in this repository solely as an illustrative example to demonstrate the software's analytical capabilities. Users are responsible for complying with the original dataset's terms of use and citation requirements.
+
+---
+
 <table>
   <tr>
     <td align="center"><strong>EVOC Map — Nouns</strong><br><img src="assets/evoctarget_N.png" width="100%"></td>
