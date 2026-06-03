@@ -26,6 +26,16 @@ PyEvoc provides a complete, end-to-end workflow: from corpus ingestion and lingu
 
 ---
 
+## Installation
+
+To install the package:
+
+```bash
+pip install git+https://github.com/text-lab/pyevoc.git
+```
+
+---
+
 ## Features
 
 | Module | Capabilities |
