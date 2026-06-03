@@ -178,7 +178,9 @@ If you use this dataset in your research, please cite:
 > [!IMPORTANT]
 > The AGI dataset is **not distributed as part of PyEvoc** and remains the intellectual property of its original authors. It is used in this repository solely as an illustrative example to demonstrate the software's analytical capabilities. Users are responsible for complying with the original dataset's terms of use and citation requirements.
 
----
+<p align="center">
+  <img src="assets/corpus_stat.png" width="40%">
+</p>
 
 <table>
   <tr>
