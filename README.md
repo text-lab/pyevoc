@@ -41,11 +41,11 @@ pip install git+https://github.com/text-lab/pyevoc.git
 | Module | Capabilities |
 |---|---|
 | **Corpus Construction** | Flexible CSV ingestion, date filtering, metadata preservation, schema mapping |
-| **Language Processing** | fastText language identification, Stanza annotation, lemmatisation, POS tagging, dependency parsing |
+| **Language Processing** | fastText+Lingua language identification, Stanza annotation, lemmatisation, POS tagging, dependency parsing |
 | **Thematic Extraction** | Anchor-based filtering, semantic expansion, domain-specific subcorpus generation |
-| **Representational Analysis** | AFE/AOE reconstruction, EVOC quadrant assignment, central nucleus and peripheral structure identification |
-| **Semantic Analysis** | Collocations, named entities, semantic trees, entity–term overlap |
-| **Longitudinal Analysis** | Temporal EVOC structures, quadrant transitions, stability indices, Sankey evolution diagrams |
+| **Representational Analysis** | AFE/AOE reconstruction, EVOC quadrant assignment, central nucleus and peripheral structure plot |
+| **Semantic Analysis** | Collocations, named entities, entity–term overlap, semantic trees |
+| **Longitudinal Analysis** | Temporal structures, quadrant transitions, stability indices, Sankey evolution diagram |
 | **Reporting** | Interactive HTML outputs, publication-ready figures |
 
 ---
