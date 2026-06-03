@@ -214,7 +214,6 @@ If you use this dataset in your research, please cite:
 ```text
 PyEvoc/
 ├── pyevoc/           # Core library
-├── models/           # Bundled resources (see below)
 ├── assets/           # Logo, figures
 ├── docs/             # methodology.md and additional documentation
 ├── examples/         # Worked examples
