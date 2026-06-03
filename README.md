@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/pyevoc_logo.png" width="35%">
+  <img src="assets/pyevoc_logo.svg" width="35%">
 </p>
 
 <p align="center">
