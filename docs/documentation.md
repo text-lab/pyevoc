@@ -581,11 +581,15 @@ plot_adjectives = build_evoc_target_plot(
 )
 ```
 
-![EVOC target map – nouns](assets/evoctarget_N.png)
+<p align="left">
+  <img src="../assets/evoctarget_N.png" width="50%">
+</p>
 
 *Example: EVOC target map for nouns. Each term is placed by its AOE rank (x-axis) and relative diffusion (y-axis). Dashed lines mark the quadrant thresholds.*
 
-![EVOC target map – adjectives](assets/evoctarget_A.png)
+<p align="left">
+  <img src="../assets/evoctarget_A.png" width="50%">
+</p>
 
 *Example: EVOC target map for adjectives.*
 
@@ -617,7 +621,9 @@ tree_adjectives = build_evoc_collocation_tree_for_upos(
 )
 ```
 
-![Semantic tree – adjectives](assets/evoctree_A.png)
+<p align="left">
+  <img src="../assets/evoctree_A.png" width="50%">
+</p>
 
 *Collocation tree for adjectives. Node size encodes relative diffusion; node shade encodes salience; edge width encodes G² association strength.*
 
@@ -633,7 +639,9 @@ fig_emoji, emoji_evoc_df, emoji_evoc_html = build_emoji_evoc_plot(
 )
 ```
 
-![EVOC emoji map](assets/emoji_map.png)
+<p align="left">
+  <img src="../assets/emoji_map.png" width="50%">
+</p>
 
 *Example: EVOC emoji map. Emoji labels are placed by their AOE rank and diffusion score.*
 
@@ -655,7 +663,7 @@ sankey_results = build_temporal_sankey_ordered(
 ```
 
 <p align="left">
-  <img src="assets/temp_sankey.png" width="50%">
+  <img src="../assets/temp_sankey.png" width="50%">
 </p>
 
 *Example: Sankey diagram across four time periods (P1–P4). Each ribbon traces terms as they remain stable or migrate between zones.*
