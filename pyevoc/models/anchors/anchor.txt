@@ -1,0 +1,123 @@
+solar
+solar energy
+solar power
+solar panel
+solar panels
+photovoltaic
+photovoltaics
+pv
+rooftop solar
+solar farm
+utility scale solar
+concentrated solar
+csp
+solar thermal
+solar installation
+solar capacity
+wind
+wind energy
+wind power
+wind turbine
+wind turbines
+wind farm
+offshore wind
+onshore wind
+wind capacity
+wind installation
+hydro
+hydropower
+hydro power
+hydroelectric
+hydroelectricity
+dam power
+run of river
+small hydro
+pumped hydro
+hydro storage
+geothermal
+geothermal energy
+geothermal power
+deep geothermal
+geothermal plant
+biomass
+bioenergy
+biogas
+biofuel
+biofuels
+anaerobic digestion
+bioethanol
+biodiesel
+biomass plant
+waste to energy
+tidal energy
+wave energy
+ocean energy
+tidal power
+marine energy
+green hydrogen
+renewable hydrogen
+clean hydrogen
+hydrogen economy
+electrolysis
+electrolyser
+electrolyzer
+battery storage
+energy storage
+grid storage
+battery system
+lithium battery
+grid scale storage
+energy storage system
+ess
+smart grid
+electric grid
+power grid
+grid integration
+grid stability
+grid infrastructure
+renewable integration
+grid decarbonisation
+grid decarbonization
+renewable energy
+renewables
+clean energy
+green energy
+energy transition
+clean power
+renewable electricity
+decarbonised power
+decarbonized power
+low carbon energy
+zero carbon energy
+carbon neutral energy
+renewable policy
+energy policy
+climate policy
+renewable targets
+renewable subsidies
+feed in tariff
+feed-in tariff
+net metering
+carbon pricing
+carbon tax
+emissions trading
+energy regulation
+levelized cost
+lcoe
+energy cost
+renewable cost
+energy market
+power market
+electricity market
+energy investment
+clean energy investment
+decarbonisation
+decarbonization
+net zero
+net-zero
+energy independence
+energy security
+fossil fuel phase out
+phase out fossil fuels
+climate neutrality
+energy transition strategy
