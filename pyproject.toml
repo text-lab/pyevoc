@@ -7,11 +7,13 @@ name = "pyevoc"
 version = "0.1.0"
 description = "Computational Hierarchical Evocation Analysis for Digital Corpora"
 readme = "README.md"
-license = { text = "MIT" }
 requires-python = ">=3.9"
+license = "MIT"
+
 authors = [
-  {name = "Michelangelo Misuraca"}
+    { name = "Michelangelo Misuraca" }
 ]
+
 keywords = [
     "social representations",
     "hierarchical evocation method",
@@ -19,21 +21,68 @@ keywords = [
     "digital discourse",
     "social media"
 ]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Text Processing :: Linguistic"
+]
+
 dependencies = [
     "pandas>=1.5",
     "numpy>=1.23,<2",
     "scikit-learn>=1.2",
     "regex>=2023.0",
-    "tqdm>=4.65",
+    "tqdm>=4.65"
 ]
 
 [project.optional-dependencies]
 nlp = [
     "stanza>=1.7",
     "fasttext-wheel>=0.9",
-    "emoji>=2.0",
+    "emoji>=2.0"
 ]
+
 viz = [
     "matplotlib>=3.6",
-    "plotly>=5.0",
+    "plotly>=5.0"
 ]
+
+all = [
+    "stanza>=1.7",
+    "fasttext-wheel>=0.9",
+    "emoji>=2.0",
+    "matplotlib>=3.6",
+    "plotly>=5.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/mmisuraca/PyEvoc"
+Repository = "https://github.com/mmisuraca/PyEvoc"
+Issues = "https://github.com/mmisuraca/PyEvoc/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["pyevoc*"]
+exclude = [
+    "assets*",
+    "docs*",
+    "tests*"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.flake8]
+max-line-length = 127
+max-complexity = 10
