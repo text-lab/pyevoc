@@ -172,6 +172,9 @@ models/
 
 PyEvoc is designed to support transparent and reproducible computational social science research. The framework preserves metadata throughout the workflow, records processing parameters, exports intermediate outputs, and generates human-readable HTML reports alongside publication-ready figures.
 
+A detailed, step-by-step tutorial illustrating the complete PyEvoc workflow is available in
+[examples/pyevoc_step_by_step.ipynb](examples/pyevoc_step_by_step.ipynb).
+
 ---
 
 ## Citation
