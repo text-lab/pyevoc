@@ -106,22 +106,34 @@ If you use this dataset in your research, please cite:
 > [!IMPORTANT]
 > The AGI dataset is **not distributed as part of PyEvoc** and remains the intellectual property of its original authors. It is used in this repository solely as an illustrative example to demonstrate the software's analytical capabilities. Users are responsible for complying with the dataset's terms of use and citation requirements.
 
+<table>
+  <tr>
+    <td align="center"><strong>EVOC Quadrants — Nouns</strong><br><img src="assets/evocquadrants_N.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>EVOC Quadrants — Nouns</strong><br><img src="assets/evocquadrants_N.png" width="100%"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>EVOC Quadrants - Emojis</strong><br><img src="assets/evocquadrants_E.png" width="100%"></td>
+  </tr>
+</table>
+
 <p align="center">
   <img src="assets/corpus_stat.png" width="40%">
 </p>
 
 <table>
   <tr>
-    <td align="center"><strong>EVOC Map — Nouns</strong><br><img src="assets/evoctarget_N.png" width="100%"></td>
-    <td align="center"><strong>EVOC Map — Adjectives</strong><br><img src="assets/evoctarget_A.png" width="100%"></td>
+    <td align="center"><strong>EVOC Target — Nouns</strong><br><img src="assets/evoctarget_N.png" width="100%"></td>
+    <td align="center"><strong>EVOC Target — Adjectives</strong><br><img src="assets/evoctarget_A.png" width="100%"></td>
   </tr>
   <tr>
-    <td align="center"><strong>Semantic Tree — Nouns</strong><br><img src="assets/evoctree_N.png" width="100%"></td>
-    <td align="center"><strong>Semantic Tree — Adjectives</strong><br><img src="assets/evoctree_A.png" width="100%"></td>
+    <td align="center"><strong>EVOC Semantic Tree — Nouns</strong><br><img src="assets/evoctree_N.png" width="100%"></td>
+    <td align="center"><strong>EVOC Semantic Tree — Adjectives</strong><br><img src="assets/evoctree_A.png" width="100%"></td>
   </tr>
   <tr>
-    <td align="center"><strong>Emoji EVOC Map</strong><br><img src="assets/emoji_map.png" width="100%"></td>
-    <td align="center"><strong>Temporal Stability (Sankey)</strong><br><img src="assets/temp_sankey.png" width="100%"></td>
+    <td align="center"><strong>EVOC Emoji Map</strong><br><img src="assets/emoji_map.png" width="100%"></td>
+    <td align="center"><strong>EVOC Temporal Stability (Sankey)</strong><br><img src="assets/temp_sankey.png" width="100%"></td>
   </tr>
 </table>
 
