@@ -2,15 +2,6 @@
 requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.backends.legacy:build"
 
-authors = [
-  {name = "Michelangelo Misuraca"}
-]
-
-keywords = [
-    "social representations", "hierarchical evocation method",
-    "text mining", "digital discourse", "social media"
-]
-
 [project]
 name = "pyevoc"
 version = "0.1.0"
@@ -18,6 +9,13 @@ description = "Computational Hierarchical Evocation Analysis for Digital Corpora
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.9"
+authors = [
+  {name = "Michelangelo Misuraca"}
+]
+keywords = [
+    "social representations", "hierarchical evocation method",
+    "text mining", "digital discourse", "social media"
+]
 dependencies = [
     "pandas>=1.5",
     "numpy>=1.23,<2",
