@@ -146,7 +146,7 @@ PyEvoc/
 ├── pyevoc/           # Core library
 ├── assets/           # Logo, figures
 ├── docs/             # methodology.md and additional documentation
-├── examples/         # Worked examples
+├── examples/         # Worked Notebook example
 ├── tests/            # Test suite
 ├── README.md
 ├── LICENSE
@@ -156,13 +156,13 @@ PyEvoc/
 
 ### Bundled Models
 
-All required resources are distributed locally and loaded automatically:
+All required resources are loaded automatically:
 
 ```text
 models/
 ├── lid.176.bin         # fastText language identification model
 ├── emoji_lookup.csv    # Emoji–description mapping
-├── concreteness.csv    # Concreteness norms
+├── concreteness.csv    # Concreteness norms (English)
 └── ...
 ```
 
