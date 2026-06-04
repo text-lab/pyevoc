@@ -6,11 +6,10 @@
   <strong>A Python Framework for Hierarchical Evocation Analysis in Large-Scale Digital Corpora</strong>
 </p>
 
-<p align="center">
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
-  <a href="docs/methodology.md"><img src="https://img.shields.io/badge/methodology-docs-green.svg" alt="Methodology"></a>
-  <a href="https://doi.org/10.5281/zenodo.20545334"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20545334.svg" alt="DOI"></a>
-</p>
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20545334.svg)](https://doi.org/10.5281/zenodo.20545334)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Methodology](https://img.shields.io/badge/methodology-docs-green.svg)](https://github.com/text-lab/pyevoc/blob/main/docs/methodology.md)
+[![Documentation](https://img.shields.io/badge/documentation-docs-brightgreen.svg)](https://github.com/text-lab/pyevoc/blob/main/docs/documentation.md)
 
 ---
 
