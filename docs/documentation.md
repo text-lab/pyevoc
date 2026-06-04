@@ -589,12 +589,6 @@ plot_adjectives = build_evoc_target_plot(
 
 *Example: EVOC target map for adjectives.*
 
-The circular (radial) view below shows the same quadrant assignments in a representation-theory style layout:
-
-![EVOC radial map – adjectives](assets/evoctree_A.png)
-
-*Radial EVOC map for adjectives. Distance from centre reflects marginalisation; colour indicates zone.*
-
 #### EVOC semantic trees
 
 Arc diagrams showing each term's top bigram collocates, grouped by quadrant:
