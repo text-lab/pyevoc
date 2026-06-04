@@ -654,7 +654,9 @@ sankey_results = build_temporal_sankey_ordered(
 )
 ```
 
-![Temporal Sankey diagram](assets/temp_sankey.png)
+<p align="left">
+  <img src="assets/temp_sankey.png" width="50%">
+</p>
 
 *Example: Sankey diagram across four time periods (P1–P4). Each ribbon traces terms as they remain stable or migrate between zones.*
 
