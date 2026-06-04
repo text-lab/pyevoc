@@ -104,7 +104,7 @@ If you use this dataset in your research, please cite:
 > Xie, H., & He, M. (2025). *Tracking Fine-Grained Public Opinions: Two Datasets from Online Discourse on Trending Topics*. Mathematics, 13(21), 3433. doi: <a href="https://doi.org/10.3390/math13213433">10.3390/math13213433</a>
 
 > [!IMPORTANT]
-> The AGI dataset is **not distributed as part of PyEvoc** and remains the intellectual property of its original authors. It is used in this repository solely as an illustrative example to demonstrate the software's analytical capabilities. Users are responsible for complying with the original dataset's terms of use and citation requirements.
+> The AGI dataset is **not distributed as part of PyEvoc** and remains the intellectual property of its original authors. It is used in this repository solely as an illustrative example to demonstrate the software's analytical capabilities. Users are responsible for complying with the dataset's terms of use and citation requirements.
 
 <p align="center">
   <img src="assets/corpus_stat.png" width="40%">
