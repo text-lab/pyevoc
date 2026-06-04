@@ -78,7 +78,7 @@ The pipeline consists of 15 stages: dataset ingestion → language identificatio
 ## EVOC Quadrant Structure
 
 <p align="center">
-  <img src="assets/evoc_q.png" width="40%">
+  <img src="assets/evoc_q.png" width="50%">
 </p>
 
 Lexical units are positioned in a two-dimensional space defined by **representational diffusion** (AFE) and **discursive salience** (AOE), yielding four analytically distinct zones:
