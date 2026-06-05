@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PyEvoc — Hierarchical Evocation Analysis for Digital Corpora</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<!-- Material Symbols for professional icons -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<style>
+:root {
+  --ink: #141412;
+  --paper: #f7f5f0;
+  --white: #ffffff;
+  --cream: #ede9e1;
+  --rule: #ddd8ce;
+  --muted: #7a7570;
+  --accent: #bf4020;
+  --accent-dim: rgba(191,64,32,0.1);
+  --blue: #1a5276;
+  --blue-dim: rgba(26,82,118,0.1);
+  --purple: #6b3fa0;
+  --purple-dim: rgba(107,63,160,0.1);
+  --green: #2e6b4a;
+  --green-dim: rgba(46,107,74,0.1);
+  --nucleus-c:  #4f7fa6;
+  --periph1-c:  #4f9a55;
+  --contrast-c: #c04a46;
+  --periph2-c:  #8750a6;
+  --nucleus-dim:  #e7eef5;
+  --periph1-dim:  #e8f3e9;
+  --contrast-dim: #f8e6e5;
+  --periph2-dim:  #f0e7f6;
+  --code-bg: #1a1916;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── MATERIAL ICONS ── */
+.mi {
+  font-family: 'Material Symbols Outlined';
+  font-size: 1.25em;
+  line-height: 1;
+  vertical-align: -0.2em;
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+}
+.mi-sm { font-size: 1em; }
+.mi-lg { font-size: 1.6em; font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 40; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 58px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  background: rgba(247,245,240,0.94);
+  backdrop-filter: blur(16px) saturate(1.4);
+  border-bottom: 1px solid var(--rule);
+}
+
+.nav-logo {
+  display: flex; align-items: center; gap: 0.7rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.nav-logo-img { height: 60px; width: auto; }
+
+.nav-logo-text {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: -0.03em;
+}
+
+.nav-logo-text span { color: var(--blue); }
+
+.nav-links {
+  display: flex; gap: 0; list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.4rem 1.1rem;
+  transition: color 0.18s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+.nav-gh {
+  display: flex; align-items: center; gap: 0.45rem;
+  background: var(--ink); color: var(--paper) !important;
+  padding: 0.4rem 1.1rem;
+  border-radius: 3px;
+  font-weight: 500 !important;
+  transition: background 0.18s !important;
+}
+.nav-gh:hover { background: var(--accent) !important; }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  padding-top: 58px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.hero-l {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 4rem 6rem 5rem;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.6rem;
+  display: flex; align-items: center; gap: 0.7rem;
+}
+.kicker::before {
+  content: '';
+  display: block; width: 28px; height: 1px;
+  background: currentColor;
+}
+
+.hero-h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 4.5vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  color: var(--ink);
+}
+.hero-h1 em { font-style: italic; color: var(--blue); }
+
+.hero-lead {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+  line-height: 1.8;
+}
+
+.btn-row {
+  display: flex; gap: 0.85rem; align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.72rem 1.5rem;
+  border-radius: 3px;
+  font-size: 0.87rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  transition: all 0.18s;
+  cursor: pointer;
+}
+.btn-dark { background: var(--ink); color: var(--paper); }
+.btn-dark:hover { background: var(--accent); transform: translateY(-1px); }
+.btn-outline { border: 1.5px solid var(--rule); color: var(--ink); }
+.btn-outline:hover { border-color: var(--ink); transform: translateY(-1px); }
+
+.badges { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid;
+  letter-spacing: 0.03em;
+}
+.badge-red { color: var(--accent); border-color: var(--accent); background: var(--accent-dim); }
+.badge-blue { color: var(--blue); border-color: var(--blue); background: var(--blue-dim); }
+.badge-gray { color: var(--muted); border-color: var(--rule); background: var(--cream); }
+.badge-green { color: var(--green); border-color: var(--green); background: var(--green-dim); }
+
+/* Hero right */
+.hero-r {
+  background: var(--cream);
+  border-left: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-r::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 70% 50%, rgba(191,64,32,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-quad-img {
+  width: 100%; max-width: 750px;
+  position: relative; z-index: 1;
+}
+
+/* ── SECTION COMMON ── */
+.sec { padding: 6rem 5rem; max-width: 1360px; margin: 0 auto; }
+.sec-full { padding: 0; max-width: none; }
+
+.sec-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.9rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.sec-label::before {
+  content: ''; display: block;
+  width: 22px; height: 1px; background: currentColor;
+}
+
+.sec-h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 3vw, 2.8rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 1.2rem;
+}
+
+.sec-sub {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--muted);
+  max-width: 580px;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
+
+/* ── PIPELINE BAND ── */
+.band-dark {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 5.5rem 5rem;
+}
+
+.band-dark .sec-label { color: rgba(255,255,255,0.45); }
+.band-dark .sec-label::before { background: rgba(255,255,255,0.3); }
+.band-dark .sec-h2 { color: var(--paper); }
+.band-dark .sec-sub { color: rgba(255,255,255,0.45); }
+
+.pipeline-img-wrap {
+  margin-top: 3rem;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.pipeline-img-wrap img {
+  width: 100%;
+  display: block;
+}
+
+/* Pipeline steps grid */
+.pipeline-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.07);
+  margin-top: 2.5rem;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.ps {
+  background: rgba(255,255,255,0.03);
+  padding: 1.6rem 1.4rem;
+  transition: background 0.2s;
+  position: relative;
+}
+.ps:hover { background: rgba(255,255,255,0.07); }
+
+.ps-n {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: rgba(255,255,255,0.22);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.7rem;
+}
+
+.ps-icon {
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 0.65rem;
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 32;
+  font-size: 1.5rem;
+}
+
+.ps-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+}
+
+.ps-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.55;
+}
+
+/* ── FEATURES ── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1.5px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fc {
+  background: var(--paper);
+  padding: 2.2rem;
+  transition: background 0.2s;
+}
+.fc:hover { background: var(--cream); }
+
+.fc-icon {
+  color: var(--blue);
+  margin-bottom: 0.9rem;
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 40;
+}
+
+.fc-name {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.fc-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.65;
+  margin-bottom: 0.8rem;
+}
+
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 2px;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  color: var(--muted);
+}
+
+/* ── QUADRANTS ── */
+.quads-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.quad-diagram-img {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.1);
+}
+.quad-diagram-img img { width: 100%; display: block; }
+
+.quad-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.qc {
+  padding: 1.3rem 1.5rem;
+  border-left: 2.5px solid;
+  background: var(--cream);
+  border-radius: 0 3px 3px 0;
+  transition: transform 0.18s;
+}
+.qc:hover { transform: translateX(4px); }
+.qc-nucleus { border-color: var(--nucleus-c); }
+.qc-periph1 { border-color: var(--periph1-c); }
+.qc-contrast { border-color: var(--contrast-c); }
+.qc-periph2 { border-color: var(--periph2-c); }
+
+.qc-pill {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  letter-spacing: 0.07em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  margin-bottom: 0.4rem;
+}
+.qc-nucleus .qc-pill { background: var(--nucleus-dim); color: var(--nucleus); }
+.qc-periph1 .qc-pill { background: var(--periph1-dim); color: var(--periph1); }
+.qc-contrast .qc-pill { background: var(--contrast-dim); color: var(--contrast); }
+.qc-periph2 .qc-pill { background: var(--periph2-dim); color: var(--periph2); }
+
+.qc-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+.qc-nucleus .qc-title { color: var(--nucleus-c); }
+.qc-periph1 .qc-title { color: var(--periph1-c); }
+.qc-contrast .qc-title { color: var(--contrast-c); }
+.qc-periph2 .qc-title { color: var(--periph2-c); }
+
+.qc-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+/* ── METHODOLOGY ── */
+.method-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.method-steps { display: flex; flex-direction: column; }
+
+.ms {
+  display: flex; gap: 1.4rem;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.ms:last-child { border-bottom: none; }
+.ms:hover { padding-left: 0.4rem; transition: padding-left 0.18s; }
+
+.ms-n {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--blue);
+  min-width: 1.8rem;
+  padding-top: 0.1rem;
+  letter-spacing: 0.06em;
+}
+
+.ms-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.ms-desc {
+  font-size: 0.81rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.formula-panel {
+  background: var(--cream);
+  border: 1.5px solid var(--rule);
+  border-radius: 4px;
+  padding: 2rem;
+  position: sticky;
+  top: 74px;
+}
+
+.fp-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.fp-block { margin-bottom: 1.3rem; }
+
+.fp-label {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  color: var(--blue);
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.05em;
+}
+
+.fp-eq {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.6rem 0.9rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* ── INSTALL / DOCS ── */
+.install-band {
+  background: var(--cream);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 6rem 5rem;
+}
+
+.install-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  max-width: 1360px;
+  margin: 0 auto;
+}
+
+.code-block {
+  background: var(--code-bg);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 1.2rem;
+}
+
+.cb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.cb-lang {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.cb-dots { display: flex; gap: 0.35rem; }
+.cb-dots span {
+  width: 10px; height: 10px;
+  border-radius: 50%; display: inline-block;
+}
+.cb-dots span:nth-child(1) { background: #ff5f57; }
+.cb-dots span:nth-child(2) { background: #ffbd2e; }
+.cb-dots span:nth-child(3) { background: #28c840; }
+
+.cb-body {
+  padding: 1.2rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.72);
+  overflow-x: auto;
+}
+.cb-body .kw { color: #c792ea; }
+.cb-body .fn { color: #82aaff; }
+.cb-body .str { color: #c3e88d; }
+.cb-body .cm { color: rgba(255,255,255,0.28); font-style: italic; }
+.cb-body .cls { color: #ffcb6b; }
+.cb-body .num { color: #f78c6c; }
+.cb-body .op { color: rgba(255,255,255,0.45); }
+
+/* schema table */
+.schema-tbl {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.85rem; margin-top: 1.2rem;
+}
+.schema-tbl th {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 0.6rem 0.8rem;
+  border-bottom: 2px solid var(--rule);
+  text-align: left;
+}
+.schema-tbl td {
+  padding: 0.65rem 0.8rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.schema-tbl tr:last-child td { border-bottom: none; }
+.schema-tbl tr:hover td { background: var(--cream); }
+.col-name {
+  font-family: var(--font-mono);
+  color: var(--blue);
+  font-size: 0.8rem;
+}
+.col-type {
+  font-family: var(--font-mono);
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+/* ── OUTPUTS GALLERY ── */
+.gallery-band {
+  background: var(--ink);
+  padding: 6rem 5rem;
+}
+.gallery-band .sec-label { color: rgba(255,255,255,0.4); }
+.gallery-band .sec-label::before { background: rgba(255,255,255,0.25); }
+.gallery-band .sec-h2 { color: var(--paper); }
+.gallery-band .sec-sub { color: rgba(255,255,255,0.4); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.gc {
+  background: rgba(255,255,255,0.02);
+  padding: 0;
+  transition: background 0.2s;
+  display: flex; flex-direction: column;
+  cursor: pointer;
+}
+.gc:hover { background: rgba(255,255,255,0.06); }
+
+.gc-img {
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: opacity 0.2s;
+}
+.gc:hover .gc-img { opacity: 0.9; }
+
+.gc-info { padding: 1.2rem 1.4rem; }
+.gc-name {
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: var(--paper);
+  margin-bottom: 0.3rem;
+}
+.gc-desc {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.5;
+}
+
+/* lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(20,20,18,0.95);
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 2rem;
+}
+.lightbox.open { display: flex; }
+.lightbox img {
+  max-width: 90vw; max-height: 88vh;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 8px 64px rgba(0,0,0,0.8);
+}
+.lb-close {
+  position: absolute; top: 1.5rem; right: 1.5rem;
+  background: none; border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 2rem; cursor: pointer;
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 40;
+  transition: color 0.2s;
+  line-height: 1;
+}
+.lb-close:hover { color: white; }
+.lb-caption {
+  position: absolute; bottom: 1.5rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* ── DOCS STEPS ── */
+.docs-band {
+  background: var(--paper);
+  padding: 6rem 5rem;
+}
+
+.pipeline-steps-full {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1.5px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 2.5rem;
+}
+
+.pstep {
+  background: var(--paper);
+  padding: 2rem 2rem 2rem 1.8rem;
+  display: flex; gap: 1.3rem;
+  transition: background 0.18s;
+}
+.pstep:hover { background: var(--cream); }
+
+.pstep-n {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--blue);
+  min-width: 1.8rem;
+  padding-top: 0.3rem;
+  letter-spacing: 0.06em;
+}
+
+.pstep-icon {
+  color: var(--muted);
+  min-width: 1.5rem;
+  padding-top: 0.15rem;
+  font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+}
+
+.pstep-content {}
+.pstep-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.25rem;
+  color: var(--ink);
+}
+.pstep-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.pstep-module {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  color: var(--blue);
+  background: var(--blue-dim);
+  border: 1px solid rgba(26,82,118,0.2);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+/* ── PAPER SECTION ── */
+.paper-band {
+  background: var(--cream);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 6rem 5rem;
+}
+
+.paper-card {
+  border: 1.5px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  padding: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: start;
+  max-width: 920px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.paper-card:hover {
+  border-color: var(--ink);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+
+.paper-journal {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 0.6rem;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+.paper-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1.35;
+  margin-bottom: 0.6rem;
+}
+
+.paper-authors {
+  font-size: 0.83rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.paper-abstract {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.paper-btns {
+  display: flex; flex-direction: column; gap: 0.6rem;
+  min-width: 130px;
+}
+
+.paper-btn {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+.pb-dark { background: var(--ink); color: var(--paper); }
+.pb-dark:hover { background: var(--accent); }
+.pb-outline { border: 1.5px solid var(--rule); color: var(--ink); }
+.pb-outline:hover { border-color: var(--ink); background: var(--cream); }
+
+.cite-wrap {
+  background: var(--code-bg);
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 920px;
+  margin-top: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.cite-header {
+  padding: 0.65rem 1.2rem;
+  background: rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.cite-body {
+  padding: 1.4rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.95;
+  color: rgba(255,255,255,0.65);
+  overflow-x: auto;
+}
+.ck { color: #82aaff; }
+.cv { color: #c3e88d; }
+.cp { color: rgba(255,255,255,0.3); }
+
+/* ── STRUCTURE ── */
+.tree-wrap {
+  background: var(--code-bg);
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 680px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.45);
+  padding: 3rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2rem;
+  align-items: center;
+}
+.footer-logo-row {
+  display: flex; align-items: center; gap: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+.footer-logo-img { height: 26px; filter: brightness(0) invert(1) opacity(0.8); }
+.footer-logo-text {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--paper);
+}
+.footer-logo-text span { color: var(--blue); }
+.footer-tagline { font-size: 0.8rem; margin-bottom: 1.1rem; }
+.footer-links { display: flex; gap: 1.4rem; }
+.footer-links a {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.75); }
+.footer-r { text-align: right; }
+.footer-r p { font-size: 0.77rem; margin-bottom: 0.25rem; }
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.vis { opacity: 1; transform: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-r { display: none; }
+  .hero-l { padding: 4rem 2rem 3rem; }
+  .sec { padding: 4rem 2rem; }
+  .band-dark, .install-band, .gallery-band, .paper-band, .docs-band {
+    padding: 4rem 2rem;
+  }
+  .pipeline-grid { grid-template-columns: repeat(3, 1fr); }
+  .features-grid { grid-template-columns: 1fr; }
+  .quads-layout { grid-template-columns: 1fr; }
+  .quad-diagram-img { display: none; }
+  .method-layout { grid-template-columns: 1fr; }
+  .formula-panel { position: static; }
+  .install-layout { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .pipeline-steps-full { grid-template-columns: 1fr; }
+  .paper-card { grid-template-columns: 1fr; }
+  .paper-btns { flex-direction: row; }
+  footer { grid-template-columns: 1fr; }
+  .footer-r { text-align: left; }
+  hr.rule { margin: 0 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb" onclick="closeLB(event)">
+  <button class="lb-close" onclick="closeLB()">close</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-caption" id="lb-cap"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-logo">
+    <img class="nav-logo-img" src="../assets/pyevoc_logo.svg" alt="PyEvoc logo">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#pipeline">Overview</a></li>
+    <li><a href="#install">Install</a></li>
+    <li><a href="#docs">Documentation</a></li>
+    <li><a href="#outputs">Outputs</a></li>
+    <li><a href="#paper">Papers</a></li>
+    <li><a href="https://github.com/text-lab/pyevoc" target="_blank" class="nav-gh">
+      <span class="mi mi-sm">code</span> GitHub
+    </a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-l">
+    <div class="kicker">From Computational Text ANalysis to Social Representation Theory</div>
+    <h1 class="hero-h1">
+      Advancing<br>
+      Hierarchical<br>
+      <em>Evocation</em><br>
+      Analysis
+    </h1>
+    <p class="hero-lead">
+      PyEvoc extends the Hierarchical Evocation Method to large-scale digital corpora — reconstructing the central nucleus and peripheral structure of social representations from naturally occurring online discourse.
+    </p>
+    <div class="btn-row">
+      <a href="https://github.com/text-lab/pyevoc" target="_blank" class="btn btn-dark">
+        <span class="mi mi-sm">code</span> GitHub
+      </a> 
+      <a href="#install" class="btn btn-outline">
+        <span class="mi mi-sm">terminal</span> Get Started
+      </a>
+      <a href="#docs" class="btn btn-outline">
+        <span class="mi mi-sm">menu_book</span> Documentation
+      </a>
+    
+    </div>
+    <div class="badges">
+      <span class="badge badge-blue">v0.2.1</span>
+      <span class="badge badge-blue">Python 3.9+</span>
+      <span class="badge badge-gray">MIT License</span>
+      <span class="badge badge-green">DOI 10.5281/zenodo.20545334</span>
+    </div>
+  </div>
+  <div class="hero-r">
+        <img class="hero-quad-img" src="../assets/pyevoc_art.png" alt="PyEvoc">
+  </div>
+</section>
+
+<hr class="rule">
+
+<!--
+<section class="sec" id="quadrants">
+  <div class="sec-label">EVOC Structure</div>
+  <h2 class="sec-h2">The four-quadrant framework</h2>
+  <p class="sec-sub">Lexical units are placed in a two-dimensional representational space defined by user-level diffusion (AFE) and discursive salience (AOE), using POS-specific thresholds computed separately for nouns, adjectives, and emojis.</p>
+
+  <div class="quads-layout">
+    <div class="quad-list">
+      <div class="qc qc-nucleus reveal">
+        <div class="qc-pill">HIGH DIFFUSION &middot; HIGH SALIENCE</div>
+        <div class="qc-title">Central Nucleus</div>
+        <p class="qc-desc">The most stable, consensual, and collectively shared representational elements. Strongly linked to collective memory, social norms, and group identity. These terms provide coherence and organisational stability to the overall representation.</p>
+      </div>
+      <div class="qc qc-periph1 reveal">
+        <div class="qc-pill">HIGH DIFFUSION &middot; LOW SALIENCE</div>
+        <div class="qc-title">First Periphery</div>
+        <p class="qc-desc">Widely shared but contextually flexible elements that support adaptation to situational contingencies. They protect the stability of the central core while enabling representational evolution and contextual adjustment.</p>
+      </div>
+      <div class="qc qc-contrast reveal">
+        <div class="qc-pill">LOW DIFFUSION &middot; HIGH SALIENCE</div>
+        <div class="qc-title">Contrast Zone</div>
+        <p class="qc-desc">Salient but less diffused elements associated with minority positions, contested meanings, or emerging interpretative framings. Often represents heterodox viewpoints that challenge the dominant symbolic configuration.</p>
+      </div>
+      <div class="qc qc-periph2 reveal">
+        <div class="qc-pill">LOW DIFFUSION &middot; LOW SALIENCE</div>
+        <div class="qc-title">Peripheral System</div>
+        <p class="qc-desc">Weakly diffused and low-salience elements characterised by contextual variability and lower representational stability. Sensitive to emerging controversies and episodic discursive activations.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+-->
+
+<!-- PIPELINE BAND -->
+<div class="band-dark" id="pipeline">
+  <div style="max-width:1360px; margin:0 auto;">
+    <div class="sec-label">Multistage Pipeline</div>
+    <h2 class="sec-h2">End-to-end representational workflow</h2>
+    <p class="sec-sub">From raw social media data to publication-ready EVOC maps — every stage is modular, resumable, and parameterised.</p>
+
+    <div class="pipeline-img-wrap reveal">
+      <img src="../assets/pipeline_h.png" loading="lazy"
+           onclick="openLB(this.src, 'PyEvoc computational pipeline — from corpus ingestion to visual analytics')"
+           style="cursor:zoom-in;">
+    </div>
+
+    <div class="pipeline-grid" style="margin-top:2.5rem;">
+      <div class="ps reveal">
+        <div class="ps-n">01</div>
+        <div class="ps-icon mi">upload_file</div>
+        <div class="ps-name">Dataset Ingestion</div>
+        <div class="ps-desc">Flexible CSV/XLSX/JSON loading with configurable schema mapping and metadata preservation.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">02</div>
+        <div class="ps-icon mi">language</div>
+        <div class="ps-name">Language Identification</div>
+        <div class="ps-desc">Two-stage hybrid pipeline: fastText primary, Lingua secondary for ambiguous cases.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">03</div>
+        <div class="ps-icon mi">filter_alt</div>
+        <div class="ps-name">Thematic Filtering</div>
+        <div class="ps-desc">Anchor-based lexical matching + cosine-similarity semantic expansion for domain subcorpora.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">04</div>
+        <div class="ps-icon mi">bar_chart</div>
+        <div class="ps-name">Corpus Statistics</div>
+        <div class="ps-desc">Token counts, type/token ratio, hapax legomena, and temporal distribution diagnostics.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">05</div>
+        <div class="ps-icon mi">cleaning_services</div>
+        <div class="ps-name">Text Cleaning</div>
+        <div class="ps-desc">URL removal, contraction expansion, elongation reduction, emoji spacing, punctuation normalisation.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">06</div>
+        <div class="ps-icon mi">spellcheck</div>
+        <div class="ps-name">Linguistic Annotation</div>
+        <div class="ps-desc">Stanza-based POS tagging, lemmatisation, and dependency parsing at token level.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">07</div>
+        <div class="ps-icon mi">sentiment_satisfied</div>
+        <div class="ps-name">Emoji Assignment</div>
+        <div class="ps-desc">Unicode-aware emoji identification; reassigned to EMOJI UPOS class for separate analysis.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">08</div>
+        <div class="ps-icon mi">format_bold</div>
+        <div class="ps-name">Structural Foregrounding</div>
+        <div class="ps-desc">Opening-sentence detection, emphasis spans, list/quote context, typographic intensification.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">09</div>
+        <div class="ps-icon mi">abc</div>
+        <div class="ps-name">Unigram Selection</div>
+        <div class="ps-desc">Filters to NOUN / ADJ / EMOJI with minimum document and user frequency thresholds.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">10</div>
+        <div class="ps-icon mi">calculate</div>
+        <div class="ps-name">AFE / AOE Indices</div>
+        <div class="ps-desc">Computes diffusion (AFE), composite salience rank (AOE), and per-term statistics.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">11</div>
+        <div class="ps-icon mi">label</div>
+        <div class="ps-name">Concreteness Labels</div>
+        <div class="ps-desc">Automated labelling using bundled English concreteness norms (Brysbaert et al.).</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">12</div>
+        <div class="ps-icon mi">grid_view</div>
+        <div class="ps-name">EVOC Quadrants</div>
+        <div class="ps-desc">POS-specific AFE/AOE thresholding; assigns each term to one of four representational zones.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">13</div>
+        <div class="ps-icon mi">hub</div>
+        <div class="ps-name">Collocations &amp; NER</div>
+        <div class="ps-desc">Dependency-based bigram extraction with G² significance testing; optional named entity recognition.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">14</div>
+        <div class="ps-icon mi">timeline</div>
+        <div class="ps-name">Temporal Stability</div>
+        <div class="ps-desc">Per-period quadrant re-assignment, Jaccard/Spearman transition diagnostics, stability indices.</div>
+      </div>
+      <div class="ps reveal">
+        <div class="ps-n">15</div>
+        <div class="ps-icon mi">insert_chart</div>
+        <div class="ps-name">Visualisations</div>
+        <div class="ps-desc">EVOC target maps, semantic trees, emoji maps, Sankey diagrams — static PNG + interactive HTML.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INSTALL -->
+<div class="install-band" id="install">
+  <div class="install-layout">
+    <div>
+      <div class="sec-label">Installation</div>
+      <h2 class="sec-h2">Get started</h2>
+      <p class="sec-sub">PyEvoc requires Python 3.9+ and installs directly from GitHub. Bundled models load automatically at runtime — no separate download steps needed for most use-cases.</p>
+
+      <h3 style="font-size:0.95rem; font-weight:600; margin-bottom:0.7rem; margin-top:2rem; display:flex; align-items:center; gap:0.4rem;">
+        <span class="mi mi-sm" style="color:var(--blue);">table_view</span> Expected Input Schema
+      </h3>
+      <p style="font-size:0.83rem; color:var(--muted); margin-bottom:0.5rem;">A <code style="font-family:var(--font-mono); background:var(--paper); padding:0.1em 0.4em; border-radius:2px; font-size:0.8rem;">pandas.DataFrame</code> with at least four columns:</p>
+      <table class="schema-tbl">
+        <thead>
+          <tr><th>Column</th><th>Type</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="col-name">user_id</td><td class="col-type">str / int</td><td>Author or account identifier</td></tr>
+          <tr><td class="col-name">doc_id</td><td class="col-type">str / int</td><td>Document or post identifier</td></tr>
+          <tr><td class="col-name">time</td><td class="col-type">datetime</td><td>Publication timestamp</td></tr>
+          <tr><td class="col-name">text</td><td class="col-type">str</td><td>Raw text content</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size:0.75rem; color:var(--muted); margin-top:0.5rem;">All additional source columns are preserved throughout the pipeline via <code style="font-family:var(--font-mono); font-size:0.75rem;">DatasetConfig</code>.</p>
+
+      <div style="margin-top:1.5rem; display:flex; gap:0.7rem; flex-wrap:wrap;">
+        <a href="https://github.com/text-lab/pyevoc/blob/main/examples/pyevoc_step_by_step.ipynb" target="_blank" class="btn btn-outline" style="font-size:0.82rem;">
+          <span class="mi mi-sm">book</span> Step-by-step Notebook
+        </a>
+        <a href="https://github.com/text-lab/pyevoc/blob/main/docs/methodology.md" target="_blank" class="btn btn-outline" style="font-size:0.82rem;">
+          <span class="mi mi-sm">functions</span> Methodology
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="code-block">
+        <div class="cb-header">
+          <span class="cb-lang">bash &mdash; install</span>
+          <div class="cb-dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="cb-body"><span class="cm"># From GitHub (recommended)<br></span>
+pip install git+https://github.com/text-lab/pyevoc.git<br>
+
+<span class="cm"># Development mode (editable install)<br></span>
+git clone https://github.com/text-lab/pyevoc.git
+cd pyevoc &amp;&amp; pip install -e .<br>
+
+<span class="cm"># Optional: Lingua secondary language validator<br></span>
+pip install lingua-language-detector<br>
+
+<span class="cm"># Download Stanza model (once) - e.g. English<br></span>
+python -c "import stanza; stanza.download('en')"</div>
+      </div>
+
+      <div class="code-block">
+        <div class="cb-header">
+          <span class="cb-lang">python &mdash; quickstart</span>
+          <div class="cb-dots"><span></span><span></span><span></span></div>
+        </div>
+        <div class="cb-body"><span class="kw">import</span> pandas <span class="kw">as</span> pd
+<span class="kw">from</span> pyevoc.data.dataset<br><span class="kw">import</span> <span class="cls">DatasetConfig</span>, <span class="fn">load_dataset</span>
+<span class="kw">from</span> pyevoc.analysis.quadrants<br><span class="kw">import</span> <span class="fn">assign_evoc_quadrants<br><br></span>
+
+<span class="cm"># 1. Load and standardise<br></span>
+config = <span class="cls">DatasetConfig</span>(
+    column_map={<span class="str">"account_ID"</span>: <span class="str">"user_id"</span>,
+                 <span class="str">"tweet_ID"</span>: <span class="str">"doc_id"</span>,
+                 <span class="str">"tweet_pub_time"</span>: <span class="str">"time"</span>,
+                 <span class="str">"tweet_text"</span>: <span class="str">"text"</span>},
+    start_date=<span class="str">"2022-10-01"</span>,
+)<br>
+corpus = <span class="fn">load_dataset</span>(<span class="str">"AGI.xlsx"</span>, config=config)<br><br>
+
+<span class="cm"># ... run preprocessing, annotation, feature steps ...<br><br></span>
+
+<span class="cm"># 14. EVOC quadrant assignment<br></span>
+evoc_quadrants, counts, thresholds = <span class="fn">assign_evoc_quadrants</span>(
+    term_stats,
+    generate_html=<span class="cls">True</span>,
+    html_output_dir=<span class="str">"evoc_outputs"</span>,
+)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PIPELINE DOCS -->
+<div class="docs-band" id="docs">
+  <div style="max-width:1360px; margin:0 auto;">
+    <div class="sec-label">Step-by-Step Guide</div>
+    <h2 class="sec-h2">Package documentation</h2>
+    <p class="sec-sub">Each step exposes a dedicated config object for fine-grained control. Intermediate outputs can be saved and reloaded to resume long annotation runs.</p>
+
+    <div class="pipeline-steps-full">
+
+      <div class="pstep reveal">
+        <div class="pstep-n">01</div>
+        <div class="pstep-icon mi">table_view</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Load &amp; standardise dataset</div>
+          <p class="pstep-desc">Map source columns to the four standard names (<code>user_id</code>, <code>doc_id</code>, <code>time</code>, <code>text</code>) via <code>DatasetConfig</code>. Supports CSV, XLSX, TSV, Parquet, JSON. Date filtering and timezone normalisation applied here.</p>
+          <span class="pstep-module">pyevoc.data.dataset</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">02</div>
+        <div class="pstep-icon mi">language</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Language filtering</div>
+          <p class="pstep-desc">fastText (<code>lid.176.bin</code>) primary classification; Lingua secondary validator for ambiguous cases (default confidence window: 0.50–0.90). Supports English, Italian, French, German, Spanish, Portuguese.</p>
+          <span class="pstep-module">pyevoc.preprocessing.language_filtering</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">03</div>
+        <div class="pstep-icon mi">filter_alt</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Thematic filtering</div>
+          <p class="pstep-desc">Provide a plain-text anchor file (one term per line). First stage: regex matching with word-boundary constraints. Second stage: cosine-similarity expansion on a sparse count matrix. Optional — skip if corpus is already domain-specific.</p>
+          <span class="pstep-module">pyevoc.preprocessing.thematic_filtering</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">04</div>
+        <div class="pstep-icon mi">bar_chart</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Corpus statistics</div>
+          <p class="pstep-desc">Descriptive summary: document count, token count, unique types, type/token ratio, hapax legomena rate, temporal distribution, and user/document metadata.</p>
+          <span class="pstep-module">pyevoc.preprocessing.corpus_statistics</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">05</div>
+        <div class="pstep-icon mi">cleaning_services</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Text cleaning</div>
+          <p class="pstep-desc">Produces a <code>clean_text</code> column. Options: lowercase, URL removal/placeholder, contraction expansion, emoji spacing, elongated vowel reduction, punctuation spacing. Progress bar available.</p>
+          <span class="pstep-module">pyevoc.preprocessing.cleaning</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">06</div>
+        <div class="pstep-icon mi">spellcheck</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Linguistic annotation</div>
+          <p class="pstep-desc">Stanza-based token-level annotation: UPOS tags, lemmas, dependency relations, sentence and token position. GPU support; batch size configurable. Saves Parquet for resumability.</p>
+          <span class="pstep-module">pyevoc.preprocessing.annotation</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">07</div>
+        <div class="pstep-icon mi">sentiment_satisfied</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Emoji UPOS assignment</div>
+          <p class="pstep-desc">Identifies Unicode emoji tokens and reassigns them to the <code>EMOJI</code> UPOS class, enabling their treatment as a distinct lexical category with separate AFE/AOE thresholds.</p>
+          <span class="pstep-module">pyevoc.features.emoji_assignment</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">08</div>
+        <div class="pstep-icon mi">format_bold</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Structural foregrounding</div>
+          <p class="pstep-desc">Computes four binary salience indicators per token: <code>I_first</code> (opening sentence), <code>I_emph</code> (emphasis), <code>I_list</code> (list/quote), <code>I_intens</code> (caps/typographic). Weights configurable via <code>ForegroundingWeights</code>.</p>
+          <span class="pstep-module">pyevoc.features.foregrounding</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">09</div>
+        <div class="pstep-icon mi">abc</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Unigram selection</div>
+          <p class="pstep-desc">Filters token table to <code>NOUN</code>, <code>ADJ</code>, and <code>EMOJI</code>. Applies minimum document (<code>min_docs_per_term</code>) and user (<code>min_users_per_term</code>) frequency thresholds to exclude noise terms.</p>
+          <span class="pstep-module">pyevoc.features.unigram_selection</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">10</div>
+        <div class="pstep-icon mi">calculate</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Compute AFE / AOE indices</div>
+          <p class="pstep-desc">Produces per-term statistics: user diffusion, composite salience rank, absolute and relative frequency. Returns POS-specific AFE/AOE thresholds and a quadrant summary table. Configurable via <code>SalienceConfig</code> (α, R_max, diffusion mode).</p>
+          <span class="pstep-module">pyevoc.features.term_indices</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">11</div>
+        <div class="pstep-icon mi">label</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Concreteness labelling</div>
+          <p class="pstep-desc">Adds concreteness labels to <code>term_stats</code> using the bundled English norms lexicon. Reports coverage statistics. Useful for interpreting the objectification dimension of representational structures.</p>
+          <span class="pstep-module">pyevoc.features.concreteness</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">12</div>
+        <div class="pstep-icon mi">emoji_objects</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Emoji labelling</div>
+          <p class="pstep-desc">Adds human-readable descriptions to emoji terms using the bundled lookup table. Falls back to standard Unicode names with fuzzy matching (configurable <code>min_similarity</code>) for unknown symbols.</p>
+          <span class="pstep-module">pyevoc.features.emoji_labelling</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">13</div>
+        <div class="pstep-icon mi">grid_view</div>
+        <div class="pstep-content">
+          <div class="pstep-title">EVOC quadrant assignment</div>
+          <p class="pstep-desc">Assigns each term to one of four zones using POS-specific AFE/AOE thresholds. Generates an HTML report (<code>generate_html=True</code>) with the top-N terms per quadrant per POS class.</p>
+          <span class="pstep-module">pyevoc.analysis.quadrants</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">14</div>
+        <div class="pstep-icon mi">hub</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Collocations &amp; Named Entities</div>
+          <p class="pstep-desc">Dependency-based bigram extraction, G² significance testing, minimum frequency/document/user thresholds. Optional NER with overlap resolution (<code>prefer_overlap="evidence"</code>). HTML output available.</p>
+          <span class="pstep-module">pyevoc.analysis.collocations_entities</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">15</div>
+        <div class="pstep-icon mi">timeline</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Temporal stability analysis</div>
+          <p class="pstep-desc">Segments corpus into periods (equal-interval or custom cuts with labels). Re-runs EVOC per period. Returns Core Jaccard similarity, Diffusion Spearman correlation, stability indices, and per-period quadrant assignments.</p>
+          <span class="pstep-module">pyevoc.analysis.temporal_stability</span>
+        </div>
+      </div>
+
+      <div class="pstep reveal">
+        <div class="pstep-n">16</div>
+        <div class="pstep-icon mi">insert_chart</div>
+        <div class="pstep-content">
+          <div class="pstep-title">Visualisations</div>
+          <p class="pstep-desc">Four plot types: EVOC target maps (NOUN/ADJ scatter), collocation semantic trees (arc diagrams coloured by quadrant), emoji EVOC map, and temporal Sankey flow diagram. Static PNG + interactive HTML via Plotly.</p>
+          <span class="pstep-module">pyevoc.visualisation</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--
+<hr class="rule">
+
+<section class="sec" id="features">
+  <div class="sec-label">Modules</div>
+  <h2 class="sec-h2">What PyEvoc provides</h2>
+  <p class="sec-sub">Six specialised modules covering the complete analytical spectrum from corpus ingestion to interactive visualisation.</p>
+
+  <div class="features-grid">
+    <div class="fc reveal">
+      <div class="fc-icon mi mi-lg">dataset</div>
+      <div class="fc-name">Corpus Construction</div>
+      <p class="fc-desc">Flexible ingestion of CSV, XLSX, TSV, Parquet, and JSON. Configurable column mapping, date filtering, timezone handling, and automatic metadata preservation throughout the pipeline.</p>
+      <div class="tag-row"><span class="tag">data import &amp; filtering</span><span class="tag">basic cleaning</span></div>
+    </div>
+    <div class="fc reveal">
+      <div class="fc-icon mi mi-lg">manage_search</div>
+      <div class="fc-name">Preprocessing</div>
+      <p class="fc-desc">Two-stage language identification (fastText + Lingua), anchor-based thematic filtering with semantic expansion, text cleaning, and Stanza morphosyntactic annotation.</p>
+      <div class="tag-row"><span class="tag">language &amp; thematic filtering</span><span class="tag">pos annotation</span></div>
+    </div>
+    <div class="fc reveal">
+      <div class="fc-icon mi mi-lg">speed</div>
+      <div class="fc-name">Feature Extraction</div>
+      <p class="fc-desc">Structural foregrounding detection, positional salience computation, composite AFE/AOE indices, unigram selection, concreteness labelling, and emoji UPOS assignment.</p>
+      <div class="tag-row"><span class="tag">unigram selection</span><span class="tag">concreteness labelling</span><span class="tag">emoji labelling</span></div>
+    </div>
+    <div class="fc reveal">
+      <div class="fc-icon mi mi-lg">grid_on</div>
+      <div class="fc-name">Representational Analysis</div>
+      <p class="fc-desc">Full HEM operationalisation with POS-specific thresholding. Assigns each term to central nucleus, first periphery, contrast zone, or peripheral system. Generates automatic HTML reports.</p>
+      <div class="tag-row"><span class="tag">HEM quadrants</span><span class="tag">target plot</span></div>
+    </div>
+    <div class="fc reveal">
+      <div class="fc-icon mi mi-lg">hub</div>
+      <div class="fc-name">Semantic &amp; NER Analysis</div>
+      <p class="fc-desc">Dependency-based collocation extraction with G² log-likelihood significance testing. Optional named entity recognition with entity–collocation overlap resolution.</p>
+      <div class="tag-row"><span class="tag">collocations</span><span class="tag">named entities</span><span class="tag">overlap_resolve</span><span class="tag">tree plot</span></div>
+    </div>
+    <div class="fc reveal">
+      <div class="fc-icon mi mi-lg">stacked_line_chart</div>
+      <div class="fc-name">Longitudinal Analysis</div>
+      <p class="fc-desc">Temporal regime segmentation (equal-interval or custom), quadrant transition tracking, Core Jaccard and Diffusion Spearman diagnostics, stability index computation across communicative periods.</p>
+      <div class="tag-row"><span class="tag">temporal_stability</span><span class="tag">sankey plot</span></div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- OUTPUTS GALLERY -->
+<div class="gallery-band" id="outputs">
+  <div style="max-width:1360px; margin:0 auto;">
+    <div class="sec-label">Example Outputs</div>
+    <h2 class="sec-h2">What the pipeline produces</h2>
+    <p class="sec-sub">All outputs below were generated using the publicly available AGI dataset (Xie &amp; He, 2025 — 53,649 posts on Artificial General Intelligence). Click any figure to enlarge.</p>
+
+    <div class="gallery-grid" style="margin-top:2.5rem;">
+
+      <div class="gc reveal" onclick="openLB('../assets/evocquadrants_N.png', 'EVOC quadrant map — Nouns. Terms positioned by user-level diffusion (AFE) and discursive salience (AOE).')">
+        <img class="gc-img" src="../assets/evocquadrants_N.png" alt="EVOC Quadrant Map — Nouns" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">EVOC Quadrant Map &mdash; Nouns</div>
+          <div class="gc-desc">Noun lemmas positioned by user-level diffusion (y-axis) and AOE rank (x-axis). Quadrant regions coloured by zone.</div>
+        </div>
+      </div>
+
+     <div class="gc reveal" onclick="openLB('../assets/evocquadrants_A.png', 'EVOC quadrant map — Adlectives. Terms positioned by user-level diffusion (AFE) and discursive salience (AOE).')">
+        <img class="gc-img" src="../assets/evocquadrants_A.png" alt="EVOC Quadrant Map — Nouns" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">EVOC Quadrant Map &mdash; Nouns</div>
+          <div class="gc-desc">Adjectives lemmas positioned by user-level diffusion (y-axis) and AOE rank (x-axis). Quadrant regions coloured by zone.</div>
+        </div>
+      </div>
+
+      <div class="gc reveal" onclick="openLB('../assets/evocquadrants_E.png', 'EVOC quadrant map — Emojis. Emoji tokens plotted on the AFE × AOE representational space.')">
+        <img class="gc-img" src="../assets/evocquadrants_E.png" alt="EVOC Quadrant Map — Emojis" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">EVOC Quadrant Map &mdash; Emojis</div>
+          <div class="gc-desc">Emoji tokens on the same AFE × AOE space, revealing the affective and ironic framing of discourse.</div>
+        </div>
+      </div>
+
+      <div class="gc reveal" onclick="openLB('../assets/evoctarget_N.png', 'EVOC target map — Nouns. Scatter plot with AOE rank on x-axis and relative diffusion on y-axis. Dashed lines mark POS-specific thresholds.')">
+        <img class="gc-img" src="../assets/evoctarget_N.png" alt="EVOC Target Map — Nouns" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">EVOC Target Map &mdash; Nouns</div>
+          <div class="gc-desc">Scatter placing each noun by AOE rank (x) and relative diffusion (y). Dashed lines mark the POS-specific quadrant thresholds.</div>
+        </div>
+      </div>
+
+      <div class="gc reveal" onclick="openLB('../assets/evoctarget_A.png', 'EVOC target map — Adjectives. Evaluative and normative dimensions of the representational structure.')">
+        <img class="gc-img" src="../assets/evoctarget_A.png" alt="EVOC Target Map — Adjectives" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">EVOC Target Map &mdash; Adjectives</div>
+          <div class="gc-desc">Same scatter layout for adjectives, revealing the evaluative and normative dimensions of the representation.</div>
+        </div>
+      </div>
+
+      <div class="gc reveal" onclick="openLB('../assets/emoji_map.png', 'EVOC emoji map — Emojis plotted by AOE rank and diffusion score, with descriptions labelled.
+      ')">
+        <img class="gc-img" src="../assets/emoji_map.png" alt="EVOC Emoji Map" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">EVOC Emoji Map</div>
+          <div class="gc-desc">Emoji labels plotted by AOE rank and diffusion score, with human-readable descriptions. Reveals ironic vs. ecological symbolic registers.</div>
+        </div>
+      </div>
+
+      <div class="gc reveal" onclick="openLB('../assets/evoctree_N.png', 'Semantic collocation tree — Nouns. Arc diagram showing top bigram collocates per quadrant-root node.')">
+        <img class="gc-img" src="../assets/evoctree_N.png" alt="Semantic Tree — Nouns" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">Semantic Tree &mdash; Nouns</div>
+          <div class="gc-desc">Arc diagram showing top bigram collocates for each central noun root. Node size = diffusion; shade = salience; edge width = G² strength.</div>
+        </div>
+      </div>
+
+      <div class="gc reveal" onclick="openLB('../assets/evoctree_A.png', 'Semantic collocation tree — Adjectives. Arc diagram grouped by representational quadrant.')">
+        <img class="gc-img" src="../assets/evoctree_A.png" alt="Semantic Tree — Adjectives" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">Semantic Tree &mdash; Adjectives</div>
+          <div class="gc-desc">Adjectival roots with collocational expansions, coloured by quadrant. Reveals evaluative semantic neighbourhoods.</div>
+        </div>
+      </div>
+
+      <div class="gc reveal" onclick="openLB('../assets/temp_sankey.png', 'Temporal Sankey diagram — quadrant transitions across time periods P1–P4. Ribbons trace term migration between zones.')">
+        <img class="gc-img" src="../assets/temp_sankey.png" alt="Temporal Sankey Diagram" loading="lazy">
+        <div class="gc-info">
+          <div class="gc-name">Temporal Sankey Diagram</div>
+          <div class="gc-desc">Flow diagram tracing terms as they remain stable or migrate between quadrant zones across successive temporal regimes.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PAPER -->
+<div class="paper-band" id="paper">
+  <div style="max-width:1360px; margin:0 auto;">
+    <div class="sec-label">Associated Research</div>
+    <h2 class="sec-h2">References</h2>
+    <p class="sec-sub" style="margin-bottom:2rem;">PyEvoc was developed alongside and applied in a peer-reviewed study to appear.</p>
+
+<!--
+    <div class="paper-card">
+      <div>
+        <div class="paper-journal">
+          <span class="mi mi-sm">article</span>
+          XXX &middot; XXX &middot; XXX
+        </div>
+        <div class="paper-title">XXX</div>
+        <div class="paper-authors">XXX &middot; XXX &middot; XXX</div>
+        <p class="paper-abstract">XXX</p>
+      </div>
+      <div class="paper-btns">
+        <a href="https://github.com/text-lab/pyevoc" target="_blank" class="paper-btn pb-outline">
+          <span class="mi mi-sm">code</span> GitHub
+        </a>
+       <a href="https://doi.org/10.5281/zenodo.20545334" target="_blank" class="paper-btn pb-dark">
+          <span class="mi mi-sm">archive</span> Zenodo
+       </a>
+       <a href="https://github.com/text-lab/pyevoc/blob/main/docs/methodology.md" target="_blank" class="paper-btn pb-outline">
+          <span class="mi mi-sm">functions</span> Methods
+        </a>
+      </div>
+    </div>
+-->
+
+    <div class="cite-wrap">
+      <div class="cite-header">
+        <span class="mi mi-sm">format_quote</span> BibTeX Citation
+      </div>
+      <div class="cite-body"><span class="ck">@software</span><span class="cp">{</span>misuraca2026pyevoc<span class="cp">,<br></span>
+  <span class="ck">author</span>    <span class="cp">=</span> <span class="cv">{Misuraca, Michelangelo}</span><span class="cp">,<br></span>
+  <span class="ck">title</span>     <span class="cp">=</span> <span class="cv">{PyEvoc: Computational Hierarchical Evocation
+            Analysis for Digital Corpora}</span><span class="cp">,<br></span>
+  <span class="ck">year</span>      <span class="cp">=</span> <span class="cv">{2026}</span><span class="cp">,<br></span>
+  <span class="ck">version</span>   <span class="cp">=</span> <span class="cv">{0.2.1}</span><span class="cp">,<br></span>
+  <span class="ck">publisher</span> <span class="cp">=</span> <span class="cv">{Zenodo}</span><span class="cp">,<br></span>
+  <span class="ck">doi</span>       <span class="cp">=</span> <span class="cv">{10.5281/zenodo.20545334}</span><span class="cp">,<br></span>
+  <span class="ck">url</span>       <span class="cp">=</span> <span class="cv">{https://doi.org/10.5281/zenodo.20545334}</span>
+<span class="cp">}</span></div>
+
+    </div>
+  </div>
+</div
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo-row">
+    <img class="nav-logo-img" src="../assets/pyevoc_logo.svg" alt="PyEvoc logo">
+    </div>
+    <p class="footer-tagline">A Python framework for Hierarchical Evocation Analysis in large-scale digital corpora.</p>
+    <div class="footer-links">
+      <a href="https://github.com/text-lab/pyevoc" target="_blank">GitHub</a>
+      <a href="https://github.com/text-lab/pyevoc/blob/main/docs/methodology.md" target="_blank">Methodology</a>
+      <a href="https://github.com/text-lab/pyevoc/blob/main/docs/documentation.md" target="_blank">Documentation</a>
+      <a href="https://github.com/text-lab/pyevoc/blob/main/examples/pyevoc_step_by_step.ipynb" target="_blank">Tutorial</a>
+      <a href="https://doi.org/10.5281/zenodo.20545334" target="_blank">Zenodo</a>
+      <a href="https://github.com/text-lab/pyevoc/blob/main/LICENSE" target="_blank">MIT License</a>
+    </div>
+  </div>
+  <div class="footer-r">
+    <p>v0.2.1 &middot; June 2026</p>
+    <p>University of Salerno</p>
+    <p style="margin-top:0.4rem; font-size:0.72rem;">Misuraca (2026)</p>
+  </div>
+</footer>
+
+<script>
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.06 });
+
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  el.style.transitionDelay = (i % 6 * 0.06) + 's';
+  observer.observe(el);
+});
+
+// ── LIGHTBOX ──
+function openLB(src, cap) {
+  const lb = document.getElementById('lb');
+  document.getElementById('lb-img').src = src;
+  document.getElementById('lb-cap').textContent = cap || '';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLB(e) {
+  if (!e || e.target === document.getElementById('lb') || e.target.classList.contains('lb-close')) {
+    document.getElementById('lb').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB({ target: document.getElementById('lb') }); });
+
+// ── NAV ACTIVE ──
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const secs = [...document.querySelectorAll('[id]')].filter(el => el.id);
+
+window.addEventListener('scroll', () => {
+  const pos = window.scrollY + 80;
+  let active = '';
+  secs.forEach(s => { if (s.offsetTop <= pos) active = s.id; });
+  navLinks.forEach(a => {
+    const href = a.getAttribute('href').slice(1);
+    a.style.color = href === active ? 'var(--ink)' : '';
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>
