@@ -69,7 +69,7 @@ Additional metadata columns are automatically preserved throughout the pipeline.
 ## Computational Pipeline
 
 <p align="center">
-  <img src="assets/pipeline_h.png" width="50%">
+  <img src="assets/pipeline_h.png" width="100%">
 </p>
 
 The pipeline consists of 15 stages: dataset ingestion → language identification → thematic filtering → corpus diagnostics → linguistic annotation → emoji processing → structural foregrounding → term-level indicators → concreteness labelling → EVOC quadrant assignment → collocation extraction → named entity recognition → temporal stability analysis → interactive reporting → visual analytics.
