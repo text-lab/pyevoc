@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pyevoc.utils.resources &mdash; PyEvoc API Documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/pyevoc_api.css?v=340c1231" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=37f418d5"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            PyEvoc API Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">API Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../api_reference/pyevoc.html">pyevoc package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig"><code class="docutils literal notranslate"><span class="pre">DatasetConfig</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.drop_missing_text"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.drop_missing_text</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.end_date"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.end_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.keep_extra_columns"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.keep_extra_columns</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.show_progress"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.show_progress</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.start_date"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.start_date</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.timezone"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.timezone</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.column_map"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.column_map</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.DatasetConfig.read_kwargs"><code class="docutils literal notranslate"><span class="pre">DatasetConfig.read_kwargs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.corpus_summary"><code class="docutils literal notranslate"><span class="pre">corpus_summary()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_reference/pyevoc.html#pyevoc.standardise_dataset"><code class="docutils literal notranslate"><span class="pre">standardise_dataset()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api_reference/pyevoc.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html">pyevoc.analysis package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig"><code class="docutils literal notranslate"><span class="pre">CollocationEntityConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig"><code class="docutils literal notranslate"><span class="pre">QuadrantConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig"><code class="docutils literal notranslate"><span class="pre">TemporalStabilityConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.aggregate_named_entities"><code class="docutils literal notranslate"><span class="pre">aggregate_named_entities()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.assign_evoc_quadrants"><code class="docutils literal notranslate"><span class="pre">assign_evoc_quadrants()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.assign_quadrants"><code class="docutils literal notranslate"><span class="pre">assign_quadrants()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.build_evoc_html_for_upos"><code class="docutils literal notranslate"><span class="pre">build_evoc_html_for_upos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.build_time_periods"><code class="docutils literal notranslate"><span class="pre">build_time_periods()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.compute_period_quadrants"><code class="docutils literal notranslate"><span class="pre">compute_period_quadrants()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.compute_stability_metrics"><code class="docutils literal notranslate"><span class="pre">compute_stability_metrics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.compute_temporal_engagement"><code class="docutils literal notranslate"><span class="pre">compute_temporal_engagement()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_collocations"><code class="docutils literal notranslate"><span class="pre">extract_collocations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_collocations_and_entities"><code class="docutils literal notranslate"><span class="pre">extract_collocations_and_entities()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_dependency_collocations"><code class="docutils literal notranslate"><span class="pre">extract_dependency_collocations()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_named_entity_ngrams"><code class="docutils literal notranslate"><span class="pre">extract_named_entity_ngrams()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.generate_evoc_html_reports"><code class="docutils literal notranslate"><span class="pre">generate_evoc_html_reports()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.quadrant_summary_by_pos"><code class="docutils literal notranslate"><span class="pre">quadrant_summary_by_pos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.quadrant_trajectories"><code class="docutils literal notranslate"><span class="pre">quadrant_trajectories()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.run_temporal_stability_analysis"><code class="docutils literal notranslate"><span class="pre">run_temporal_stability_analysis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#pyevoc.analysis.write_temporal_report_html"><code class="docutils literal notranslate"><span class="pre">write_temporal_report_html()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.analysis.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.config.html">pyevoc.config package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.config.html#pyevoc.config.PyEvocSettings"><code class="docutils literal notranslate"><span class="pre">PyEvocSettings</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.config.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.data.html">pyevoc.data package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig"><code class="docutils literal notranslate"><span class="pre">DatasetConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.data.html#pyevoc.data.corpus_summary"><code class="docutils literal notranslate"><span class="pre">corpus_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.data.html#pyevoc.data.load_dataset"><code class="docutils literal notranslate"><span class="pre">load_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.data.html#pyevoc.data.standardise_dataset"><code class="docutils literal notranslate"><span class="pre">standardise_dataset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.data.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.features.html">pyevoc.features package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig"><code class="docutils literal notranslate"><span class="pre">ConcretenessConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig"><code class="docutils literal notranslate"><span class="pre">EmojiAssignmentConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig"><code class="docutils literal notranslate"><span class="pre">EmojiLabellingConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig"><code class="docutils literal notranslate"><span class="pre">ForegroundingConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights"><code class="docutils literal notranslate"><span class="pre">ForegroundingWeights</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.SalienceConfig"><code class="docutils literal notranslate"><span class="pre">SalienceConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig"><code class="docutils literal notranslate"><span class="pre">UnigramSelectionConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.add_concreteness_labels"><code class="docutils literal notranslate"><span class="pre">add_concreteness_labels()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.add_emoji_descriptions"><code class="docutils literal notranslate"><span class="pre">add_emoji_descriptions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.add_foregrounding_indicators"><code class="docutils literal notranslate"><span class="pre">add_foregrounding_indicators()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.add_positional_salience"><code class="docutils literal notranslate"><span class="pre">add_positional_salience()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.add_salience_indicators"><code class="docutils literal notranslate"><span class="pre">add_salience_indicators()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.assign_emoji_upos"><code class="docutils literal notranslate"><span class="pre">assign_emoji_upos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.available_concreteness_lexicon_paths"><code class="docutils literal notranslate"><span class="pre">available_concreteness_lexicon_paths()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.available_emoji_lookup_paths"><code class="docutils literal notranslate"><span class="pre">available_emoji_lookup_paths()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.clean_unigram_tokens"><code class="docutils literal notranslate"><span class="pre">clean_unigram_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.compute_structural_salience"><code class="docutils literal notranslate"><span class="pre">compute_structural_salience()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.compute_term_indices"><code class="docutils literal notranslate"><span class="pre">compute_term_indices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.compute_term_statistics"><code class="docutils literal notranslate"><span class="pre">compute_term_statistics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.emoji_assignment_diagnostics"><code class="docutils literal notranslate"><span class="pre">emoji_assignment_diagnostics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.emoji_summary"><code class="docutils literal notranslate"><span class="pre">emoji_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.foregrounding_diagnostics"><code class="docutils literal notranslate"><span class="pre">foregrounding_diagnostics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.label_concreteness"><code class="docutils literal notranslate"><span class="pre">label_concreteness()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.label_emojis"><code class="docutils literal notranslate"><span class="pre">label_emojis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.load_concreteness_lexicon"><code class="docutils literal notranslate"><span class="pre">load_concreteness_lexicon()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.load_emoji_lookup"><code class="docutils literal notranslate"><span class="pre">load_emoji_lookup()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.metadata_coverage"><code class="docutils literal notranslate"><span class="pre">metadata_coverage()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.resolve_concreteness_lexicon_path"><code class="docutils literal notranslate"><span class="pre">resolve_concreteness_lexicon_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.select_unigrams"><code class="docutils literal notranslate"><span class="pre">select_unigrams()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#pyevoc.features.term_statistics_summary"><code class="docutils literal notranslate"><span class="pre">term_statistics_summary()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.features.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.models.html">pyevoc.models package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.models.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html">pyevoc.preprocessing package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig"><code class="docutils literal notranslate"><span class="pre">AnnotationConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig"><code class="docutils literal notranslate"><span class="pre">CleaningConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig"><code class="docutils literal notranslate"><span class="pre">CorpusStatisticsConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig"><code class="docutils literal notranslate"><span class="pre">LanguageFilterConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig"><code class="docutils literal notranslate"><span class="pre">ThematicFilterConfig</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.annotate_dataframe"><code class="docutils literal notranslate"><span class="pre">annotate_dataframe()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.annotate_with_stanza"><code class="docutils literal notranslate"><span class="pre">annotate_with_stanza()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.annotation_diagnostics"><code class="docutils literal notranslate"><span class="pre">annotation_diagnostics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.build_thematic_subset"><code class="docutils literal notranslate"><span class="pre">build_thematic_subset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.clean_corpus"><code class="docutils literal notranslate"><span class="pre">clean_corpus()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.clean_text"><code class="docutils literal notranslate"><span class="pre">clean_text()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.contains_emoji_grapheme"><code class="docutils literal notranslate"><span class="pre">contains_emoji_grapheme()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.corpus_statistics"><code class="docutils literal notranslate"><span class="pre">corpus_statistics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.count_emoji_documents"><code class="docutils literal notranslate"><span class="pre">count_emoji_documents()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.count_emoji_tokens"><code class="docutils literal notranslate"><span class="pre">count_emoji_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.dependency_diagnostics"><code class="docutils literal notranslate"><span class="pre">dependency_diagnostics()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.derive_expansion_terms"><code class="docutils literal notranslate"><span class="pre">derive_expansion_terms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.direct_anchor_filter"><code class="docutils literal notranslate"><span class="pre">direct_anchor_filter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.download_fasttext_lid_model"><code class="docutils literal notranslate"><span class="pre">download_fasttext_lid_model()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.emoji_token_sample"><code class="docutils literal notranslate"><span class="pre">emoji_token_sample()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.extract_tokens"><code class="docutils literal notranslate"><span class="pre">extract_tokens()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.fasttext_predict_batch"><code class="docutils literal notranslate"><span class="pre">fasttext_predict_batch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.filter_by_language"><code class="docutils literal notranslate"><span class="pre">filter_by_language()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.is_emoji_grapheme"><code class="docutils literal notranslate"><span class="pre">is_emoji_grapheme()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.is_valid_stat_token"><code class="docutils literal notranslate"><span class="pre">is_valid_stat_token()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.lingua_detect_batch"><code class="docutils literal notranslate"><span class="pre">lingua_detect_batch()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.load_anchor_terms"><code class="docutils literal notranslate"><span class="pre">load_anchor_terms()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.predict_language_fasttext"><code class="docutils literal notranslate"><span class="pre">predict_language_fasttext()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.prepare_for_langid"><code class="docutils literal notranslate"><span class="pre">prepare_for_langid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.separate_emojis"><code class="docutils literal notranslate"><span class="pre">separate_emojis()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.simple_tokenise"><code class="docutils literal notranslate"><span class="pre">simple_tokenise()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.validate_annotation_input"><code class="docutils literal notranslate"><span class="pre">validate_annotation_input()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.preprocessing.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html">pyevoc.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#pyevoc.utils.ensure_dir"><code class="docutils literal notranslate"><span class="pre">ensure_dir()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#pyevoc.utils.list_bundled_models"><code class="docutils literal notranslate"><span class="pre">list_bundled_models()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#pyevoc.utils.model_path"><code class="docutils literal notranslate"><span class="pre">model_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#pyevoc.utils.read_table"><code class="docutils literal notranslate"><span class="pre">read_table()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#pyevoc.utils.user_model_path"><code class="docutils literal notranslate"><span class="pre">user_model_path()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#pyevoc.utils.validate_column_map"><code class="docutils literal notranslate"><span class="pre">validate_column_map()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#pyevoc.utils.validate_columns"><code class="docutils literal notranslate"><span class="pre">validate_columns()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.utils.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../api_reference/pyevoc.visualisation.html">pyevoc.visualisation package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_emoji_evoc_plot"><code class="docutils literal notranslate"><span class="pre">build_emoji_evoc_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_evoc_collocation_tree_for_upos"><code class="docutils literal notranslate"><span class="pre">build_evoc_collocation_tree_for_upos()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_evoc_target_plot"><code class="docutils literal notranslate"><span class="pre">build_evoc_target_plot()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_temporal_sankey_ordered"><code class="docutils literal notranslate"><span class="pre">build_temporal_sankey_ordered()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../api_reference/pyevoc.visualisation.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">PyEvoc API Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">pyevoc.utils.resources</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for pyevoc.utils.resources</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Utilities for locating bundled and user-level PyEvoc resources.&quot;&quot;&quot;</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">importlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">resources</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterable</span>
+
+<span class="n">PACKAGE</span> <span class="o">=</span> <span class="s2">&quot;pyevoc.models&quot;</span>
+<span class="n">USER_MODEL_DIR</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;.pyevoc&quot;</span> <span class="o">/</span> <span class="s2">&quot;models&quot;</span>
+
+
+<div class="viewcode-block" id="model_path">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.utils.resources.html#pyevoc.features.concreteness.model_path">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">model_path</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a path to a bundled resource in :mod:`pyevoc.models`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name:</span>
+<span class="sd">        File name or relative path inside ``pyevoc/models``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Path</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="n">PACKAGE</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">name</span><span class="p">))</span></div>
+
+
+
+<div class="viewcode-block" id="user_model_path">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.utils.resources.html#pyevoc.features.concreteness.user_model_path">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">user_model_path</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the standard user-level model path, creating the directory.&quot;&quot;&quot;</span>
+    <span class="n">USER_MODEL_DIR</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">USER_MODEL_DIR</span> <span class="o">/</span> <span class="n">name</span></div>
+
+
+
+<div class="viewcode-block" id="list_bundled_models">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.utils.resources.html#pyevoc.features.concreteness.list_bundled_models">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">list_bundled_models</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;List bundled resource files.&quot;&quot;&quot;</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">resources</span><span class="o">.</span><span class="n">files</span><span class="p">(</span><span class="n">PACKAGE</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">relative_to</span><span class="p">(</span><span class="n">base</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">base</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">is_file</span><span class="p">()]</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, Michelangelo Misuraca.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
