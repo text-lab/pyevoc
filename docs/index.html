@@ -1230,7 +1230,7 @@ python -c "import stanza; stanza.download('en')"</div>
 <span class="kw">from</span> pyevoc.data.dataset<br><span class="kw">import</span> <span class="cls">DatasetConfig</span>, <span class="fn">load_dataset</span>
 <span class="kw">from</span> pyevoc.analysis.quadrants<br><span class="kw">import</span> <span class="fn">assign_evoc_quadrants<br><br></span>
 
-<span class="cm"># 1. Load and standardise<br></span>
+<span class="cm"># - Load and standardise<br></span>
 config = <span class="cls">DatasetConfig</span>(
     column_map={<span class="str">"account_ID"</span>: <span class="str">"user_id"</span>,
                  <span class="str">"tweet_ID"</span>: <span class="str">"doc_id"</span>,
@@ -1242,7 +1242,7 @@ corpus = <span class="fn">load_dataset</span>(<span class="str">"AGI.xlsx"</span
 
 <span class="cm"># ... run preprocessing, annotation, feature steps ...<br><br></span>
 
-<span class="cm"># 14. EVOC quadrant assignment<br></span>
+<span class="cm"># - EVOC quadrant assignment<br></span>
 evoc_quadrants, counts, thresholds = <span class="fn">assign_evoc_quadrants</span>(
     term_stats,
     generate_html=<span class="cls">True</span>,
