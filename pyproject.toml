@@ -58,6 +58,14 @@ viz = [
     "plotly>=5.0"
 ]
 
+docs = [
+  "sphinx",
+  "sphinx-autodoc-typehints",
+  "myst-parser",
+  "furo",
+  "pdoc"
+]
+
 all = [
     "stanza>=1.7",
     "fasttext-wheel>=0.9",
