@@ -1,0 +1,39 @@
+{
+  "title": "PyEvoc: Computational Hierarchical Evocation Analysis for Digital Corpora",
+  "description": "PyEvoc is an open-source Python package for computational hierarchical evocation analysis of digital corpora. The software operationalises the Hierarchical Evocation Method through reproducible workflows for corpus preprocessing, lexical unit extraction, user diffusion analysis, salience estimation, EVOC quadrant classification, semantic expansion, collocation analysis, longitudinal representational analysis, and visualisation. PyEvoc is designed for computational social science, social representation research, digital humanities, and large-scale discourse analysis.",
+  "creators": [
+    {
+      "name": "Misuraca, Michelangelo",
+      "affiliation": "Dep. of Management and Innovation Systems - University of Salerno, Italy",
+      "orcid": "https://orcid.org/0000-0002-8794-966X"
+    }
+  ],
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "language": "eng",
+  "keywords": [
+    "hierarchical evocation analysis",
+    "social representations",
+    "social representation theory",
+    "text mining",
+    "natural language processing",
+    "computational social science",
+    "digital discourse",
+    "corpus analysis",
+    "computational linguistics",
+    "python"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/text-lab/pyevoc",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://text-lab.github.io/pyevoc/",
+      "relation": "isDocumentedBy",
+      "scheme": "url"
+    }
+  ]
+}
