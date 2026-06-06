@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="500"
+   viewBox="0 0 500 165"
+   role="img"
+   version="1.1"
+   id="svg17"
+   sodipodi:docname="pyevoc_footer.svg"
+   inkscape:version="1.4 (e7c3feb1, 2024-10-09)"
+   height="165"
+   inkscape:export-filename="pyevoc_logo.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs17">
+    <rect
+       x="155.2529"
+       y="-22.523735"
+       width="296.02625"
+       height="189.0385"
+       id="rect7" />
+  </defs>
+  <sodipodi:namedview
+     id="namedview17"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="2.2821536"
+     inkscape:cx="211.6422"
+     inkscape:cy="100.56291"
+     inkscape:window-width="1728"
+     inkscape:window-height="986"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g2" />
+  <title
+     id="title1">PyEvoc</title>
+  <desc
+     id="desc1">PyEvoc logo: concentric circle icon divided into four quadrants with scattered dots representing lexical items in each representational zone, alongside the pyEvoc wordmark in teal and dark purple, with tagline &quot;social representation analysis · python&quot;.</desc>
+  <!-- Outer disc: light purple (peripheral system zone) -->
+  <!-- Middle disc: medium purple (first periphery + contrast zone) -->
+  <!-- Inner nucleus: deep purple -->
+  <!-- Outer border ring -->
+  <!-- Crosshair dividers (exactly span the outer diameter) -->
+  <!-- ── Lexical item dots ── -->
+  <!-- Central nucleus (top-left, inside inner circle) — largest, brightest -->
+  <!-- First periphery (top-right, middle ring) -->
+  <!-- Contrast zone (bottom-left, middle ring) -->
+  <!-- Peripheral system (bottom-right, outer ring) — dark purple on light bg -->
+  <!-- ── Wordmark ── -->
+  <!-- "py" prefix in teal -->
+  <!-- "Evoc" name in dark purple -->
+  <!-- ── Tagline ── -->
+  <g
+     id="g2"
+     transform="translate(-3.7251846)">
+    <g
+       id="g3">
+      <g
+         id="g1"
+         transform="translate(0,-2.5)">
+        <circle
+           cx="90.542603"
+           cy="85"
+           r="72"
+           fill="#CECBF6"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;fill:#e9f6fc;fill-opacity:1;stroke:#ffffff;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           id="circle1" />
+        <ellipse
+           cx="87.689423"
+           cy="88.74781"
+           fill="#CECBF6"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;fill:#e9f6fc;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+           id="circle1-0"
+           transform="matrix(0.99941788,-0.03411611,0.03272448,0.99946441,0,0)"
+           rx="61.87701"
+           ry="63.177513" />
+        <circle
+           cx="90.542603"
+           cy="85"
+           r="50"
+           fill="#7F77DD"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;fill:#f9dbe7;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+           id="circle2" />
+        <circle
+           cx="90.542603"
+           cy="85"
+           r="27"
+           fill="#3C3489"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;fill:#f9dbe7;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+           id="circle3" />
+        <circle
+           cx="90.542603"
+           cy="85"
+           r="72"
+           fill="none"
+           stroke="#AFA9EC"
+           stroke-width="1.5"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+           id="circle4" />
+        <circle
+           cx="68.542603"
+           cy="62"
+           r="4.5"
+           fill="white"
+           opacity="0.96"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.96;fill:#4f7fa6;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle5" />
+        <circle
+           cx="76.594658"
+           cy="72.289047"
+           r="3.5"
+           fill="white"
+           opacity="0.90"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.9;fill:#4f7fa6;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle6" />
+        <circle
+           cx="65.542603"
+           cy="77"
+           r="3"
+           fill="white"
+           opacity="0.85"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.85;fill:#4f7fa6;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle7" />
+        <circle
+           cx="79.102829"
+           cy="60.64801"
+           r="3"
+           fill="white"
+           opacity="0.85"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.85;fill:#4f7fa6;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle7-5" />
+        <circle
+           cx="136.30562"
+           cy="43.317795"
+           r="3"
+           fill="white"
+           opacity="0.74"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.74;fill:#4f9a55;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle9" />
+        <circle
+           cx="126.30563"
+           cy="44.317795"
+           r="2.5"
+           fill="white"
+           opacity="0.68"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.68;fill:#4f9a55;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle10" />
+        <circle
+           cx="120.90973"
+           cy="34.442497"
+           r="2.5"
+           fill="white"
+           opacity="0.68"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.68;fill:#4f9a55;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle10-9" />
+        <circle
+           cx="128.30833"
+           cy="28.916468"
+           r="2.5"
+           fill="white"
+           opacity="0.68"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.68;fill:#4f9a55;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle10-9-4" />
+        <circle
+           cx="129.91824"
+           cy="96.107201"
+           r="3"
+           fill="white"
+           opacity="0.70"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.7;fill:#b84848;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle11" />
+        <circle
+           cx="120.43868"
+           cy="107.49836"
+           r="2.5"
+           fill="white"
+           opacity="0.64"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.64;fill:#b84848;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle12" />
+        <circle
+           cx="73.070427"
+           cy="148.33095"
+           r="2.5"
+           fill="#534AB7"
+           opacity="0.74"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.74;fill:#8250a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle13" />
+        <circle
+           cx="81.4869"
+           cy="146.44051"
+           r="2"
+           fill="#534AB7"
+           opacity="0.66"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.66;fill:#8250a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle14" />
+        <circle
+           cx="58.179619"
+           cy="138.57301"
+           fill="#534AB7"
+           opacity="0.60"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.6;fill:#8250a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle15"
+           r="2" />
+        <circle
+           cx="72.443932"
+           cy="139.52603"
+           fill="#534AB7"
+           opacity="0.60"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.6;fill:#8250a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle15-1"
+           r="2" />
+        <circle
+           cx="63.589214"
+           cy="145.87257"
+           fill="#534AB7"
+           opacity="0.60"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.6;fill:#8250a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle15-1-3"
+           r="2" />
+        <circle
+           cx="65.016571"
+           cy="134.43977"
+           fill="#534AB7"
+           opacity="0.60"
+           style="color:#000000;font-weight:400;font-size:16px;font-family:'Anthropic Sans', '-apple-system', system-ui, 'Segoe UI', sans-serif;dominant-baseline:auto;text-anchor:start;opacity:0.6;fill:#8250a0;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter"
+           id="circle15-1-3-9"
+           r="2" />
+      </g>
+      <text
+         x="166.73555"
+         y="106.64739"
+         font-family="var(--font-sans), system-ui, -apple-system, sans-serif"
+         font-size="65"
+         font-weight="400"
+         fill="#0F6E56"
+         style="color:#000000;font-weight:400;font-size:92.697px;font-family:'Anthropic Sans', sans-serif, system-ui, '-apple-system', sans-serif;dominant-baseline:auto;text-anchor:start;fill:#6897c4;fill-opacity:1;stroke:#ffffff;stroke-width:0.713054;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         id="text15">Py</text>
+      <text
+         x="273.69363"
+         y="106.64739"
+         font-family="var(--font-sans), system-ui, -apple-system, sans-serif"
+         font-size="65"
+         font-weight="500"
+         fill="#3C3489"
+         style="color:#000000;font-weight:500;font-size:92.697px;font-family:'Anthropic Sans', sans-serif, system-ui, '-apple-system', sans-serif;dominant-baseline:auto;text-anchor:start;fill:#ffffff;fill-opacity:0.4509804;stroke:#ffffff;stroke-width:0.713;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+         id="text16">Evoc</text>
+    </g>
+  </g>
+  <metadata
+     id="metadata1">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>PyEvoc</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <text
+     xml:space="preserve"
+     id="text7"
+     style="font-size:14.6667px;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect7);fill:#ffffff;fill-opacity:1;stroke:#333333;stroke-width:0.25;stroke-dasharray:none;stroke-opacity:1" />
+</svg>
