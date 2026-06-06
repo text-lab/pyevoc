@@ -1,133 +1,30 @@
-"""
-PyEvoc feature-engineering modules.
+"""PyEvoc feature-engineering layer.
 
-This subpackage contains:
-
-- foregrounding and salience reconstruction
-- unigram cleaning and selection
-- emoji assignment
-- term-level EVOC indices
-- concreteness enrichment
-- emoji description enrichment
+This subpackage exposes foregrounding indicators, unigram selection, emoji
+assignment, concreteness enrichment, emoji labelling and term-level EVOC
+indices. Public objects are loaded lazily to keep documentation imports light.
 """
 
-# =====================================================
-# Foregrounding
-# =====================================================
+from __future__ import annotations
 
-from .foregrounding import (
-    ForegroundingConfig,
-    ForegroundingWeights,
-    add_foregrounding_indicators,
-    add_positional_salience,
-    add_salience_indicators,
-    compute_structural_salience,
-    foregrounding_diagnostics,
-    metadata_coverage,
-)
+from importlib import import_module
+from typing import Any
 
-# =====================================================
-# Term-level indices
-# =====================================================
+_PUBLIC_OBJECTS: dict[str, str] = {'ForegroundingConfig': 'foregrounding', 'ForegroundingWeights': 'foregrounding', 'add_foregrounding_indicators': 'foregrounding', 'add_positional_salience': 'foregrounding', 'add_salience_indicators': 'foregrounding', 'compute_structural_salience': 'foregrounding', 'foregrounding_diagnostics': 'foregrounding', 'metadata_coverage': 'foregrounding', 'SalienceConfig': 'term_indices', 'compute_term_indices': 'term_indices', 'compute_term_statistics': 'term_indices', 'term_statistics_summary': 'term_indices', 'UnigramSelectionConfig': 'unigram_selection', 'clean_unigram_tokens': 'unigram_selection', 'select_unigrams': 'unigram_selection', 'EmojiAssignmentConfig': 'emoji_assignment', 'assign_emoji_upos': 'emoji_assignment', 'emoji_assignment_diagnostics': 'emoji_assignment', 'emoji_summary': 'emoji_assignment', 'ConcretenessConfig': 'concreteness', 'resolve_concreteness_lexicon_path': 'concreteness', 'available_concreteness_lexicon_paths': 'concreteness', 'load_concreteness_lexicon': 'concreteness', 'add_concreteness_labels': 'concreteness', 'label_concreteness': 'concreteness', 'EmojiLabellingConfig': 'emoji_labelling', 'load_emoji_lookup': 'emoji_labelling', 'available_emoji_lookup_paths': 'emoji_labelling', 'add_emoji_descriptions': 'emoji_labelling', 'label_emojis': 'emoji_labelling'}
 
-from .term_indices import (
-    SalienceConfig,
-    compute_term_indices,
-    compute_term_statistics,
-    term_statistics_summary,
-)
+__all__ = sorted(_PUBLIC_OBJECTS)
 
-# =====================================================
-# Unigram selection
-# =====================================================
+def __getattr__(name: str) -> Any:
+    """Load public objects lazily from their implementation module."""
+    try:
+        module_name = _PUBLIC_OBJECTS[name]
+    except KeyError as exc:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}") from exc
+    module = import_module(f".{module_name}", __name__)
+    value = getattr(module, name)
+    globals()[name] = value
+    return value
 
-from .unigram_selection import (
-    UnigramSelectionConfig,
-    clean_unigram_tokens,
-    select_unigrams,
-)
-
-# =====================================================
-# Emoji assignment
-# =====================================================
-
-from .emoji_assignment import (
-    EmojiAssignmentConfig,
-    assign_emoji_upos,
-    emoji_assignment_diagnostics,
-    emoji_summary,
-)
-
-# =====================================================
-# Concreteness
-# =====================================================
-
-from .concreteness import (
-    ConcretenessConfig,
-    resolve_concreteness_lexicon_path,
-    available_concreteness_lexicon_paths,
-    load_concreteness_lexicon,
-    add_concreteness_labels,
-    label_concreteness,
-)
-
-# =====================================================
-# Emoji descriptions
-# =====================================================
-
-from .emoji_labelling import (
-    EmojiLabellingConfig,
-    load_emoji_lookup,
-    available_emoji_lookup_paths,
-    add_emoji_descriptions,
-    label_emojis,
-)
-
-# =====================================================
-# Public API
-# =====================================================
-
-__all__ = [
-
-    # Foregrounding
-    "ForegroundingConfig",
-    "ForegroundingWeights",
-    "add_foregrounding_indicators",
-    "add_positional_salience",
-    "add_salience_indicators",
-    "compute_structural_salience",
-    "foregrounding_diagnostics",
-    "metadata_coverage",
-
-    # Term indices
-    "SalienceConfig",
-    "compute_term_indices",
-    "compute_term_statistics",
-    "term_statistics_summary",
-
-    # Unigram selection
-    "UnigramSelectionConfig",
-    "clean_unigram_tokens",
-    "select_unigrams",
-
-    # Emoji assignment
-    "EmojiAssignmentConfig",
-    "assign_emoji_upos",
-    "emoji_assignment_diagnostics",
-    "emoji_summary",
-
-    # Concreteness
-    "ConcretenessConfig",
-    "resolve_concreteness_lexicon_path",
-    "available_concreteness_lexicon_paths",
-    "load_concreteness_lexicon",
-    "add_concreteness_labels",
-    "label_concreteness",
-
-    # Emoji descriptions
-    "EmojiLabellingConfig",
-    "load_emoji_lookup",
-    "available_emoji_lookup_paths",
-    "add_emoji_descriptions",
-    "label_emojis",
-]
+def __dir__() -> list[str]:
+    """Return the public API exposed by this subpackage."""
+    return sorted(set(globals()) | set(__all__))

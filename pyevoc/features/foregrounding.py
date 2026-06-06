@@ -42,6 +42,11 @@ class ForegroundingWeights:
     intensification: float = 0.20
 
     def normalised(self) -> "ForegroundingWeights":
+        """Return a copy of the weights scaled so that they sum to 1.
+
+        Raises:
+            ValueError: If the weights sum to zero or a negative value.
+        """
         total = (
             self.opening_sentence
             + self.emphasis
@@ -62,6 +67,7 @@ class ForegroundingWeights:
         )
 
     def as_dict(self) -> dict[str, float]:
+        """Return the weights as a plain :class:`dict` keyed by indicator name."""
         return {
             "opening_sentence": self.opening_sentence,
             "emphasis": self.emphasis,

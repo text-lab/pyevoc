@@ -1,122 +1,34 @@
 """PyEvoc preprocessing layer.
 
-This subpackage contains the document-level and token-level preprocessing
-routines used before feature construction and EVOC analysis. It includes
+This subpackage contains document-level and token-level preprocessing routines:
 emoji-safe text cleaning, corpus diagnostics, language filtering, thematic
 subsetting, and Stanza-based Universal Dependencies annotation.
 
-The annotation module follows the notebook-compatible schema required by the
-collocation pipeline, using ``token``, ``head_token_id`` and ``dep_rel`` as the
-canonical dependency columns.
+The public names are loaded lazily so that API documentation can be generated
+without importing optional runtime dependencies such as ``emoji``, ``fasttext``
+or ``stanza`` unless the corresponding function is actually requested.
 """
 
-# -----------------------------------------------------
-# Text cleaning
-# -----------------------------------------------------
+from __future__ import annotations
 
-from .cleaning import (
-    CleaningConfig,
-    is_emoji_grapheme,
-    separate_emojis,
-    clean_text,
-    clean_corpus,
-)
+from importlib import import_module
+from typing import Any
 
-# -----------------------------------------------------
-# Corpus-level statistics
-# -----------------------------------------------------
+_PUBLIC_OBJECTS: dict[str, str] = {'CleaningConfig': 'cleaning', 'is_emoji_grapheme': 'cleaning', 'separate_emojis': 'cleaning', 'clean_text': 'cleaning', 'clean_corpus': 'cleaning', 'CorpusStatisticsConfig': 'corpus_statistics', 'simple_tokenise': 'corpus_statistics', 'is_valid_stat_token': 'corpus_statistics', 'extract_tokens': 'corpus_statistics', 'corpus_statistics': 'corpus_statistics', 'LanguageFilterConfig': 'language_filtering', 'download_fasttext_lid_model': 'language_filtering', 'prepare_for_langid': 'language_filtering', 'fasttext_predict_batch': 'language_filtering', 'predict_language_fasttext': 'language_filtering', 'lingua_detect_batch': 'language_filtering', 'filter_by_language': 'language_filtering', 'ThematicFilterConfig': 'thematic_filtering', 'load_anchor_terms': 'thematic_filtering', 'direct_anchor_filter': 'thematic_filtering', 'derive_expansion_terms': 'thematic_filtering', 'build_thematic_subset': 'thematic_filtering', 'AnnotationConfig': 'annotation', 'validate_annotation_input': 'annotation', 'annotate_with_stanza': 'annotation', 'annotate_dataframe': 'annotation', 'annotation_diagnostics': 'annotation', 'dependency_diagnostics': 'annotation', 'contains_emoji_grapheme': 'annotation', 'count_emoji_documents': 'annotation', 'count_emoji_tokens': 'annotation', 'emoji_token_sample': 'annotation'}
 
-from .corpus_statistics import (
-    CorpusStatisticsConfig,
-    simple_tokenise,
-    is_valid_stat_token,
-    extract_tokens,
-    corpus_statistics,
-)
+__all__ = sorted(_PUBLIC_OBJECTS)
 
-# -----------------------------------------------------
-# Language filtering
-# -----------------------------------------------------
+def __getattr__(name: str) -> Any:
+    """Load public objects lazily from their implementation module."""
+    try:
+        module_name = _PUBLIC_OBJECTS[name]
+    except KeyError as exc:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}") from exc
+    module = import_module(f".{module_name}", __name__)
+    value = getattr(module, name)
+    globals()[name] = value
+    return value
 
-from .language_filtering import (
-    LanguageFilterConfig,
-    download_fasttext_lid_model,
-    prepare_for_langid,
-    fasttext_predict_batch,
-    predict_language_fasttext,
-    lingua_detect_batch,
-    filter_by_language,
-)
-
-# -----------------------------------------------------
-# Thematic filtering
-# -----------------------------------------------------
-
-from .thematic_filtering import (
-    ThematicFilterConfig,
-    load_anchor_terms,
-    direct_anchor_filter,
-    derive_expansion_terms,
-    build_thematic_subset,
-)
-
-# -----------------------------------------------------
-# Stanza UD annotation
-# -----------------------------------------------------
-
-from .annotation import (
-    AnnotationConfig,
-    validate_annotation_input,
-    annotate_with_stanza,
-    annotate_dataframe,
-    annotation_diagnostics,
-    dependency_diagnostics,
-    contains_emoji_grapheme,
-    count_emoji_documents,
-    count_emoji_tokens,
-    emoji_token_sample,
-)
-
-__all__ = [
-    # Text cleaning
-    "CleaningConfig",
-    "is_emoji_grapheme",
-    "separate_emojis",
-    "clean_text",
-    "clean_corpus",
-
-    # Corpus-level statistics
-    "CorpusStatisticsConfig",
-    "simple_tokenise",
-    "is_valid_stat_token",
-    "extract_tokens",
-    "corpus_statistics",
-
-    # Language filtering
-    "LanguageFilterConfig",
-    "download_fasttext_lid_model",
-    "prepare_for_langid",
-    "fasttext_predict_batch",
-    "predict_language_fasttext",
-    "lingua_detect_batch",
-    "filter_by_language",
-
-    # Thematic filtering
-    "ThematicFilterConfig",
-    "load_anchor_terms",
-    "direct_anchor_filter",
-    "derive_expansion_terms",
-    "build_thematic_subset",
-
-    # Stanza UD annotation
-    "AnnotationConfig",
-    "validate_annotation_input",
-    "annotate_with_stanza",
-    "annotate_dataframe",
-    "annotation_diagnostics",
-    "dependency_diagnostics",
-    "contains_emoji_grapheme",
-    "count_emoji_documents",
-    "count_emoji_tokens",
-    "emoji_token_sample",
-]
+def __dir__() -> list[str]:
+    """Return the public API exposed by this subpackage."""
+    return sorted(set(globals()) | set(__all__))

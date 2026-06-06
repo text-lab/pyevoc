@@ -126,6 +126,19 @@ def _ensure_output_dir(output_dir: str | Path = OUTPUT_DIR) -> str:
 
 
 def rescale_series(x, out_min, out_max):
+    """Linearly rescale *x* to the interval ``[out_min, out_max]``.
+
+    If all values are identical, every element is mapped to the midpoint
+    ``(out_min + out_max) / 2``.
+
+    Args:
+        x: Array-like of numeric values.
+        out_min: Lower bound of the output range.
+        out_max: Upper bound of the output range.
+
+    Returns:
+        A :class:`numpy.ndarray` of rescaled float values.
+    """
     x = pd.to_numeric(pd.Series(x), errors="coerce")
     xmin, xmax = x.min(), x.max()
 
@@ -139,6 +152,24 @@ def rescale_series(x, out_min, out_max):
 
 
 def select_terms_for_target(df, top_n_per_quadrant):
+    """Select the top *n* terms per quadrant for the concentric map.
+
+    Terms are ranked by quadrant-specific criteria: high-salience quadrants
+    (Central nucleus, First periphery) prioritise relative diffusion; the
+    Contrast zone prioritises rank; the Peripheral system prioritises
+    diffusion then rank.
+
+    Args:
+        df: EVOC quadrants DataFrame containing ``relative_diffusion``,
+            ``Rank``, ``frequency``, and ``quadrant`` columns.
+        top_n_per_quadrant: Maximum number of terms to retain per quadrant.
+
+    Returns:
+        A concatenated :class:`~pandas.DataFrame` of selected terms.
+
+    Raises:
+        ValueError: If any required column is missing from *df*.
+    """
     required_cols = {"relative_diffusion", "Rank", "frequency"}
     missing = required_cols.difference(df.columns)
 
@@ -176,6 +207,23 @@ def select_terms_for_target(df, top_n_per_quadrant):
 
 
 def get_aoe_threshold(pos_thresholds_round_df, upos):
+    """Look up the AOE threshold for a given UPOS tag.
+
+    Prefers the ``AOE_thr_round`` column when present, falling back to
+    ``AOE_thr``.
+
+    Args:
+        pos_thresholds_round_df: DataFrame with at least ``upos`` and
+            ``AOE_thr_round`` (or ``AOE_thr``) columns.
+        upos: Universal POS tag string (e.g. ``"NOUN"``).
+
+    Returns:
+        The AOE threshold as a :class:`float`.
+
+    Raises:
+        ValueError: If no row matches *upos* or neither threshold column
+            is found.
+    """
     sub = pos_thresholds_round_df.loc[
         pos_thresholds_round_df["upos"].astype(str).eq(upos)
     ]
@@ -193,6 +241,18 @@ def get_aoe_threshold(pos_thresholds_round_df, upos):
 
 
 def rank_to_radius(rank, rank_min, rank_max, out_min=0.15, out_max=0.92):
+    """Map a single rank value linearly onto a radial distance.
+
+    Args:
+        rank: The rank value to convert.
+        rank_min: Minimum rank in the dataset.
+        rank_max: Maximum rank in the dataset.
+        out_min: Innermost radius of the output range.
+        out_max: Outermost radius of the output range.
+
+    Returns:
+        A :class:`float` radius in ``[out_min, out_max]``.
+    """
     if rank_min == rank_max:
         return (out_min + out_max) / 2
 
@@ -207,6 +267,30 @@ def build_rank_reference_rings(
     out_max=0.92,
     sd_multiplier=1.0,
 ):
+    """Compute the three reference ring radii for the concentric map.
+
+    The rings correspond to ``AOE − sd``, ``AOE``, and ``AOE + sd`` where
+    *sd* is the standard deviation of the Rank column scaled by
+    *sd_multiplier*.
+
+    Args:
+        plot_df: DataFrame of selected terms with a numeric ``Rank`` column.
+        upos: Universal POS tag used to look up the AOE threshold.
+        pos_thresholds_round_df: Threshold table; see :func:`get_aoe_threshold`.
+        out_min: Innermost radius bound passed to :func:`rank_to_radius`.
+        out_max: Outermost radius bound passed to :func:`rank_to_radius`.
+        sd_multiplier: Scales the rank standard deviation for the ring
+            offset.
+
+    Returns:
+        A tuple ``(ring_radii, rank_values_clipped, rank_labels, aoe_thr,
+        rank_sd)`` where *ring_radii* are the three display radii, and
+        *rank_values_clipped* are the corresponding rank values clamped
+        to the observed range.
+
+    Raises:
+        ValueError: If the ``Rank`` column is empty after dropping NaNs.
+    """
     ranks = pd.to_numeric(plot_df["Rank"], errors="coerce").dropna()
 
     if ranks.empty:
@@ -253,6 +337,24 @@ def compute_node_sizes(
     size_min=CONCRETENESS_SIZE_MIN,
     size_max=CONCRETENESS_SIZE_MAX,
 ):
+    """Compute scatter-plot marker sizes for each term node.
+
+    Args:
+        plot_df: DataFrame of selected terms.
+        mode: ``"fixed"`` returns a constant size for every node;
+            ``"concreteness"`` rescales sizes from the
+            ``concreteness_score`` column.
+        fixed_size: Marker size used in ``"fixed"`` mode.
+        size_min: Minimum marker size in ``"concreteness"`` mode.
+        size_max: Maximum marker size in ``"concreteness"`` mode.
+
+    Returns:
+        A :class:`numpy.ndarray` of marker sizes, one per row in *plot_df*.
+
+    Raises:
+        ValueError: If *mode* is unrecognised or ``concreteness_score`` is
+            missing when *mode* is ``"concreteness"``.
+    """
     if mode == "fixed":
         return np.repeat(fixed_size, len(plot_df))
 
@@ -284,6 +386,25 @@ def assign_target_coordinates(
     concreteness_size_max=CONCRETENESS_SIZE_MAX,
     random_state=RANDOM_STATE,
 ):
+    """Compute polar and Cartesian coordinates for every term in *plot_df*.
+
+    Assigns each term a radius (from Rank), an angular position (from
+    relative diffusion within its quadrant), and small random jitter.
+    Adds ``radius``, ``theta``, ``x``, ``y``, and ``point_size`` columns
+    to the returned DataFrame.
+
+    Args:
+        plot_df: DataFrame of selected terms with ``Rank``,
+            ``relative_diffusion``, and ``quadrant`` columns.
+        node_size_mode: Passed to :func:`compute_node_sizes`.
+        fixed_node_size: Passed to :func:`compute_node_sizes`.
+        concreteness_size_min: Passed to :func:`compute_node_sizes`.
+        concreteness_size_max: Passed to :func:`compute_node_sizes`.
+        random_state: Seed for the NumPy random generator used for jitter.
+
+    Returns:
+        A copy of *plot_df* with coordinate and size columns appended.
+    """
     rng = np.random.default_rng(random_state)
 
     plot_df = plot_df.copy()
@@ -372,6 +493,19 @@ def assign_target_coordinates(
 
 
 def point_radius_data_units(ax, point_size):
+    """Convert a scatter marker area (points²) to a radius in data coordinates.
+
+    Forces a canvas draw to ensure the axis transform is up to date before
+    converting pixel distances to data-space distances.
+
+    Args:
+        ax: The :class:`matplotlib.axes.Axes` containing the scatter plot.
+        point_size: Marker area in points² (as passed to
+            :func:`matplotlib.axes.Axes.scatter`).
+
+    Returns:
+        The marker radius expressed in data-coordinate units.
+    """
     fig = ax.figure
     fig.canvas.draw()
 
@@ -385,6 +519,23 @@ def point_radius_data_units(ax, point_size):
 
 
 def label_direction_for_term(row, quadrant_position_index):
+    """Return the preferred unit direction and y-offset for a term label.
+
+    The direction alternates between left and right based on the term's
+    position index within its quadrant, minimising overlap on crowded
+    quadrant edges.
+
+    Args:
+        row: A :class:`pandas.Series` with at least ``quadrant``, ``x``,
+            and ``y`` fields.
+        quadrant_position_index: Zero-based rank of this term within its
+            quadrant (after sorting).
+
+    Returns:
+        A tuple ``(ux, uy, y_offset)`` where *ux* and *uy* form a unit
+        vector and *y_offset* is a small vertical displacement in data
+        coordinates.
+    """
     q = str(row["quadrant"])
 
     if q == "Central nucleus":
@@ -760,6 +911,17 @@ LAYOUT_SEED = 123
 
 
 def normalise_quadrant_name(x):
+    """Normalise a snake_case quadrant identifier to its display form.
+
+    Maps keys such as ``"central_nucleus"`` to ``"Central nucleus"``.
+    Unknown values are returned as-is after stripping whitespace.
+
+    Args:
+        x: Raw quadrant name string.
+
+    Returns:
+        The normalised display string.
+    """
     mapping = {
         "central_nucleus": "Central nucleus",
         "first_periphery": "First periphery",
@@ -770,19 +932,53 @@ def normalise_quadrant_name(x):
 
 
 def shorten_label(x, max_chars):
+    """Truncate *x* to *max_chars* characters, appending ``…`` if needed.
+
+    Args:
+        x: Label string.
+        max_chars: Maximum number of characters (including the ellipsis).
+
+    Returns:
+        The original string if it fits, otherwise a truncated version.
+    """
     x = str(x)
     return x if len(x) <= max_chars else x[: max_chars - 1] + "…"
 
 
 def format_float(x, digits=2):
+    """Format a numeric value as a fixed-point string, or ``"-"`` if NaN.
+
+    Args:
+        x: Numeric value.
+        digits: Number of decimal places.
+
+    Returns:
+        Formatted string.
+    """
     return "-" if pd.isna(x) else f"{float(x):.{digits}f}"
 
 
 def format_int(x):
+    """Format a numeric value as a comma-separated integer string, or ``"-"`` if NaN.
+
+    Args:
+        x: Numeric value.
+
+    Returns:
+        Formatted string.
+    """
     return "-" if pd.isna(x) else f"{int(round(float(x))):,}"
 
 
 def format_p_value(x):
+    """Format a p-value for display, using scientific notation below 0.001.
+
+    Args:
+        x: p-value (float or NaN-like).
+
+    Returns:
+        Formatted string, or ``"-"`` for missing values.
+    """
     if pd.isna(x):
         return "-"
     x = float(x)
@@ -790,6 +986,18 @@ def format_p_value(x):
 
 
 def get_total_users(tokens_df):
+    """Return the number of unique users in *tokens_df*.
+
+    Args:
+        tokens_df: Token-level DataFrame with a ``user_id`` column.
+
+    Returns:
+        Integer count of unique non-null user identifiers.
+
+    Raises:
+        ValueError: If *tokens_df* is ``None``, lacks a ``user_id``
+            column, or contains no valid users.
+    """
     if tokens_df is None or "user_id" not in tokens_df.columns:
         raise ValueError("tokens_df with a valid 'user_id' column is required.")
 
@@ -802,11 +1010,29 @@ def get_total_users(tokens_df):
 
 
 def hex_to_rgb(hex_colour):
+    """Convert a hex colour string to an ``(R, G, B)`` integer tuple.
+
+    Args:
+        hex_colour: Hex string with or without a leading ``#``
+            (e.g. ``"#4f7fa6"`` or ``"4f7fa6"``).
+
+    Returns:
+        A tuple ``(r, g, b)`` of integers in ``[0, 255]``.
+    """
     hex_colour = hex_colour.lstrip("#")
     return tuple(int(hex_colour[i : i + 2], 16) for i in (0, 2, 4))
 
 
 def blend_with_white(hex_colour, amount):
+    """Blend a hex colour toward white by *amount* (0 = original, 1 = white).
+
+    Args:
+        hex_colour: Base colour as a hex string.
+        amount: Blend fraction in ``[0, 1]``.
+
+    Returns:
+        An ``"rgb(r,g,b)"`` CSS string.
+    """
     r, g, b = hex_to_rgb(hex_colour)
     r = int(r + (255 - r) * amount)
     g = int(g + (255 - g) * amount)
@@ -815,6 +1041,19 @@ def blend_with_white(hex_colour, amount):
 
 
 def rescale(x, out_min, out_max):
+    """Linearly rescale *x* to ``[out_min, out_max]``, handling NaN gracefully.
+
+    If the input range is zero or contains only NaN values, every element is
+    mapped to the midpoint ``(out_min + out_max) / 2``.
+
+    Args:
+        x: Array-like of numeric values.
+        out_min: Lower bound of the output range.
+        out_max: Upper bound of the output range.
+
+    Returns:
+        A :class:`numpy.ndarray` of rescaled float values.
+    """
     x = pd.to_numeric(pd.Series(x), errors="coerce")
     xmin, xmax = x.min(), x.max()
 
@@ -825,6 +1064,22 @@ def rescale(x, out_min, out_max):
 
 
 def curved_edge_points(x0, y0, x1, y1, curvature=EDGE_CURVATURE, n=35):
+    """Sample points along a quadratic Bézier curve between two nodes.
+
+    The control point is placed at the horizontal midpoint and above the
+    higher of the two endpoints by *curvature* units.
+
+    Args:
+        x0: X coordinate of the start node.
+        y0: Y coordinate of the start node.
+        x1: X coordinate of the end node.
+        y1: Y coordinate of the end node.
+        curvature: Vertical offset of the Bézier control point.
+        n: Number of sample points along the curve.
+
+    Returns:
+        A tuple ``(x_points, y_points)`` of :class:`numpy.ndarray`.
+    """
     t = np.linspace(0, 1, n)
     xm = (x0 + x1) / 2
     ym = max(y0, y1) + curvature
@@ -836,6 +1091,22 @@ def curved_edge_points(x0, y0, x1, y1, curvature=EDGE_CURVATURE, n=35):
 
 
 def effective_x_geometry(pos):
+    """Derive axis and legend x-geometry from the node position dictionary.
+
+    Computes separator x-coordinates, full axis range, and a normalised
+    legend x-anchor that keeps the legend visually centred over the plot
+    area.
+
+    Args:
+        pos: Dict mapping node identifiers to ``(x, y)`` tuples.  May be
+            empty, in which case ``ROW_SEPARATOR_X_MAX`` is used as the
+            right boundary.
+
+    Returns:
+        A :class:`dict` with keys ``max_x``, ``separator_x0``,
+        ``separator_x1``, ``x_range_min``, ``x_range_max``, and
+        ``legend_x``.
+    """
     if not pos:
         max_x = ROW_SEPARATOR_X_MAX
     else:
@@ -871,6 +1142,24 @@ def select_roots_for_upos(
     upos,
     top_roots_per_quadrant=TOP_ROOTS_PER_QUADRANT,
 ):
+    """Select the top root terms for a given UPOS tag across all quadrants.
+
+    Terms are ranked by quadrant-specific criteria (diffusion, rank,
+    frequency) and the top *top_roots_per_quadrant* are kept per quadrant.
+    Relative diffusion is recomputed from ``frequency / n_users_total``.
+
+    Args:
+        evoc_quadrants_df: EVOC quadrants DataFrame.
+        tokens_df: Token-level DataFrame used to derive the total user count.
+        upos: Universal POS tag to filter by (e.g. ``"NOUN"``).
+        top_roots_per_quadrant: Maximum roots to retain per quadrant.
+
+    Returns:
+        A concatenated :class:`~pandas.DataFrame` of selected root terms.
+
+    Raises:
+        ValueError: If required columns are missing or no roots are found.
+    """
     required_cols = {
         "term",
         "upos",
@@ -937,6 +1226,25 @@ def select_roots_for_upos(
 
 
 def prepare_collocation_leaves(collocations_df, tokens_df, min_leaf_freq=MIN_LEAF_FREQ):
+    """Clean and filter a collocation DataFrame for use as tree leaves.
+
+    Normalises terms, computes relative diffusion, and removes low-frequency
+    entries.  The result is sorted by association strength (G²) descending.
+
+    Args:
+        collocations_df: Raw collocation DataFrame with at least ``term``,
+            ``freq``, ``n_users``, ``g2``, and ``p_value`` columns.
+        tokens_df: Token-level DataFrame used to derive the total user count.
+        min_leaf_freq: Minimum absolute frequency for a collocation to be
+            retained.
+
+    Returns:
+        A filtered and sorted :class:`~pandas.DataFrame` of leaf candidates.
+
+    Raises:
+        ValueError: If *collocations_df* is empty or missing required
+            columns.
+    """
     if collocations_df is None or collocations_df.empty:
         raise ValueError("collocations_df is empty or missing.")
 
@@ -984,6 +1292,24 @@ def match_collocations_containing_root(
     leaves_df,
     max_leaves_per_root=MAX_LEAVES_PER_ROOT,
 ):
+    """Match collocations that contain each root term as a constituent token.
+
+    For every root the function scans ``leaves_df`` for collocations whose
+    tokenised form includes the root (exact token match), then keeps the top
+    *max_leaves_per_root* by G².
+
+    Args:
+        roots_df: Selected root terms with a ``term_norm`` column.
+        leaves_df: Candidate collocation leaves prepared by
+            :func:`prepare_collocation_leaves`.
+        max_leaves_per_root: Maximum number of leaves to attach per root.
+
+    Returns:
+        An edge :class:`~pandas.DataFrame` with one row per root–leaf pair.
+
+    Raises:
+        ValueError: If no collocations contain any of the selected roots.
+    """
     records = []
 
     for _, root in roots_df.iterrows():
@@ -1036,6 +1362,22 @@ def match_collocations_containing_root(
 
 
 def build_graph(edges_df):
+    """Build a :class:`networkx.Graph` from an edge DataFrame.
+
+    Root nodes receive ``node_class="root"`` and leaf nodes receive
+    ``node_class="collocation"``.  Edge weight is set to the leaf G²
+    association strength.
+
+    Args:
+        edges_df: Edge DataFrame produced by
+            :func:`match_collocations_containing_root`.
+
+    Returns:
+        An undirected :class:`networkx.Graph`.
+
+    Raises:
+        ImportError: If *networkx* is not installed.
+    """
     if nx is None:
         raise ImportError("Install networkx to use semantic tree plots.")
 
@@ -1089,6 +1431,19 @@ def _roots_per_quadrant(G):
 
 
 def compute_row_geometry(G, row_height=ROW_HEIGHT):
+    """Compute vertical layout geometry for each quadrant row.
+
+    Peripheral system rows may span multiple lines when there are more roots
+    than ``ROOTS_PER_LINE``.  All other quadrants occupy a single row.
+
+    Args:
+        G: The semantic tree :class:`networkx.Graph`.
+        row_height: Base height (in data units) for a single-line row.
+
+    Returns:
+        A tuple ``(quadrant_y, row_top, row_bottom, line_counts,
+        row_heights)`` where each is a dict keyed by quadrant name.
+    """
     roots_by_q = _roots_per_quadrant(G)
 
     line_counts = {}
@@ -1127,6 +1482,25 @@ def compute_fixed_quadrant_tree_layout(
     leaf_row_stagger=LEAF_ROW_STAGGER,
     leaf_spread=LEAF_HORIZONTAL_SPREAD,
 ):
+    """Assign fixed (x, y) positions to every node in the semantic tree.
+
+    Roots are placed on a regular grid within their quadrant row.  Leaves
+    are fanned out below their parent root with a small stagger to reduce
+    overlap.  A seeded RNG adds tiny horizontal jitter to leaf positions.
+
+    Args:
+        G: The semantic tree :class:`networkx.Graph`.
+        seed: Integer seed for reproducible jitter.
+        root_x_start: X coordinate of the first root in each row.
+        root_x_step: Horizontal step between consecutive roots.
+        leaf_drop: Vertical distance from root to first leaf row.
+        leaf_row_stagger: Additional vertical stagger between leaf rows.
+        leaf_spread: Half-width of the horizontal fan of leaves.
+
+    Returns:
+        A tuple ``(pos, quadrant_y, row_top, row_bottom, line_counts,
+        row_heights)`` where *pos* maps node IDs to ``(x, y)`` tuples.
+    """
     rng = np.random.default_rng(seed)
     pos = {}
 
@@ -1192,6 +1566,14 @@ def compute_fixed_quadrant_tree_layout(
 
 
 def add_constant_quadrant_legend_traces(fig):
+    """Add one invisible legend scatter trace per quadrant to *fig*.
+
+    Each trace uses ``x=[None], y=[None]`` so it contributes only a legend
+    entry without any visible data points.
+
+    Args:
+        fig: A :class:`plotly.graph_objects.Figure` to modify in-place.
+    """
     for q in QUADRANT_ROW_ORDER:
         fig.add_trace(
             go.Scatter(
@@ -1223,6 +1605,31 @@ def build_plotly_tree(
     height=TREE_FIG_HEIGHT,
     png_scale=PNG_SCALE,
 ):
+    """Render the semantic tree as an interactive Plotly figure.
+
+    Draws curved edges, root scatter markers (colour-coded and size-scaled
+    by relative diffusion), collocation leaf markers, quadrant labels,
+    row separators, and a legend.  Saves an HTML file and optionally a PNG
+    (requires kaleido).
+
+    Args:
+        G: The semantic tree :class:`networkx.Graph`.
+        pos: Node position dict from :func:`compute_fixed_quadrant_tree_layout`.
+        quadrant_y: Quadrant label y-positions dict.
+        row_top: Top y-coordinate per quadrant dict.
+        row_bottom: Bottom y-coordinate per quadrant dict.
+        output_html: Path for the output HTML file.
+        output_png: Optional path for the output PNG file.
+        width: Figure width in pixels.
+        height: Figure height in pixels.
+        png_scale: Resolution scale factor for PNG export.
+
+    Returns:
+        The :class:`plotly.graph_objects.Figure`.
+
+    Raises:
+        ImportError: If *plotly* is not installed.
+    """
     if go is None:
         raise ImportError("Install plotly to use semantic tree plots.")
 
@@ -1503,6 +1910,35 @@ def build_evoc_collocation_tree_for_upos(
     png_scale=PNG_SCALE,
     show_diagnostics=False,
 ):
+    """Build and save the full EVOC semantic collocation tree for a UPOS tag.
+
+    Orchestrates root selection, leaf preparation, graph construction,
+    layout, and Plotly rendering.  Saves both HTML and PNG outputs to
+    *output_dir*.
+
+    Args:
+        evoc_quadrants_df: EVOC quadrants DataFrame.
+        collocations_df: Raw collocation DataFrame.
+        tokens_df: Token-level DataFrame used for user counts.
+        upos: Universal POS tag to visualise (e.g. ``"NOUN"``).
+        output_dir: Directory for saved figures.
+        top_roots_per_quadrant: Maximum root terms per quadrant.
+        max_leaves_per_root: Maximum collocation leaves per root.
+        min_leaf_freq: Minimum frequency threshold for leaf collocations.
+        seed: Layout RNG seed.
+        width: Figure width in pixels.
+        height: Figure height in pixels.
+        png_scale: Resolution scale factor for PNG export.
+        show_diagnostics: If ``True``, display the diagnostics DataFrame
+            in an interactive environment (uses ``display`` if available,
+            otherwise ``print``).
+
+    Returns:
+        A :class:`dict` with keys ``fig``, ``graph``, ``positions``,
+        ``quadrant_y``, ``row_top``, ``row_bottom``, ``line_counts``,
+        ``row_heights``, ``roots_df``, ``leaves_df``, ``edges_df``,
+        ``diagnostics_df``, ``html``, and ``png``.
+    """
     output_dir = _ensure_output_dir(output_dir)
 
     roots_df = select_roots_for_upos(
@@ -1621,6 +2057,24 @@ EMOJI_AXIS_PAD_DIFFUSION = 0.15
 
 
 def parse_emoji_evoc_html(html_file):
+    """Parse an EVOC compact HTML report and extract emoji quadrant data.
+
+    Reads ``.quad-card`` elements from the HTML, extracting one row per
+    emoji entry with relative diffusion, frequency, rank, description, and
+    quadrant.
+
+    Args:
+        html_file: Path to the compact EVOC HTML report.
+
+    Returns:
+        A :class:`~pandas.DataFrame` with columns ``emoji``,
+        ``relative_diffusion``, ``frequency``, ``rank``, ``description``,
+        ``quadrant``, and ``salience``.
+
+    Raises:
+        ImportError: If *beautifulsoup4* is not installed.
+        ValueError: If no emoji records are found in the file.
+    """
     if BeautifulSoup is None:
         raise ImportError("Install beautifulsoup4 to parse emoji EVOC HTML reports.")
 
@@ -1673,6 +2127,18 @@ def parse_emoji_evoc_html(html_file):
 
 
 def extract_thresholds_from_html(html_file):
+    """Extract AFE and AOE threshold values from an EVOC HTML report.
+
+    Uses regex to locate the ``Rel. diff. ≥ X`` and ``AOE ≤ X`` patterns
+    embedded in the report text.
+
+    Args:
+        html_file: Path to the EVOC HTML report.
+
+    Returns:
+        A tuple ``(afe, aoe)`` of :class:`float` or ``None`` values.
+        A value is ``None`` when the corresponding pattern is not found.
+    """
     with open(html_file, "r", encoding="utf-8") as f:
         txt = f.read()
 
@@ -1737,6 +2203,23 @@ def compute_emoji_axis_ranges(
 
 
 def select_emojis_for_plot(df, top_n_per_quadrant=TOP_N_PER_QUADRANT):
+    """Select the top *n* emojis per quadrant for the Plotly scatter map.
+
+    Uses the same quadrant-specific ranking logic as
+    :func:`select_terms_for_target` (diffusion / rank / frequency priority
+    varies by quadrant).
+
+    Args:
+        df: Parsed emoji DataFrame from :func:`parse_emoji_evoc_html`.
+        top_n_per_quadrant: Maximum emojis to keep per quadrant.
+            Pass ``None`` to keep all.
+
+    Returns:
+        A concatenated :class:`~pandas.DataFrame` of selected emojis.
+
+    Raises:
+        ValueError: If no emojis are selected.
+    """
     selected = []
 
     for q in QUADRANT_ORDER:
@@ -1775,6 +2258,18 @@ def select_emojis_for_plot(df, top_n_per_quadrant=TOP_N_PER_QUADRANT):
 
 
 def shorten_emoji_label(x, width=MAX_LABEL_CHARS):
+    """Shorten an emoji description to *width* characters using word boundaries.
+
+    Delegates to :func:`textwrap.shorten`, which breaks at word boundaries
+    and appends ``…``.
+
+    Args:
+        x: Description string.
+        width: Maximum character width.
+
+    Returns:
+        Shortened string.
+    """
     x = str(x).strip()
 
     if len(x) <= width:
@@ -1792,6 +2287,23 @@ def data_offset_from_pixels(
     width=EMOJI_FIG_WIDTH,
     height=EMOJI_FIG_HEIGHT,
 ):
+    """Convert pixel offsets to data-coordinate offsets for the emoji map.
+
+    Accounts for the fixed margins baked into the emoji figure layout.
+    Note that *dy_px* is negated because screen y increases downward while
+    data y increases upward.
+
+    Args:
+        dx_px: Horizontal pixel offset.
+        dy_px: Vertical pixel offset (positive = upward in data space).
+        x_range: ``[x_min, x_max]`` axis range; defaults to ``X_RANGE``.
+        y_range: ``[y_min, y_max]`` axis range; defaults to ``Y_RANGE``.
+        width: Total figure width in pixels.
+        height: Total figure height in pixels.
+
+    Returns:
+        A tuple ``(dx_data, dy_data)`` in data coordinates.
+    """
     x_range = list(x_range or X_RANGE)
     y_range = list(y_range or Y_RANGE)
 
@@ -1808,6 +2320,19 @@ def data_offset_from_pixels(
 
 
 def label_offsets_for_quadrant(quadrant, i):
+    """Return pixel offsets for placing a text label next to an emoji point.
+
+    Offsets are quadrant-specific (left/right of the point, above/below)
+    and are staggered by *i* to reduce vertical overlap between nearby
+    labels.
+
+    Args:
+        quadrant: Quadrant name string.
+        i: Zero-based position index of the emoji within its quadrant.
+
+    Returns:
+        A tuple ``(base_dx, base_dy)`` of pixel offsets.
+    """
     if quadrant == "Central nucleus":
         base_dx = -70
         base_dy = -10
@@ -1830,6 +2355,24 @@ def label_offsets_for_quadrant(quadrant, i):
 
 
 def repel_labels_vertically(df, min_gap=0.045, y_min=None, y_max=None, y_range=None):
+    """Push overlapping label y-positions apart within each quadrant side.
+
+    Labels on the same side (left or right of their data point) are sorted
+    by y, then shifted upward until each pair is at least *min_gap* apart.
+    The block is then clamped to ``[y_min, y_max]``.
+
+    Args:
+        df: DataFrame with ``quadrant``, ``label_x``, ``label_y``, and
+            ``salience`` columns.
+        min_gap: Minimum vertical gap between adjacent labels in data units.
+        y_min: Lower clamp bound; derived from *y_range* if not given.
+        y_max: Upper clamp bound; derived from *y_range* if not given.
+        y_range: ``[y_min, y_max]`` axis range used to set bounds when
+            *y_min* / *y_max* are ``None``.
+
+    Returns:
+        A copy of *df* with adjusted ``label_y`` values.
+    """
     out = df.copy()
 
     if y_range is not None:
@@ -1886,6 +2429,24 @@ def compute_label_positions(
     width=EMOJI_FIG_WIDTH,
     height=EMOJI_FIG_HEIGHT,
 ):
+    """Compute final label coordinates for every emoji in the map.
+
+    For each quadrant the emojis are iterated in sort order; pixel offsets
+    are converted to data-space via :func:`data_offset_from_pixels`,
+    clamped to the axis range, and then vertically repelled by
+    :func:`repel_labels_vertically`.
+
+    Args:
+        df: Selected emoji DataFrame with ``quadrant``, ``salience``,
+            ``relative_diffusion``, and ``frequency`` columns.
+        x_range: ``[x_min, x_max]`` axis range; defaults to ``X_RANGE``.
+        y_range: ``[y_min, y_max]`` axis range; defaults to ``Y_RANGE``.
+        width: Figure width in pixels.
+        height: Figure height in pixels.
+
+    Returns:
+        A copy of *df* with ``label_x`` and ``label_y`` columns added.
+    """
     x_range = list(x_range or X_RANGE)
     y_range = list(y_range or Y_RANGE)
 
@@ -1931,6 +2492,15 @@ def compute_label_positions(
 
 
 def add_quadrant_labels(fig):
+    """Add corner annotations naming each quadrant to *fig*.
+
+    Labels are placed in paper coordinates so they stay at the corners
+    regardless of axis zoom.  Each label is styled with the corresponding
+    quadrant colour and a semi-transparent white background.
+
+    Args:
+        fig: A :class:`plotly.graph_objects.Figure` to modify in-place.
+    """
     labels = [
         ("Central nucleus", 0.015, 0.985, "left", "top"),
         ("First periphery", 0.985, 0.985, "right", "top"),
@@ -1958,6 +2528,13 @@ def add_quadrant_labels(fig):
 
 
 def add_dashed_label_lines(fig, df):
+    """Draw a dashed leader line from each emoji point to its text label.
+
+    Args:
+        fig: A :class:`plotly.graph_objects.Figure` to modify in-place.
+        df: Emoji DataFrame with ``salience``, ``relative_diffusion``,
+            ``label_x``, and ``label_y`` columns.
+    """
     for _, r in df.iterrows():
         fig.add_shape(
             type="line",
@@ -1973,6 +2550,16 @@ def add_dashed_label_lines(fig, df):
 
 
 def add_italic_labels(fig, df):
+    """Add italic description annotations at computed label positions.
+
+    Each annotation is anchored left or right depending on whether the
+    label sits to the right or left of its data point.
+
+    Args:
+        fig: A :class:`plotly.graph_objects.Figure` to modify in-place.
+        df: Emoji DataFrame with ``label_x``, ``label_y``, ``salience``,
+            and ``description`` columns.
+    """
     for _, r in df.iterrows():
         xanchor = "left" if r["label_x"] >= r["salience"] else "right"
 
@@ -2004,6 +2591,36 @@ def build_emoji_evoc_plot(
     pad_diffusion=EMOJI_AXIS_PAD_DIFFUSION,
     show=False,
 ):
+    """Build and save the emoji EVOC Plotly scatter map.
+
+    Parses an EVOC compact HTML report, selects the top emojis per
+    quadrant, computes label positions, adds AFE/AOE threshold lines, and
+    writes both an interactive HTML file and an optional PNG.
+
+    Args:
+        html_file: Path to the source EVOC compact HTML report.
+        output_dir: Directory for saved figures.
+        output_html: Filename (not path) for the output HTML file.
+        output_png: Filename (not path) for the output PNG file, or
+            ``None`` to skip PNG export.
+        top_n_per_quadrant: Maximum emojis to display per quadrant.
+        width: Figure width in pixels.
+        height: Figure height in pixels.
+        pad_salience: Axis padding added to the salience (x) range.
+        pad_diffusion: Axis padding added to the diffusion (y) range.
+        show: If ``True``, call ``fig.show()`` after saving.
+
+    Returns:
+        A tuple ``(fig, df, html_out)`` where *fig* is the Plotly figure,
+        *df* is the plotted emoji DataFrame (with ``x_range`` and
+        ``y_range`` stored in ``df.attrs``), and *html_out* is the path
+        to the saved HTML file.
+
+    Raises:
+        ImportError: If *plotly* is not installed.
+        ValueError: If AFE/AOE thresholds cannot be extracted from
+            *html_file*.
+    """
     if go is None:
         raise ImportError("Install plotly to use build_emoji_evoc_plot().")
 
@@ -2071,10 +2688,13 @@ def build_emoji_evoc_plot(
 
     fig.add_annotation(
         x=salience_thr,
-        y=0.96,
+        xref="x",
+        y=1.0,
+        yref="paper",
         text=f"AOE = {aoe:.2f}",
         showarrow=False,
-        yshift=-12,
+        yanchor="top",
+        yshift=-6,
         xshift=8,
         font=dict(size=10, color="#555555"),
         bgcolor="rgba(255,255,255,0.85)",
