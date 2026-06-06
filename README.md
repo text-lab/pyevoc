@@ -7,10 +7,10 @@
 </p>
 
 <p align="center">
-<a href="https://doi.org/10.5281/zenodo.20545334"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.20545334.svg" alt="DOI"></a>
+<a href="https://doi.org/10.5281/zenodo.20545334"><img src="https://img.shields.io/badge/DOI-10.5281/zenodo.20545334-yellow.svg" alt="DOI"></a> 
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-success.svg" alt="MIT"></a>
 <a href="https://fairsoftwarechecklist.net/v0.2?f=31&a=32113&i=32311&r=123"><img src="https://img.shields.io/badge/checklist-FAIR-success.svg" alt="FAIR checklist"></a>
-<a href="https://github.com/text-lab/pyevoc/blob/main/docs/documentation.md"><img src="https://img.shields.io/badge/documentation-DOCS-important.svg" alt="Documentation"</a>                                                       
+<a href="https://github.com/text-lab/pyevoc/blob/main/docs/documentation.md"><img src="https://img.shields.io/badge/documentation-DOCS-important.svg" alt="Documentation"></a>                                                       
 </p>
 
 ---
