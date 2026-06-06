@@ -1,13 +1,16 @@
 cff-version: 1.2.0
 message: "If you use PyEvoc in your research, please cite it using the metadata from this file."
 type: software
+
 title: "PyEvoc: Computational Hierarchical Evocation Analysis for Digital Corpora"
 version: 0.2.1
 date-released: "2026-06-04"
+
 authors:
   - family-names: "Misuraca"
     given-names: "Michelangelo"
     orcid: "https://orcid.org/0000-0002-8794-966X"
+
 abstract: >
   PyEvoc is a research-oriented Python framework for adapting the Hierarchical
   Evocation Method (HEM) to large-scale digital textual corpora. It extends
@@ -15,8 +18,13 @@ abstract: >
   diffusion, positional salience, rhetorical foregrounding, and temporal
   dynamics to reconstruct representational structures from naturally occurring
   online discourse.
+
 repository-code: "https://github.com/text-lab/pyevoc"
+repository-artifact: "https://doi.org/10.5281/zenodo.20545334"
+url: "https://text-lab.github.io/pyevoc/"
+
 license: MIT
+
 keywords:
   - social representations
   - hierarchical evocation method
@@ -24,7 +32,19 @@ keywords:
   - natural language processing
   - digital discourse
   - Python
+
 identifiers:
   - type: doi
     value: "10.5281/zenodo.20545334"
     description: "Zenodo DOI for this software release"
+
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Misuraca"
+      given-names: "Michelangelo"
+      orcid: "https://orcid.org/0000-0002-8794-966X"
+  title: "PyEvoc: Computational Hierarchical Evocation Analysis for Digital Corpora"
+  version: "0.2.1"
+  doi: "10.5281/zenodo.20545334"
+  date-released: "2026-06-04"
