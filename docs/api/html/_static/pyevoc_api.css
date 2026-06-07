@@ -1,0 +1,294 @@
+/* ══════════════════════════════════════════════════════════════════════
+   PyEvoc API Reference — custom stylesheet for pydata-sphinx-theme
+   Mirrors the design system of pyevoc.github.io / the project website.
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* ── Google Fonts ────────────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap");
+
+/* ── Design tokens ───────────────────────────────────────────────────── */
+:root {
+  --pyevoc-ink:    #141412;
+  --pyevoc-paper:  #f7f5f0;
+  --pyevoc-white:  #ffffff;
+  --pyevoc-cream:  #ede9e1;
+  --pyevoc-rule:   #ddd8ce;
+  --pyevoc-muted:  #7a7570;
+  --pyevoc-accent: #bf4020;
+  --pyevoc-blue:   #1a5276;
+  --pyevoc-green:  #2e6b4a;
+
+  /* quadrant colours (matches the project website) */
+  --pyevoc-nucleus:  #4f7fa6;
+  --pyevoc-periph1:  #4f9a55;
+  --pyevoc-contrast: #c04a46;
+  --pyevoc-periph2:  #8750a6;
+
+  /* pydata-sphinx-theme overrides */
+  --pst-color-primary:        var(--pyevoc-blue);
+  --pst-color-secondary:      var(--pyevoc-accent);
+  --pst-color-link:           var(--pyevoc-blue);
+  --pst-color-link-hover:     var(--pyevoc-accent);
+  --pst-font-family-base:        "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --pst-font-family-heading:     "Instrument Serif", Georgia, serif;
+  --pst-font-family-monospace:   "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* ── Light-mode surface colours ──────────────────────────────────────── */
+html[data-theme="light"] {
+  --pst-color-background:    var(--pyevoc-paper);
+  --pst-color-surface:       var(--pyevoc-white);
+  --pst-color-on-background: var(--pyevoc-ink);
+}
+
+/* ── Body ────────────────────────────────────────────────────────────── */
+body {
+  background: var(--pyevoc-paper);
+  color:      var(--pyevoc-ink);
+  line-height: 1.65;
+}
+
+/* ── Header / navbar ─────────────────────────────────────────────────── */
+.bd-header {
+  background:       rgba(247, 245, 240, 0.96) !important;
+  backdrop-filter:  blur(14px) saturate(1.3);
+  border-bottom:    1px solid var(--pyevoc-rule);
+  box-shadow:       none;
+}
+.navbar-brand,
+.navbar-brand:hover {
+  color:           var(--pyevoc-ink) !important;
+  font-family:     var(--pst-font-family-monospace);
+  letter-spacing:  -0.03em;
+}
+
+/* ── Navbar logo image ───────────────────────────────────────────────── */
+.navbar-brand img,
+.navbar-brand .logo-image {
+  height:      52px;       /* matches the website nav logo height */
+  width:       auto;
+  max-width:   220px;
+  object-fit:  contain;
+  display:     block;
+}
+
+/* Hide the text fallback when the image loads correctly */
+.navbar-brand img ~ .navbar-brand-name {
+  display: none;
+}
+
+/* ── Sidebars ────────────────────────────────────────────────────────── */
+.bd-sidebar-primary,
+.bd-sidebar-secondary {
+  background:    var(--pyevoc-paper);
+  border-color:  var(--pyevoc-rule);
+}
+
+/* ── Content width ───────────────────────────────────────────────────── */
+.bd-main .bd-content .bd-article-container { max-width: 980px; }
+
+/* ── Headings ────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  color:           var(--pyevoc-ink);
+  letter-spacing:  -0.015em;
+}
+h1 {
+  font-size:       clamp(2.2rem, 4vw, 3.4rem);
+  line-height:     1.05;
+  border-bottom:   1px solid var(--pyevoc-rule);
+  padding-bottom:  0.75rem;
+}
+h2 {
+  border-bottom:   1px solid var(--pyevoc-rule);
+  padding-bottom:  0.35rem;
+}
+
+/* ── Links ───────────────────────────────────────────────────────────── */
+a {
+  text-decoration-thickness: 1px;
+  text-underline-offset:     0.18em;
+}
+
+/* ── Inline code & signatures ────────────────────────────────────────── */
+code, .sig-name, .pre {
+  font-family: var(--pst-font-family-monospace) !important;
+}
+
+/* ── Code blocks ─────────────────────────────────────────────────────── */
+div.highlight,
+pre {
+  background:    #1a1916 !important;
+  border-radius: 6px;
+  border:        1px solid rgba(255, 255, 255, 0.08);
+}
+.highlight pre { color: rgba(255, 255, 255, 0.82) !important; }
+
+/* ── API object cards (class / function / method / attribute) ────────── */
+dl.py.class,
+dl.py.function,
+dl.py.method,
+dl.py.attribute {
+  border-left:   3px solid var(--pyevoc-blue);
+  background:    rgba(255, 255, 255, 0.55);
+  padding:       1rem 1.2rem;
+  border-radius: 0 6px 6px 0;
+  margin:        1.5rem 0;
+}
+
+/* ── Signature line ──────────────────────────────────────────────────── */
+/* ── Signature block ────────────────────────────────────────────────── */
+.sig.sig-object.py {
+  background:    var(--pyevoc-cream);
+  border:        1px solid var(--pyevoc-rule);
+  border-radius: 4px;
+  padding:       0.55rem 0.75rem;
+  /* Prevent long signatures from overflowing the card */
+  white-space:   normal !important;
+  word-break:    break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Wrap individual parameter spans so they reflow naturally */
+.sig-param {
+  white-space: normal !important;
+  display:     inline;
+}
+
+/* Keep the em-dash separator and comma glued to the preceding token */
+.sig-param + .sig-param::before {
+  content: "";
+  display: inline;
+}
+
+/* Soft-wrap the entire dl.py card so nothing escapes the container */
+dl.py.class > dt,
+dl.py.function > dt,
+dl.py.method > dt {
+  overflow-wrap: anywhere;
+  word-break:    break-word;
+  white-space:   normal !important;
+}
+
+/* ── Toctree lists ───────────────────────────────────────────────────── */
+.toctree-wrapper ul { padding-left: 1.2rem; }
+
+/* ══════════════════════════════════════════════════════════════════════
+   API landing-page components (used in index.rst via .. raw:: html)
+   ══════════════════════════════════════════════════════════════════════ */
+
+/* hero banner */
+.api-hero {
+  background:    linear-gradient(135deg, var(--pyevoc-cream), var(--pyevoc-paper));
+  border:        1px solid var(--pyevoc-rule);
+  border-radius: 8px;
+  padding:       2.2rem;
+  margin:        1.8rem 0 2.4rem 0;
+}
+.api-kicker {
+  font-family:     var(--pst-font-family-monospace);
+  font-size:       0.72rem;
+  letter-spacing:  0.14em;
+  text-transform:  uppercase;
+  color:           var(--pyevoc-blue);
+  margin-bottom:   0.75rem;
+}
+.api-lead {
+  color:      var(--pyevoc-muted);
+  font-size:  1.03rem;
+  max-width:  760px;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+/* badge row */
+.api-badge-row {
+  display:    flex;
+  flex-wrap:  wrap;
+  gap:        0.45rem;
+  margin-top: 1rem;
+}
+.api-badge {
+  display:         inline-block;
+  font-family:     var(--pst-font-family-monospace);
+  font-size:       0.68rem;
+  padding:         0.22rem 0.55rem;
+  border-radius:   3px;
+  border:          1px solid var(--pyevoc-rule);
+  color:           var(--pyevoc-muted);
+  background:      rgba(255, 255, 255, 0.45);
+  letter-spacing:  0.03em;
+}
+
+/* module card grid */
+.api-card-grid {
+  display:               grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap:                   1px;
+  background:            var(--pyevoc-rule);
+  border:                1px solid var(--pyevoc-rule);
+  border-radius:         6px;
+  overflow:              hidden;
+  margin:                1.5rem 0 2rem 0;
+}
+.api-card {
+  background:  var(--pyevoc-paper);
+  padding:     1.35rem;
+  transition:  background 0.18s;
+}
+.api-card:hover { background: var(--pyevoc-cream); }
+
+.api-card-icon {
+  font-family:             "Material Symbols Outlined";
+  font-size:               1.6rem;
+  color:                   var(--pyevoc-blue);
+  margin-bottom:           0.6rem;
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 40;
+}
+.api-card-title {
+  font-family:    var(--pst-font-family-heading);
+  font-size:      1.15rem;
+  margin-bottom:  0.35rem;
+  line-height:    1.25;
+}
+.api-card-title a {
+  text-decoration: none;
+  color:           var(--pyevoc-ink);
+}
+.api-card-title a:hover { color: var(--pyevoc-blue); }
+.api-card-desc {
+  color:       var(--pyevoc-muted);
+  font-size:   0.84rem;
+  line-height: 1.55;
+}
+
+/* subpackage tag pills inside module pages */
+.api-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.8rem; }
+.api-tag {
+  font-family:    var(--pst-font-family-monospace);
+  font-size:      0.67rem;
+  padding:        0.18rem 0.5rem;
+  border-radius:  2px;
+  background:     var(--pyevoc-cream);
+  border:         1px solid var(--pyevoc-rule);
+  color:          var(--pyevoc-muted);
+}
+
+/* section kicker line (matches website .kicker) */
+.api-section-kicker {
+  font-family:    var(--pst-font-family-monospace);
+  font-size:      0.70rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color:          var(--pyevoc-blue);
+  margin-bottom:  0.6rem;
+  display:        flex;
+  align-items:    center;
+  gap:            0.6rem;
+}
+.api-section-kicker::before {
+  content:    "";
+  display:    block;
+  width:      22px;
+  height:     1px;
+  background: currentColor;
+}
