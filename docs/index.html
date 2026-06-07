@@ -387,13 +387,6 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
   align-items: start;
 }
 
-.quad-diagram-img {
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 2px 24px rgba(0,0,0,0.1);
-}
-.quad-diagram-img img { width: 100%; display: block; }
-
 .quad-list { display: flex; flex-direction: column; gap: 1rem; }
 
 .quad-grid-2x2 {
@@ -421,10 +414,36 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
   transition: transform 0.18s;
 }
 .qc:hover { transform: translateX(4px); }
-.qc-nucleus { border-color: var(--nucleus-c); }
-.qc-periph1 { border-color: var(--periph1-c); }
-.qc-contrast { border-color: var(--contrast-c); }
-.qc-periph2 { border-color: var(--periph2-c); }
+  
+/* Colour tints per zone */
+.qc-nucleus  { background: var(--nucleus-dim); }
+.qc-periph1  { background: var(--periph1-dim); }
+.qc-contrast { background: var(--contrast-dim); }
+.qc-periph2  { background: var(--periph2-dim); }
+.qc-nucleus:hover  { background: #d8e6f0; }
+.qc-periph1:hover  { background: #d4edda; }
+.qc-contrast:hover { background: #f5d0cf; }
+.qc-periph2:hover  { background: #e5d5f0; }
+
+/* Top accent bar (high diffusion row) */
+.qc-nucleus::before,
+.qc-periph1::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.qc-nucleus::before  { background: var(--nucleus-c); }
+.qc-periph1::before  { background: var(--periph1-c); }
+
+/* Bottom accent bar (low diffusion row) */
+.qc-contrast::after,
+.qc-periph2::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 3px;
+}
+.qc-contrast::after  { background: var(--contrast-c); }
+.qc-periph2::after   { background: var(--periph2-c); }
 
 .qc-pill {
   display: inline-block;
