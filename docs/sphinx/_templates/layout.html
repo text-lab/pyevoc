@@ -1,0 +1,15 @@
+{% extends "pydata_sphinx_theme/layout.html" %}
+
+{%- block extrahead %}
+  {{ super() }}
+  <!-- PyEvoc design system fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <!-- Material Symbols for card icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+{%- endblock extrahead %}
+
+{%- block navbar_logo %}
+  {{- super() }}
+{%- endblock navbar_logo %}
