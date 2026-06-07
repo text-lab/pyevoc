@@ -1,0 +1,2847 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index &#8212; PyEvoc API Reference</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/pyevoc_api.css?v=6e525eff" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="_static/documentation_options.js?v=37f418d5"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="_static/searchtools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="searchindex.js"></script>
+  
+  <!-- PyEvoc design system fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <!-- Material Symbols for card icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+    
+    <img src="_static/pyevoc_logo.svg" class="logo__image only-light" alt="PyEvoc"/>
+    <img src="_static/pyevoc_logo.svg" class="logo__image only-dark pst-js-only" alt="PyEvoc"/>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api_reference.html">
+    Complete module reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/text-lab/pyevoc" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.5281/zenodo.20545334" title="Zenodo" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zenodo</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api_reference.html">
+    Complete module reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/text-lab/pyevoc" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.5281/zenodo.20545334" title="Zenodo" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zenodo</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.absent_label">absent_label (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.absent_label">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.add_concreteness_labels">add_concreteness_labels() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.add_concreteness_labels">(in module pyevoc.features.concreteness)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.add_emoji_descriptions">add_emoji_descriptions() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.add_emoji_descriptions">(in module pyevoc.features.emoji_labelling)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.add_expansion_hits">add_expansion_hits() (in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.add_foregrounding_indicators">add_foregrounding_indicators() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.add_foregrounding_indicators">(in module pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.add_positional_salience">add_positional_salience() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.add_positional_salience">(in module pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.add_salience_indicators">add_salience_indicators() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.add_salience_indicators">(in module pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.add_term_diffusion_summary">add_term_diffusion_summary() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.add_token_position">add_token_position() (in module pyevoc.features.foregrounding)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.aggregate_named_entities">aggregate_named_entities() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.aggregate_named_entities">(in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.alpha">alpha (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.alpha">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.config.settings.html#id0">(pyevoc.config.settings.PyEvocSettings attribute)</a>, <a href="api_reference/pyevoc.config.settings.html#pyevoc.config.settings.PyEvocSettings.alpha">[1]</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.SalienceConfig.alpha">(pyevoc.features.SalienceConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.SalienceConfig.alpha">(pyevoc.features.term_indices.SalienceConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.ambiguous_max_probability">ambiguous_max_probability (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.ambiguous_max_probability">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.ambiguous_min_probability">ambiguous_min_probability (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.ambiguous_min_probability">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.anchor_col">anchor_col (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.anchor_col">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.anchor_hits_col">anchor_hits_col (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.anchor_hits_col">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.annotate_dataframe">annotate_dataframe() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.annotate_dataframe">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.annotate_with_stanza">annotate_with_stanza() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.annotate_with_stanza">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.annotation_diagnostics">annotation_diagnostics() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.annotation_diagnostics">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig">AnnotationConfig (class in pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig">(class in pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingWeights.as_dict">as_dict() (pyevoc.features.foregrounding.ForegroundingWeights method)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights.as_dict">(pyevoc.features.ForegroundingWeights method)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.as_percent">as_percent (pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.as_percent">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.assert_metadata_preserved">assert_metadata_preserved() (in module pyevoc.features.foregrounding)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.assign_emoji_upos">assign_emoji_upos() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.assign_emoji_upos">(in module pyevoc.features.emoji_assignment)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.assign_evoc_quadrants">assign_evoc_quadrants() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.assign_evoc_quadrants">(in module pyevoc.analysis.quadrants)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.assign_quadrants">assign_quadrants() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.assign_quadrants">(in module pyevoc.analysis.quadrants)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.assign_target_coordinates">assign_target_coordinates() (in module pyevoc.visualisation.plots)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.available_concreteness_lexicon_paths">available_concreteness_lexicon_paths() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.available_concreteness_lexicon_paths">(in module pyevoc.features.concreteness)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.available_emoji_lookup_paths">available_emoji_lookup_paths() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.available_emoji_lookup_paths">(in module pyevoc.features.emoji_labelling)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.batch_size">batch_size (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.batch_size">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.build_count_vectorizer">build_count_vectorizer() (in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      <li><a href="api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_emoji_evoc_plot">build_emoji_evoc_plot() (in module pyevoc.visualisation)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.build_emoji_evoc_plot">(in module pyevoc.visualisation.plots)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_evoc_collocation_tree_for_upos">build_evoc_collocation_tree_for_upos() (in module pyevoc.visualisation)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.build_evoc_collocation_tree_for_upos">(in module pyevoc.visualisation.plots)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.build_evoc_html_for_upos">build_evoc_html_for_upos() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.build_evoc_html_for_upos">(in module pyevoc.analysis.quadrants)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_evoc_target_plot">build_evoc_target_plot() (in module pyevoc.visualisation)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.build_evoc_target_plot">(in module pyevoc.visualisation.plots)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.build_quadrant_block">build_quadrant_block() (in module pyevoc.analysis.quadrants)</a>
+</li>
+      <li><a href="api_reference/pyevoc.visualisation.html#pyevoc.visualisation.build_temporal_sankey_ordered">build_temporal_sankey_ordered() (in module pyevoc.visualisation)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.build_temporal_sankey_ordered">(in module pyevoc.visualisation.plots)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.build_thematic_subset">build_thematic_subset() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.build_thematic_subset">(in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.build_threshold_display_table">build_threshold_display_table() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.build_time_periods">build_time_periods() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.build_time_periods">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.build_unigram_terms">build_unigram_terms() (in module pyevoc.features.unigram_selection)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.caps_thr">caps_thr (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.caps_thr">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.clean_corpus">clean_corpus() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.clean_corpus">(in module pyevoc.preprocessing.cleaning)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.clean_text">clean_text() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.clean_text">(in module pyevoc.preprocessing.cleaning)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.clean_unigram_tokens">clean_unigram_tokens() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.clean_unigram_tokens">(in module pyevoc.features.unigram_selection)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig">CleaningConfig (class in pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig">(class in pyevoc.preprocessing.cleaning)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.codepoint_jaccard">codepoint_jaccard() (in module pyevoc.features.emoji_labelling)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.codepoint_tokens">codepoint_tokens() (in module pyevoc.features.emoji_labelling)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.colloc_relations">colloc_relations (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.colloc_relations">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig">CollocationEntityConfig (class in pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig">(class in pyevoc.analysis.collocations_entities)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.column_map">column_map (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.column_map">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.compile_anchor_pattern">compile_anchor_pattern() (in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.compute_caps_evidence">compute_caps_evidence() (in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.compute_period_quadrants">compute_period_quadrants() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.compute_period_quadrants">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.compute_stability_metrics">compute_stability_metrics() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.compute_stability_metrics">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.compute_structural_salience">compute_structural_salience() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.compute_structural_salience">(in module pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.compute_temporal_engagement">compute_temporal_engagement() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.compute_temporal_engagement">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.compute_term_indices">compute_term_indices() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.compute_term_indices">(in module pyevoc.features.term_indices)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.compute_term_statistics">compute_term_statistics() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.compute_term_statistics">(in module pyevoc.features.term_indices)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.concreteness_class">concreteness_class() (in module pyevoc.analysis.quadrants)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.concreteness_in_lexicon_col">concreteness_in_lexicon_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.concreteness_in_lexicon_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.concreteness_label_col">concreteness_label_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.concreteness_label_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.concreteness_score_col">concreteness_score_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.concreteness_score_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig">ConcretenessConfig (class in pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig">(class in pyevoc.features.concreteness)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.contains_emoji_grapheme">contains_emoji_grapheme() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.contains_emoji_grapheme">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.corpus_statistics">corpus_statistics() (in module pyevoc.preprocessing.corpus_statistics)</a>
+</li>
+      <li><a href="api_reference/pyevoc.data.html#pyevoc.data.corpus_summary">corpus_summary() (in module pyevoc.data)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.corpus_summary">(in module pyevoc.data.dataset)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig">CorpusStatisticsConfig (class in pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig">(class in pyevoc.preprocessing.corpus_statistics)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.count_emoji_documents">count_emoji_documents() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.count_emoji_documents">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.count_emoji_tokens">count_emoji_tokens() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.count_emoji_tokens">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.custom_time_breaks">custom_time_breaks (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.custom_time_breaks">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.custom_time_cuts">custom_time_cuts (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.custom_time_cuts">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.cut_abstract">cut_abstract (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.cut_abstract">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.cut_concrete">cut_concrete (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.cut_concrete">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.dataframe_to_html_table">dataframe_to_html_table() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig">DatasetConfig (class in pyevoc.data)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig">(class in pyevoc.data.dataset)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.decode_html">decode_html (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.decode_html">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.dep_rel_col">dep_rel_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.dep_rel_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.dependency_diagnostics">dependency_diagnostics() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.dependency_diagnostics">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.derive_expansion_terms">derive_expansion_terms() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.derive_expansion_terms">(in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.diffusion_basis">diffusion_basis (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.diffusion_basis">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.diffusion_multiplier">diffusion_multiplier (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.diffusion_multiplier">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.direct_anchor_filter">direct_anchor_filter() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.direct_anchor_filter">(in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.display_col">display_col (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.display_col">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.doc_col">doc_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.doc_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.doc_col">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.doc_col">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.doc_col">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.doc_col">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.doc_col">(pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.doc_col">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.doc_col">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.doc_col">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.doc_col">(pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.doc_col">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.doc_id_col">doc_id_col (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.doc_id_col">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.document_penetration_col">document_penetration_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.document_penetration_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.download_fasttext_lid_model">download_fasttext_lid_model() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.download_fasttext_lid_model">(in module pyevoc.preprocessing.language_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.drop_missing_text">drop_missing_text (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.drop_missing_text">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.eligible_upos">eligible_upos (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.eligible_upos">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.emoji_assignment_diagnostics">emoji_assignment_diagnostics() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.emoji_assignment_diagnostics">(in module pyevoc.features.emoji_assignment)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.emoji_codepoints_hex">emoji_codepoints_hex() (in module pyevoc.features.emoji_labelling)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.emoji_description_col">emoji_description_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.emoji_description_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.emoji_summary">emoji_summary() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.emoji_summary">(in module pyevoc.features.emoji_assignment)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.emoji_token_sample">emoji_token_sample() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.emoji_token_sample">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.emoji_upos">emoji_upos (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.emoji_upos">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.emoji_upos">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig.emoji_upos">(pyevoc.features.emoji_labelling.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.emoji_upos">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig.emoji_upos">(pyevoc.features.EmojiLabellingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig">EmojiAssignmentConfig (class in pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig">(class in pyevoc.features.emoji_assignment)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig">EmojiLabellingConfig (class in pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig">(class in pyevoc.features.emoji_labelling)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingWeights.emphasis">emphasis (pyevoc.features.foregrounding.ForegroundingWeights attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights.emphasis">(pyevoc.features.ForegroundingWeights attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.emphasis_pattern">emphasis_pattern (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.emphasis_pattern">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.end_date">end_date (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.end_date">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.utils.html#pyevoc.utils.ensure_dir">ensure_dir() (in module pyevoc.utils)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.io.html#pyevoc.utils.io.ensure_dir">(in module pyevoc.utils.io)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.entity_n">entity_n (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.entity_n">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.exclude_url_token">exclude_url_token (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.exclude_url_token">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.expand_contractions">expand_contractions (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.expand_contractions">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.expansion_col">expansion_col (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.expansion_col">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.expansion_hits_col">expansion_hits_col (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.expansion_hits_col">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.expected_max_timestamp">expected_max_timestamp (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.expected_max_timestamp">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.expected_min_timestamp">expected_min_timestamp (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.expected_min_timestamp">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_collocations">extract_collocations() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.extract_collocations">(in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_collocations_and_entities">extract_collocations_and_entities() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.extract_collocations_and_entities">(in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_dependency_collocations">extract_dependency_collocations() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.extract_dependency_collocations">(in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.extract_named_entity_ngrams">extract_named_entity_ngrams() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.extract_named_entity_ngrams">(in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.extract_tokens">extract_tokens() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.extract_tokens">(in module pyevoc.preprocessing.corpus_statistics)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.false_entity_terms">false_entity_terms (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.false_entity_terms">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.fasttext_batch_size">fasttext_batch_size (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.fasttext_batch_size">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.fasttext_predict_batch">fasttext_predict_batch() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.fasttext_predict_batch">(in module pyevoc.preprocessing.language_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.filter_by_language">filter_by_language() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.filter_by_language">(in module pyevoc.preprocessing.language_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.filter_type_col">filter_type_col (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.filter_type_col">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.focal_upos">focal_upos (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.focal_upos">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.focal_upos">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.focal_upos">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.SalienceConfig.focal_upos">(pyevoc.features.SalienceConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.SalienceConfig.focal_upos">(pyevoc.features.term_indices.SalienceConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.focal_upos">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.focal_upos">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.foregrounding_diagnostics">foregrounding_diagnostics() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.foregrounding_diagnostics">(in module pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig">ForegroundingConfig (class in pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig">(class in pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights">ForegroundingWeights (class in pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingWeights">(class in pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.format_float">format_float() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.format_int">format_int() (in module pyevoc.analysis.quadrants)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.format_int">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.format_value">format_value() (in module pyevoc.analysis.quadrants)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.freq_col">freq_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.freq_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.g2_alpha">g2_alpha (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.g2_alpha">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.generate_evoc_html_reports">generate_evoc_html_reports() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.generate_evoc_html_reports">(in module pyevoc.analysis.quadrants)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.generate_html">generate_html (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.generate_html">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.get_threshold_values">get_threshold_values() (in module pyevoc.analysis.quadrants)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.gini_coefficient">gini_coefficient() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.head_col">head_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.head_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.html_max_colloc_rows">html_max_colloc_rows (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.html_max_colloc_rows">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.html_max_entity_rows">html_max_entity_rows (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.html_max_entity_rows">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.html_max_overlap_rows">html_max_overlap_rows (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.html_max_overlap_rows">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.html_max_width_px">html_max_width_px (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.html_max_width_px">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.html_output_dir">html_output_dir (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.html_output_dir">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.html_top_n">html_top_n (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.html_top_n">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.human_readable">human_readable (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.human_readable">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.include_collocations">include_collocations (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.include_collocations">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.include_entities">include_entities (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.include_entities">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.infer_lexicon_columns">infer_lexicon_columns() (in module pyevoc.features.concreteness)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingWeights.intensification">intensification (pyevoc.features.foregrounding.ForegroundingWeights attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights.intensification">(pyevoc.features.ForegroundingWeights attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.intensification_pattern">intensification_pattern (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.intensification_pattern">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.is_emoji_grapheme">is_emoji_grapheme() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.is_emoji_grapheme">(in module pyevoc.preprocessing.cleaning)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.is_emoji_token">is_emoji_token() (in module pyevoc.features.emoji_assignment)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.is_latin_term">is_latin_term() (in module pyevoc.features.unigram_selection)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.is_punct_only">is_punct_only() (in module pyevoc.features.unigram_selection)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.is_valid_emoji">is_valid_emoji() (in module pyevoc.features.unigram_selection)</a>
+</li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.is_valid_stat_token">is_valid_stat_token() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.is_valid_stat_token">(in module pyevoc.preprocessing.corpus_statistics)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.is_valid_term">is_valid_term() (in module pyevoc.analysis.collocations_entities)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.keep_component_scores">keep_component_scores (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.keep_component_scores">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.keep_diagnostics">keep_diagnostics (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.keep_diagnostics">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.keep_extra_columns">keep_extra_columns (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.keep_extra_columns">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.keep_probability">keep_probability (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.keep_probability">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.label_concreteness">label_concreteness() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.label_concreteness">(in module pyevoc.features.concreteness)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.label_emojis">label_emojis() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.label_emojis">(in module pyevoc.features.emoji_labelling)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.config.settings.html#id2">language (pyevoc.config.settings.PyEvocSettings attribute)</a>, <a href="api_reference/pyevoc.config.settings.html#pyevoc.config.settings.PyEvocSettings.language">[1]</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.language">(pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.language">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig">LanguageFilterConfig (class in pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig">(class in pyevoc.preprocessing.language_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.lemma_col">lemma_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.lemma_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.lemma_col">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.lemma_col">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.lemma_col">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.lemma_col">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.lexicon_file">lexicon_file (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.lexicon_file">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.lingua_batch_size">lingua_batch_size (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.lingua_batch_size">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.lingua_confidence_col">lingua_confidence_col (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.lingua_confidence_col">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.lingua_detect_batch">lingua_detect_batch() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.lingua_detect_batch">(in module pyevoc.preprocessing.language_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.lingua_min_confidence">lingua_min_confidence (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.lingua_min_confidence">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.lingua_prediction_col">lingua_prediction_col (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.lingua_prediction_col">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.utils.html#pyevoc.utils.list_bundled_models">list_bundled_models() (in module pyevoc.utils)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.resources.html#pyevoc.utils.resources.list_bundled_models">(in module pyevoc.utils.resources)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingWeights.list_or_quote">list_or_quote (pyevoc.features.foregrounding.ForegroundingWeights attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights.list_or_quote">(pyevoc.features.ForegroundingWeights attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.list_or_quote_pattern">list_or_quote_pattern (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.list_or_quote_pattern">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.load_anchor_terms">load_anchor_terms() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.load_anchor_terms">(in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.load_concreteness_lexicon">load_concreteness_lexicon() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.load_concreteness_lexicon">(in module pyevoc.features.concreteness)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.html#pyevoc.data.load_dataset">load_dataset() (in module pyevoc.data)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.load_dataset">(in module pyevoc.data.dataset)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.load_emoji_lookup">load_emoji_lookup() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.load_emoji_lookup">(in module pyevoc.features.emoji_labelling)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig.lookup_file">lookup_file (pyevoc.features.emoji_labelling.EmojiLabellingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig.lookup_file">(pyevoc.features.EmojiLabellingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.lowercase">lowercase (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.lowercase">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.lowercase">(pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.lowercase">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.lowercase">(pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.lowercase">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.lowercase_non_emoji">lowercase_non_emoji (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.lowercase_non_emoji">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.max_df">max_df (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.max_df">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.max_features">max_features (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.max_features">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.max_rank_value">max_rank_value (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.max_rank_value">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.SalienceConfig.max_rank_value">(pyevoc.features.SalienceConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.SalienceConfig.max_rank_value">(pyevoc.features.term_indices.SalienceConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.metadata_coverage">metadata_coverage() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.metadata_coverage">(in module pyevoc.features.foregrounding)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.min_anchor_hits">min_anchor_hits (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.min_anchor_hits">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.min_caps_obs">min_caps_obs (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.min_caps_obs">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.min_chars">min_chars (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.min_chars">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.min_df">min_df (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.min_df">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.min_docs">min_docs (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.min_docs">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.min_docs_per_term">min_docs_per_term (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.min_docs_per_term">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.min_expansion_hits">min_expansion_hits (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.min_expansion_hits">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.min_freq">min_freq (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.min_freq">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.min_probability">min_probability (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.min_probability">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig.min_similarity">min_similarity (pyevoc.features.emoji_labelling.EmojiLabellingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig.min_similarity">(pyevoc.features.EmojiLabellingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.min_text_length">min_text_length (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.min_text_length">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.min_users">min_users (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.min_users">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.min_users_per_term">min_users_per_term (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.min_users_per_term">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.minimal_freq">minimal_freq (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.minimal_freq">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.utils.html#pyevoc.utils.model_path">model_path() (in module pyevoc.utils)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.resources.html#pyevoc.utils.resources.model_path">(in module pyevoc.utils.resources)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.models_dir">models_dir (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.models_dir">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig.models_dir">(pyevoc.features.emoji_labelling.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig.models_dir">(pyevoc.features.EmojiLabellingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#module-pyevoc.analysis">pyevoc.analysis</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#module-pyevoc.analysis.collocations_entities">pyevoc.analysis.collocations_entities</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#module-pyevoc.analysis.quadrants">pyevoc.analysis.quadrants</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#module-pyevoc.analysis.temporal_stability">pyevoc.analysis.temporal_stability</a>
+</li>
+        <li><a href="api_reference/pyevoc.config.html#module-pyevoc.config">pyevoc.config</a>
+</li>
+        <li><a href="api_reference/pyevoc.config.defaults.html#module-pyevoc.config.defaults">pyevoc.config.defaults</a>
+</li>
+        <li><a href="api_reference/pyevoc.config.settings.html#module-pyevoc.config.settings">pyevoc.config.settings</a>
+</li>
+        <li><a href="api_reference/pyevoc.data.html#module-pyevoc.data">pyevoc.data</a>
+</li>
+        <li><a href="api_reference/pyevoc.data.dataset.html#module-pyevoc.data.dataset">pyevoc.data.dataset</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#module-pyevoc.features">pyevoc.features</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#module-pyevoc.features.concreteness">pyevoc.features.concreteness</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#module-pyevoc.features.emoji_assignment">pyevoc.features.emoji_assignment</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#module-pyevoc.features.emoji_labelling">pyevoc.features.emoji_labelling</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#module-pyevoc.features.foregrounding">pyevoc.features.foregrounding</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#module-pyevoc.features.term_indices">pyevoc.features.term_indices</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#module-pyevoc.features.unigram_selection">pyevoc.features.unigram_selection</a>
+</li>
+        <li><a href="api_reference/pyevoc.models.html#module-pyevoc.models">pyevoc.models</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#module-pyevoc.preprocessing">pyevoc.preprocessing</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#module-pyevoc.preprocessing.annotation">pyevoc.preprocessing.annotation</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#module-pyevoc.preprocessing.cleaning">pyevoc.preprocessing.cleaning</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#module-pyevoc.preprocessing.corpus_statistics">pyevoc.preprocessing.corpus_statistics</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#module-pyevoc.preprocessing.language_filtering">pyevoc.preprocessing.language_filtering</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#module-pyevoc.preprocessing.thematic_filtering">pyevoc.preprocessing.thematic_filtering</a>
+</li>
+        <li><a href="api_reference/pyevoc.utils.html#module-pyevoc.utils">pyevoc.utils</a>
+</li>
+        <li><a href="api_reference/pyevoc.utils.io.html#module-pyevoc.utils.io">pyevoc.utils.io</a>
+</li>
+        <li><a href="api_reference/pyevoc.utils.resources.html#module-pyevoc.utils.resources">pyevoc.utils.resources</a>
+</li>
+        <li><a href="api_reference/pyevoc.utils.validation.html#module-pyevoc.utils.validation">pyevoc.utils.validation</a>
+</li>
+        <li><a href="api_reference/pyevoc.visualisation.html#module-pyevoc.visualisation">pyevoc.visualisation</a>
+</li>
+        <li><a href="api_reference/pyevoc.visualisation.plots.html#module-pyevoc.visualisation.plots">pyevoc.visualisation.plots</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.n_docs_col">n_docs_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.n_docs_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.n_periods">n_periods (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.n_periods">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.n_posts_col">n_posts_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.n_posts_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.n_users_col">n_users_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.n_users_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.next_quarter_start_utc">next_quarter_start_utc() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.ngram_range">ngram_range (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.ngram_range">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.normalise_anchor_terms">normalise_anchor_terms() (in module pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.normalise_annotation_columns">normalise_annotation_columns() (in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.normalise_apostrophes">normalise_apostrophes (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.normalise_apostrophes">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.normalise_emoji_glyph">normalise_emoji_glyph() (in module pyevoc.features.emoji_labelling)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.normalise_threshold_table">normalise_threshold_table() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.normalise_whitespace">normalise_whitespace (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.normalise_whitespace">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingWeights.normalised">normalised() (pyevoc.features.foregrounding.ForegroundingWeights method)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights.normalised">(pyevoc.features.ForegroundingWeights method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingWeights.opening_sentence">opening_sentence (pyevoc.features.foregrounding.ForegroundingWeights attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingWeights.opening_sentence">(pyevoc.features.ForegroundingWeights attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.opening_sentence_value">opening_sentence_value (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.opening_sentence_value">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.output_dir">output_dir (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.output_dir">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.output_dir">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.output_dir">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.output_dir">(pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.output_dir">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.output_name">output_name (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.output_name">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.parse_emoji_evoc_html">parse_emoji_evoc_html() (in module pyevoc.visualisation.plots)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.period_labels">period_labels (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.period_labels">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.position_col">position_col (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.position_col">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.post_penetration_col">post_penetration_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.post_penetration_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.posts_per_user_col">posts_per_user_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.posts_per_user_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.predict_language_fasttext">predict_language_fasttext() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.predict_language_fasttext">(in module pyevoc.preprocessing.language_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.prediction_col">prediction_col (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.prediction_col">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.prefer_overlap">prefer_overlap (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.prefer_overlap">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.prepare_concreteness_map">prepare_concreteness_map() (in module pyevoc.features.concreteness)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.prepare_emoji_lookup">prepare_emoji_lookup() (in module pyevoc.features.emoji_labelling)</a>
+</li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.prepare_for_langid">prepare_for_langid() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.prepare_for_langid">(in module pyevoc.preprocessing.language_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.prepare_tokens">prepare_tokens() (in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.probability_col">probability_col (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.probability_col">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.processors">processors (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.processors">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.analysis
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#module-pyevoc.analysis">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.analysis.collocations_entities
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#module-pyevoc.analysis.collocations_entities">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.analysis.quadrants
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#module-pyevoc.analysis.quadrants">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.analysis.temporal_stability
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#module-pyevoc.analysis.temporal_stability">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.config
+
+      <ul>
+        <li><a href="api_reference/pyevoc.config.html#module-pyevoc.config">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.config.defaults
+
+      <ul>
+        <li><a href="api_reference/pyevoc.config.defaults.html#module-pyevoc.config.defaults">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.config.settings
+
+      <ul>
+        <li><a href="api_reference/pyevoc.config.settings.html#module-pyevoc.config.settings">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.data
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#module-pyevoc.data">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.data.dataset
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.dataset.html#module-pyevoc.data.dataset">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    pyevoc.features
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#module-pyevoc.features">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.features.concreteness
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#module-pyevoc.features.concreteness">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.features.emoji_assignment
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#module-pyevoc.features.emoji_assignment">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.features.emoji_labelling
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#module-pyevoc.features.emoji_labelling">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.features.foregrounding
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#module-pyevoc.features.foregrounding">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.features.term_indices
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#module-pyevoc.features.term_indices">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.features.unigram_selection
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#module-pyevoc.features.unigram_selection">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.models
+
+      <ul>
+        <li><a href="api_reference/pyevoc.models.html#module-pyevoc.models">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.preprocessing
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#module-pyevoc.preprocessing">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.preprocessing.annotation
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#module-pyevoc.preprocessing.annotation">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.preprocessing.cleaning
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#module-pyevoc.preprocessing.cleaning">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.preprocessing.corpus_statistics
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#module-pyevoc.preprocessing.corpus_statistics">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.preprocessing.language_filtering
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#module-pyevoc.preprocessing.language_filtering">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.preprocessing.thematic_filtering
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#module-pyevoc.preprocessing.thematic_filtering">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.utils
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.html#module-pyevoc.utils">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.utils.io
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.io.html#module-pyevoc.utils.io">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.utils.resources
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.resources.html#module-pyevoc.utils.resources">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.utils.validation
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.validation.html#module-pyevoc.utils.validation">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.visualisation
+
+      <ul>
+        <li><a href="api_reference/pyevoc.visualisation.html#module-pyevoc.visualisation">module</a>
+</li>
+      </ul></li>
+      <li>
+    pyevoc.visualisation.plots
+
+      <ul>
+        <li><a href="api_reference/pyevoc.visualisation.plots.html#module-pyevoc.visualisation.plots">module</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.config.settings.html#pyevoc.config.settings.PyEvocSettings">PyEvocSettings (class in pyevoc.config.settings)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.quadrant_entropy">quadrant_entropy() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.quadrant_order">quadrant_order (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.quadrant_order">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.quadrant_rule_label">quadrant_rule_label() (in module pyevoc.analysis.quadrants)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.quadrant_summary_by_pos">quadrant_summary_by_pos() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.quadrant_summary_by_pos">(in module pyevoc.analysis.quadrants)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.quadrant_trajectories">quadrant_trajectories() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.quadrant_trajectories">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig">QuadrantConfig (class in pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig">(class in pyevoc.analysis.quadrants)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.quarter_label_from_timestamp">quarter_label_from_timestamp() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.quarter_start_utc">quarter_start_utc() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.config.settings.html#id1">r_max (pyevoc.config.settings.PyEvocSettings attribute)</a>, <a href="api_reference/pyevoc.config.settings.html#pyevoc.config.settings.PyEvocSettings.r_max">[1]</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.r_pos_col">r_pos_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.r_pos_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.r_pos_col">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.r_pos_col">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.r_str_col">r_str_col (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.r_str_col">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.r_struct_col">r_struct_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.r_struct_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.rank_col">rank_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.rank_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.read_kwargs">read_kwargs (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.read_kwargs">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.utils.html#pyevoc.utils.read_table">read_table() (in module pyevoc.utils)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.io.html#pyevoc.utils.io.read_table">(in module pyevoc.utils.io)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.reduce_elongated_vowels">reduce_elongated_vowels (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.reduce_elongated_vowels">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.remove_control_chars">remove_control_chars (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.remove_control_chars">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.remove_numeric_terms">remove_numeric_terms (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.remove_numeric_terms">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.remove_punct_only">remove_punct_only (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.remove_punct_only">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.remove_urls">remove_urls (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.remove_urls">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.replace_ampersand">replace_ampersand (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.replace_ampersand">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.require_latin_terms">require_latin_terms (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.require_latin_terms">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.resolve_concreteness_lexicon_path">resolve_concreteness_lexicon_path() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.resolve_concreteness_lexicon_path">(in module pyevoc.features.concreteness)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.resolve_emoji_lookup_path">resolve_emoji_lookup_path() (in module pyevoc.features.emoji_labelling)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.resolve_ne_colloc_overlap">resolve_ne_colloc_overlap() (in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.resolve_overlap">resolve_overlap (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.resolve_overlap">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.retain_columns">retain_columns (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.retain_columns">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.return_diagnostics">return_diagnostics (pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.return_diagnostics">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.right">right (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.right">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.round_digits">round_digits (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.round_digits">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.round_digits">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.round_digits">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.run_temporal_stability_analysis">run_temporal_stability_analysis() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.run_temporal_stability_analysis">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.safe_spearman">safe_spearman() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.safe_std">safe_std() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.salience_col">salience_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.salience_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.SalienceConfig">SalienceConfig (class in pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.SalienceConfig">(class in pyevoc.features.term_indices)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.save_emoji_sample">save_emoji_sample (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.save_emoji_sample">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.save_parquet">save_parquet (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.save_parquet">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.score_column_candidates">score_column_candidates (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.score_column_candidates">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.score_phrase_table">score_phrase_table() (in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.select_emojis_for_plot">select_emojis_for_plot() (in module pyevoc.visualisation.plots)</a>
+</li>
+      <li><a href="api_reference/pyevoc.visualisation.plots.html#pyevoc.visualisation.plots.select_terms_for_target">select_terms_for_target() (in module pyevoc.visualisation.plots)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.select_top_terms">select_top_terms() (in module pyevoc.analysis.quadrants)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.select_unigrams">select_unigrams() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.select_unigrams">(in module pyevoc.features.unigram_selection)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.sentence_col">sentence_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.sentence_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.sentence_col">(pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.sentence_col">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.separate_emojis">separate_emojis() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.separate_emojis">(in module pyevoc.preprocessing.cleaning)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.show_progress">show_progress (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.show_progress">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.show_progress">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.show_progress">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.show_progress">(pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.show_progress">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.show_progress">(pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.show_progress">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.show_progress">(pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.show_progress">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.show_progress">(pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.show_progress">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.show_progress">(pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.show_progress">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.show_progress">(pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.show_progress">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.show_tables">show_tables (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.show_tables">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.similarity_threshold">similarity_threshold (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.similarity_threshold">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.simple_tokenise">simple_tokenise() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.simple_tokenise">(in module pyevoc.preprocessing.corpus_statistics)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.source_col">source_col (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.source_col">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.source_col">(pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.source_col">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.space_emojis">space_emojis (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.space_emojis">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.space_punctuation">space_punctuation (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.space_punctuation">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.html#pyevoc.data.standardise_dataset">standardise_dataset() (in module pyevoc.data)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.standardise_dataset">(in module pyevoc.data.dataset)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.start_date">start_date (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.start_date">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.stop_words">stop_words (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.stop_words">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.stop_words">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.stop_words">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.stop_words">(pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.stop_words">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.subset_flag_col">subset_flag_col (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.subset_flag_col">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.surface_col">surface_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.surface_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.target_language">target_language (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.target_language">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig">TemporalStabilityConfig (class in pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig">(class in pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.term_col">term_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.term_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.term_col">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.term_col">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.term_col">(pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.term_col">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig.term_col">(pyevoc.features.emoji_labelling.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig.term_col">(pyevoc.features.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.term_col">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.term_col">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.term_statistics_summary">term_statistics_summary() (in module pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.term_statistics_summary">(in module pyevoc.features.term_indices)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.term_type_col">term_type_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.term_type_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.text_col">text_col (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.text_col">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.text_col">(pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.text_col">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.text_col">(pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.text_col">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.text_col">(pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.text_col">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig">ThematicFilterConfig (class in pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig">(class in pyevoc.preprocessing.thematic_filtering)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.time_col">time_col (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.time_col">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.time_col">(pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.time_col">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.time_col">(pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.time_col">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.time_col">(pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.time_col">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.time_period_mode">time_period_mode (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.time_period_mode">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.data.dataset.html#pyevoc.data.dataset.DatasetConfig.timezone">timezone (pyevoc.data.dataset.DatasetConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.data.html#pyevoc.data.DatasetConfig.timezone">(pyevoc.data.DatasetConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.token_col">token_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.token_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.token_col">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.token_col">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.token_col">(pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.token_col">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.token_col">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.token_col">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.token_column_candidates">token_column_candidates (pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.token_column_candidates">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.token_id_col">token_id_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.token_id_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.tokenize_no_ssplit">tokenize_no_ssplit (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.tokenize_no_ssplit">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.top_n">top_n (pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.top_n">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.top_n_expansion_terms">top_n_expansion_terms (pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.top_n_expansion_terms">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.unigram_selection_diagnostics">unigram_selection_diagnostics() (in module pyevoc.features.unigram_selection)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig">UnigramSelectionConfig (class in pyevoc.features)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig">(class in pyevoc.features.unigram_selection)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.upos_col">upos_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.upos_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.upos_col">(pyevoc.analysis.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.upos_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.upos_col">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.upos_col">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.upos_col">(pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.upos_col">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.upos_col">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig.upos_col">(pyevoc.features.emoji_labelling.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.upos_col">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig.upos_col">(pyevoc.features.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.upos_col">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.upos_col">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.cleaning.html#pyevoc.preprocessing.cleaning.CleaningConfig.url_placeholder">url_placeholder (pyevoc.preprocessing.cleaning.CleaningConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CleaningConfig.url_placeholder">(pyevoc.preprocessing.CleaningConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.use_gpu">use_gpu (pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.use_gpu">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.use_lingua_fallback">use_lingua_fallback (pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.use_lingua_fallback">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.use_users_for_frequency">use_users_for_frequency (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.use_users_for_frequency">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.SalienceConfig.use_users_for_frequency">(pyevoc.features.SalienceConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.term_indices.html#pyevoc.features.term_indices.SalienceConfig.use_users_for_frequency">(pyevoc.features.term_indices.SalienceConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.user_col">user_col (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.user_col">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.user_col">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.user_col">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.user_col">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.user_col">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.user_col">(pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.user_col">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.user_col">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.user_col">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.AnnotationConfig.user_col">(pyevoc.preprocessing.annotation.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.AnnotationConfig.user_col">(pyevoc.preprocessing.AnnotationConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.corpus_statistics.html#pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig.user_col">(pyevoc.preprocessing.corpus_statistics.CorpusStatisticsConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.CorpusStatisticsConfig.user_col">(pyevoc.preprocessing.CorpusStatisticsConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.utils.html#pyevoc.utils.user_model_path">user_model_path() (in module pyevoc.utils)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.resources.html#pyevoc.utils.resources.user_model_path">(in module pyevoc.utils.resources)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.user_penetration_col">user_penetration_col (pyevoc.analysis.QuadrantConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.user_penetration_col">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.validate_annotation_input">validate_annotation_input() (in module pyevoc.preprocessing)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.preprocessing.annotation.html#pyevoc.preprocessing.annotation.validate_annotation_input">(in module pyevoc.preprocessing.annotation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.utils.html#pyevoc.utils.validate_column_map">validate_column_map() (in module pyevoc.utils)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.validation.html#pyevoc.utils.validation.validate_column_map">(in module pyevoc.utils.validation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.utils.html#pyevoc.utils.validate_columns">validate_columns() (in module pyevoc.utils)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.utils.validation.html#pyevoc.utils.validation.validate_columns">(in module pyevoc.utils.validation)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.validate_time_range">validate_time_range() (in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.validate_token_metadata">validate_token_metadata() (in module pyevoc.features.foregrounding)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.verbose">verbose (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.verbose">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.QuadrantConfig.verbose">(pyevoc.analysis.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrants.QuadrantConfig.verbose">(pyevoc.analysis.quadrants.QuadrantConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.verbose">(pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.verbose">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.concreteness.html#pyevoc.features.concreteness.ConcretenessConfig.verbose">(pyevoc.features.concreteness.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ConcretenessConfig.verbose">(pyevoc.features.ConcretenessConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_assignment.html#pyevoc.features.emoji_assignment.EmojiAssignmentConfig.verbose">(pyevoc.features.emoji_assignment.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.emoji_labelling.html#pyevoc.features.emoji_labelling.EmojiLabellingConfig.verbose">(pyevoc.features.emoji_labelling.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiAssignmentConfig.verbose">(pyevoc.features.EmojiAssignmentConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.EmojiLabellingConfig.verbose">(pyevoc.features.EmojiLabellingConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.unigram_selection.html#pyevoc.features.unigram_selection.UnigramSelectionConfig.verbose">(pyevoc.features.unigram_selection.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.UnigramSelectionConfig.verbose">(pyevoc.features.UnigramSelectionConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.language_filtering.html#pyevoc.preprocessing.language_filtering.LanguageFilterConfig.verbose">(pyevoc.preprocessing.language_filtering.LanguageFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.LanguageFilterConfig.verbose">(pyevoc.preprocessing.LanguageFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.thematic_filtering.html#pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig.verbose">(pyevoc.preprocessing.thematic_filtering.ThematicFilterConfig attribute)</a>
+</li>
+        <li><a href="api_reference/pyevoc.preprocessing.html#pyevoc.preprocessing.ThematicFilterConfig.verbose">(pyevoc.preprocessing.ThematicFilterConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.warn_on_time_range_mismatch">warn_on_time_range_mismatch (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.warn_on_time_range_mismatch">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.features.foregrounding.html#pyevoc.features.foregrounding.ForegroundingConfig.weights">weights (pyevoc.features.foregrounding.ForegroundingConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.features.html#pyevoc.features.ForegroundingConfig.weights">(pyevoc.features.ForegroundingConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.CollocationEntityConfig.write_html">write_html (pyevoc.analysis.CollocationEntityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.CollocationEntityConfig.write_html">(pyevoc.analysis.collocations_entities.CollocationEntityConfig attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.TemporalStabilityConfig.write_html_report">write_html_report (pyevoc.analysis.temporal_stability.TemporalStabilityConfig attribute)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.TemporalStabilityConfig.write_html_report">(pyevoc.analysis.TemporalStabilityConfig attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="api_reference/pyevoc.analysis.collocations_entities.html#pyevoc.analysis.collocations_entities.write_html_table">write_html_table() (in module pyevoc.analysis.collocations_entities)</a>
+</li>
+      <li><a href="api_reference/pyevoc.analysis.html#pyevoc.analysis.write_temporal_report_html">write_temporal_report_html() (in module pyevoc.analysis)</a>
+
+      <ul>
+        <li><a href="api_reference/pyevoc.analysis.temporal_stability.html#pyevoc.analysis.temporal_stability.write_temporal_report_html">(in module pyevoc.analysis.temporal_stability)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Michelangelo Misuraca.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>
