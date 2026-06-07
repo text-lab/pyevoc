@@ -1,0 +1,1536 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pyevoc.analysis.quadrants &#8212; PyEvoc API Reference</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pyevoc_api.css?v=6e525eff" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=37f418d5"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pyevoc/analysis/quadrants';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  <!-- PyEvoc design system fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+  <!-- Material Symbols for card icons -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+    
+    <img src="../../../_static/pyevoc_logo.svg" class="logo__image only-light" alt="PyEvoc"/>
+    <img src="../../../_static/pyevoc_logo.svg" class="logo__image only-dark pst-js-only" alt="PyEvoc"/>
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api_reference.html">
+    Complete module reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/text-lab/pyevoc" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.5281/zenodo.20545334" title="Zenodo" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zenodo</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api_reference.html">
+    Complete module reference
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/text-lab/pyevoc" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://doi.org/10.5281/zenodo.20545334" title="Zenodo" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-book fa-lg" aria-hidden="true"></i><span class="visually-hidden">Zenodo</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pyevoc.analysis.quadrants</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pyevoc.analysis.quadrants</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;EVOC thresholding, quadrant assignment, and compact HTML reporting.</span>
+
+<span class="sd">This module assigns terms to the four classical EVOC/HEM quadrants after</span>
+<span class="sd">term-level statistics, concreteness labelling, and emoji description labelling</span>
+<span class="sd">have been computed.</span>
+
+<span class="sd">The module implements the EVOC-ready logic used in PyEvoc:</span>
+
+<span class="sd">- optional minimal-frequency filtering;</span>
+<span class="sd">- POS-specific AFE and AOE thresholds;</span>
+<span class="sd">- user-level or document-level relative diffusion;</span>
+<span class="sd">- rounded comparison values for stable table construction;</span>
+<span class="sd">- diffusion/salience classes;</span>
+<span class="sd">- ordered quadrant labels;</span>
+<span class="sd">- publication-ready EVOC table;</span>
+<span class="sd">- threshold and quadrant diagnostics;</span>
+<span class="sd">- optional compact HTML reports by UPOS category.</span>
+
+<span class="sd">The expected input is a term-level dataframe containing at least:</span>
+
+<span class="sd">- term</span>
+<span class="sd">- upos</span>
+<span class="sd">- term_type</span>
+<span class="sd">- n_docs or n_posts</span>
+<span class="sd">- n_users</span>
+<span class="sd">- R_pos</span>
+<span class="sd">- R_struct</span>
+<span class="sd">- S</span>
+<span class="sd">- Rank</span>
+<span class="sd">- freq_for_quadrant</span>
+<span class="sd">- user_penetration</span>
+<span class="sd">- posts_per_user</span>
+
+<span class="sd">Optional enrichment columns such as ``concreteness_label`` and</span>
+<span class="sd">``emoji_description`` are preserved when available.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">gc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">html</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="n">DEFAULT_FOCAL_UPOS</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;ADJ&quot;</span><span class="p">,</span> <span class="s2">&quot;EMOJI&quot;</span><span class="p">}</span>
+
+<span class="n">QUADRANT_ORDER</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Central nucleus&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;First periphery&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Contrast zone&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Peripheral system&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">UPOS_LABELS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;NOUN&quot;</span><span class="p">:</span> <span class="s2">&quot;Nouns&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ADJ&quot;</span><span class="p">:</span> <span class="s2">&quot;Adjectives&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;EMOJI&quot;</span><span class="p">:</span> <span class="s2">&quot;Emojis&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">MACHINE_TO_HUMAN_QUADRANT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;central_nucleus&quot;</span><span class="p">:</span> <span class="s2">&quot;Central nucleus&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;first_periphery&quot;</span><span class="p">:</span> <span class="s2">&quot;First periphery&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;contrast_zone&quot;</span><span class="p">:</span> <span class="s2">&quot;Contrast zone&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;peripheral_system&quot;</span><span class="p">:</span> <span class="s2">&quot;Peripheral system&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">HUMAN_TO_MACHINE_QUADRANT</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">key</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">MACHINE_TO_HUMAN_QUADRANT</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="QuadrantConfig">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.QuadrantConfig">[docs]</a>
+<span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QuadrantConfig</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Configuration for EVOC quadrant assignment and optional HTML reporting.&quot;&quot;&quot;</span>
+
+    <span class="n">minimal_freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">round_digits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="n">focal_upos</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">set</span><span class="p">(</span><span class="n">DEFAULT_FOCAL_UPOS</span><span class="p">))</span>
+    <span class="n">quadrant_order</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">QUADRANT_ORDER</span><span class="p">))</span>
+
+    <span class="n">diffusion_basis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;user_penetration&quot;</span>
+
+    <span class="n">term_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;term&quot;</span>
+    <span class="n">upos_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;upos&quot;</span>
+    <span class="n">term_type_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;term_type&quot;</span>
+
+    <span class="n">n_docs_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;n_docs&quot;</span>
+    <span class="n">n_posts_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;n_posts&quot;</span>
+    <span class="n">n_users_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;n_users&quot;</span>
+
+    <span class="n">r_pos_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;R_pos&quot;</span>
+    <span class="n">r_struct_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;R_struct&quot;</span>
+    <span class="n">salience_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;S&quot;</span>
+    <span class="n">rank_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Rank&quot;</span>
+
+    <span class="n">freq_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;freq_for_quadrant&quot;</span>
+
+    <span class="n">user_penetration_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;user_penetration&quot;</span>
+    <span class="n">document_penetration_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;document_penetration&quot;</span>
+    <span class="n">post_penetration_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;post_penetration&quot;</span>
+    <span class="n">posts_per_user_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;posts_per_user&quot;</span>
+
+    <span class="n">concreteness_score_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;concreteness_score&quot;</span>
+    <span class="n">concreteness_label_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;concreteness_label&quot;</span>
+    <span class="n">concreteness_in_lexicon_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;concreteness_in_lexicon&quot;</span>
+
+    <span class="n">emoji_description_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;emoji_description&quot;</span>
+
+    <span class="n">human_readable</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="n">generate_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">html_output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">=</span> <span class="s2">&quot;evoc_outputs&quot;</span>
+    <span class="n">html_top_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">html_max_width_px</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">950</span>
+
+    <span class="n">verbose</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_require_columns</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">columns</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate required columns.&quot;&quot;&quot;</span>
+
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">columns</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;term_stats_df is missing required columns: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_normalise_input_quadrant</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">object</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Normalise existing quadrant labels to human-readable labels.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">MACHINE_TO_HUMAN_QUADRANT</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">MACHINE_TO_HUMAN_QUADRANT</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">value</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_ensure_n_posts_alias</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">cfg</span><span class="p">:</span> <span class="n">QuadrantConfig</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ensure that the dataframe contains an n_posts-compatible column.&quot;&quot;&quot;</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">cfg</span><span class="o">.</span><span class="n">n_docs_col</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">n_docs_col</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">n_docs_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span> <span class="ow">in</span> <span class="n">out</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">n_docs_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">out</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_select_diffusion_basis</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">cfg</span><span class="p">:</span> <span class="n">QuadrantConfig</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the relative diffusion series used for quadrant assignment.&quot;&quot;&quot;</span>
+
+    <span class="n">valid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;user_penetration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;post_penetration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;document_penetration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;diffusion_penetration&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">diffusion_basis</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">valid</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;diffusion_basis must be one of &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">valid</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">diffusion_basis</span> <span class="o">==</span> <span class="s2">&quot;user_penetration&quot;</span><span class="p">:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">user_penetration_col</span>
+    <span class="k">elif</span> <span class="n">cfg</span><span class="o">.</span><span class="n">diffusion_basis</span> <span class="o">==</span> <span class="s2">&quot;post_penetration&quot;</span><span class="p">:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">post_penetration_col</span>
+    <span class="k">elif</span> <span class="n">cfg</span><span class="o">.</span><span class="n">diffusion_basis</span> <span class="o">==</span> <span class="s2">&quot;document_penetration&quot;</span><span class="p">:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">document_penetration_col</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;diffusion_penetration&quot;</span>
+
+    <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;diffusion_basis=&#39;</span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">diffusion_basis</span><span class="si">}</span><span class="s2">&#39; requires column &#39;</span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># ---------------------------------------------------------------------------</span>
+<span class="c1"># Compact EVOC HTML report helpers</span>
+<span class="c1"># ---------------------------------------------------------------------------</span>
+
+<div class="viewcode-block" id="format_value">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.format_value">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_value</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format a numeric value for EVOC compact HTML tables.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;-&quot;</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="si">:</span><span class="s2">.</span><span class="si">{</span><span class="n">digits</span><span class="si">}</span><span class="s2">f</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="format_int">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.format_int">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">format_int</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Format an integer-like value for EVOC compact HTML tables.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;-&quot;</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="concreteness_class">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.concreteness_class">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">concreteness_class</span><span class="p">(</span><span class="n">label</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return a CSS class for a concreteness label.&quot;&quot;&quot;</span>
+
+    <span class="n">value</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;concrete&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;conc-concrete&quot;</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;abstract&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;conc-abstract&quot;</span>
+
+    <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;mixed&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;conc-mixed&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;conc-missing&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="get_threshold_values">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.get_threshold_values">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_threshold_values</span><span class="p">(</span>
+    <span class="n">pos_thresholds_round_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">upos</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return formatted AFE/AOE threshold values for one UPOS category.&quot;&quot;&quot;</span>
+
+    <span class="n">required</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;upos&quot;</span><span class="p">,</span> <span class="s2">&quot;AFE_thr_round&quot;</span><span class="p">,</span> <span class="s2">&quot;AOE_thr_round&quot;</span><span class="p">}</span>
+    <span class="n">_require_columns</span><span class="p">(</span><span class="n">pos_thresholds_round_df</span><span class="p">,</span> <span class="n">required</span><span class="p">)</span>
+
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">pos_thresholds_round_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">pos_thresholds_round_df</span><span class="p">[</span><span class="s2">&quot;upos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">upos</span><span class="p">)</span>
+    <span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">sub</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span>
+
+    <span class="n">afe</span> <span class="o">=</span> <span class="n">format_value</span><span class="p">(</span><span class="n">sub</span><span class="p">[</span><span class="s2">&quot;AFE_thr_round&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">digits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">aoe</span> <span class="o">=</span> <span class="n">format_value</span><span class="p">(</span><span class="n">sub</span><span class="p">[</span><span class="s2">&quot;AOE_thr_round&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">digits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">afe</span><span class="p">,</span> <span class="n">aoe</span></div>
+
+
+
+<div class="viewcode-block" id="quadrant_rule_label">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrant_rule_label">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">quadrant_rule_label</span><span class="p">(</span><span class="n">quadrant</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">afe</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">aoe</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the rule label printed under each quadrant title.&quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">quadrant</span> <span class="o">==</span> <span class="s2">&quot;Central nucleus&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Rel. diff. ≥ </span><span class="si">{</span><span class="n">afe</span><span class="si">}</span><span class="s2">; AOE ≤ </span><span class="si">{</span><span class="n">aoe</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="n">quadrant</span> <span class="o">==</span> <span class="s2">&quot;First periphery&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Rel. diff. ≥ </span><span class="si">{</span><span class="n">afe</span><span class="si">}</span><span class="s2">; AOE &gt; </span><span class="si">{</span><span class="n">aoe</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="n">quadrant</span> <span class="o">==</span> <span class="s2">&quot;Contrast zone&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Rel. diff. &lt; </span><span class="si">{</span><span class="n">afe</span><span class="si">}</span><span class="s2">; AOE ≤ </span><span class="si">{</span><span class="n">aoe</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="n">quadrant</span> <span class="o">==</span> <span class="s2">&quot;Peripheral system&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Rel. diff. &lt; </span><span class="si">{</span><span class="n">afe</span><span class="si">}</span><span class="s2">; AOE &gt; </span><span class="si">{</span><span class="n">aoe</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="select_top_terms">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.select_top_terms">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">select_top_terms</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">quadrant</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Select the top terms for one quadrant using the legacy EVOC ordering.&quot;&quot;&quot;</span>
+
+    <span class="n">required_cols</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="s2">&quot;Rank&quot;</span><span class="p">}</span>
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">required_cols</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Input dataframe is missing required ordering columns: </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">quadrant</span> <span class="ow">in</span> <span class="p">{</span><span class="s2">&quot;Central nucleus&quot;</span><span class="p">,</span> <span class="s2">&quot;First periphery&quot;</span><span class="p">}:</span>
+        <span class="n">sort_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span> <span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">]</span>
+        <span class="n">ascending</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="n">quadrant</span> <span class="o">==</span> <span class="s2">&quot;Contrast zone&quot;</span><span class="p">:</span>
+        <span class="n">sort_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">]</span>
+        <span class="n">ascending</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="n">quadrant</span> <span class="o">==</span> <span class="s2">&quot;Peripheral system&quot;</span><span class="p">:</span>
+        <span class="n">sort_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span> <span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="s2">&quot;frequency&quot;</span><span class="p">]</span>
+        <span class="n">ascending</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unknown quadrant: </span><span class="si">{</span><span class="n">quadrant</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">sort_cols</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="n">ascending</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">top_n</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="build_quadrant_block">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.build_quadrant_block">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_quadrant_block</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">quadrant</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">upos</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">afe</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">aoe</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Build one HTML card for a given quadrant and UPOS category.&quot;&quot;&quot;</span>
+
+    <span class="n">sub</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span>
+        <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">==</span> <span class="n">quadrant</span><span class="p">)</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;upos&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">==</span> <span class="n">upos</span><span class="p">)</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">sub</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">sub</span> <span class="o">=</span> <span class="n">select_top_terms</span><span class="p">(</span><span class="n">sub</span><span class="p">,</span> <span class="n">quadrant</span><span class="o">=</span><span class="n">quadrant</span><span class="p">,</span> <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">upos</span> <span class="o">==</span> <span class="s2">&quot;EMOJI&quot;</span><span class="p">:</span>
+        <span class="n">term_header</span> <span class="o">=</span> <span class="s2">&quot;Emoji&quot;</span>
+        <span class="n">extra_header</span> <span class="o">=</span> <span class="s2">&quot;Description&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">term_header</span> <span class="o">=</span> <span class="s2">&quot;Term&quot;</span>
+        <span class="n">extra_header</span> <span class="o">=</span> <span class="s2">&quot;Conc.&quot;</span>
+
+    <span class="k">if</span> <span class="n">sub</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="n">rows</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        &lt;tr&gt;</span>
+<span class="s2">            &lt;td colspan=&quot;5&quot; class=&quot;empty&quot;&gt;No retained terms&lt;/td&gt;</span>
+<span class="s2">        &lt;/tr&gt;</span>
+<span class="s2">        &quot;&quot;&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">row_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sub</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;term&quot;</span><span class="p">]))</span>
+
+            <span class="n">relative_diffusion</span> <span class="o">=</span> <span class="n">format_value</span><span class="p">(</span>
+                <span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">),</span>
+                <span class="n">digits</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="n">absolute_frequency</span> <span class="o">=</span> <span class="n">format_int</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;frequency&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">))</span>
+
+            <span class="n">rank</span> <span class="o">=</span> <span class="n">format_value</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Rank&quot;</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">),</span> <span class="n">digits</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">upos</span> <span class="o">==</span> <span class="s2">&quot;EMOJI&quot;</span><span class="p">:</span>
+                <span class="n">extra</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;emoji_description&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)))</span>
+                <span class="n">extra_cell</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;&lt;td class=&quot;desc&quot;&gt;</span><span class="si">{</span><span class="n">extra</span><span class="si">}</span><span class="s1">&lt;/td&gt;&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;concreteness_label&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">))</span>
+                <span class="n">label_html</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+                <span class="n">label_class</span> <span class="o">=</span> <span class="n">concreteness_class</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+                <span class="n">extra_cell</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;&lt;td class=&quot;conc </span><span class="si">{</span><span class="n">label_class</span><span class="si">}</span><span class="s1">&quot;&gt;&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;&lt;strong&gt;</span><span class="si">{</span><span class="n">label_html</span><span class="si">}</span><span class="s1">&lt;/strong&gt;&#39;</span>
+                    <span class="sa">f</span><span class="s1">&#39;&lt;/td&gt;&#39;</span>
+                <span class="p">)</span>
+
+            <span class="n">row_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                &lt;tr&gt;</span>
+<span class="s2">                    &lt;td class=&quot;term&quot;&gt;</span><span class="si">{</span><span class="n">term</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">                    &lt;td class=&quot;num&quot;&gt;</span><span class="si">{</span><span class="n">relative_diffusion</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">                    &lt;td class=&quot;num&quot;&gt;</span><span class="si">{</span><span class="n">absolute_frequency</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">                    &lt;td class=&quot;num&quot;&gt;</span><span class="si">{</span><span class="n">rank</span><span class="si">}</span><span class="s2">&lt;/td&gt;</span>
+<span class="s2">                    </span><span class="si">{</span><span class="n">extra_cell</span><span class="si">}</span>
+<span class="s2">                &lt;/tr&gt;</span>
+<span class="s2">                &quot;&quot;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">rows</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">row_list</span><span class="p">)</span>
+
+    <span class="n">rule</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">quadrant_rule_label</span><span class="p">(</span><span class="n">quadrant</span><span class="p">,</span> <span class="n">afe</span><span class="p">,</span> <span class="n">aoe</span><span class="p">))</span>
+    <span class="n">css_class</span> <span class="o">=</span> <span class="n">quadrant</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    &lt;div class=&quot;quad-card </span><span class="si">{</span><span class="n">css_class</span><span class="si">}</span><span class="s2">&quot;&gt;</span>
+<span class="s2">        &lt;div class=&quot;quad-title&quot;&gt;</span>
+<span class="s2">            &lt;div&gt;</span><span class="si">{</span><span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">quadrant</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">            &lt;div class=&quot;quad-rule&quot;&gt;</span><span class="si">{</span><span class="n">rule</span><span class="si">}</span><span class="s2">&lt;/div&gt;</span>
+<span class="s2">        &lt;/div&gt;</span>
+
+<span class="s2">        &lt;table class=&quot;evoc-table&quot;&gt;</span>
+<span class="s2">            &lt;thead&gt;</span>
+<span class="s2">                &lt;tr&gt;</span>
+<span class="s2">                    &lt;th&gt;</span><span class="si">{</span><span class="n">term_header</span><span class="si">}</span><span class="s2">&lt;/th&gt;</span>
+<span class="s2">                    &lt;th class=&quot;num&quot;&gt;Rel. diff.&lt;/th&gt;</span>
+<span class="s2">                    &lt;th class=&quot;num&quot;&gt;Abs.&lt;/th&gt;</span>
+<span class="s2">                    &lt;th class=&quot;num&quot;&gt;Rank&lt;/th&gt;</span>
+<span class="s2">                    &lt;th&gt;</span><span class="si">{</span><span class="n">extra_header</span><span class="si">}</span><span class="s2">&lt;/th&gt;</span>
+<span class="s2">                &lt;/tr&gt;</span>
+<span class="s2">            &lt;/thead&gt;</span>
+<span class="s2">            &lt;tbody&gt;</span>
+<span class="s2">                </span><span class="si">{</span><span class="n">rows</span><span class="si">}</span>
+<span class="s2">            &lt;/tbody&gt;</span>
+<span class="s2">        &lt;/table&gt;</span>
+<span class="s2">    &lt;/div&gt;</span>
+<span class="s2">    &quot;&quot;&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="build_evoc_html_for_upos">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.build_evoc_html_for_upos">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">build_evoc_html_for_upos</span><span class="p">(</span>
+    <span class="n">evoc_quadrants_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">upos</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">pos_thresholds_round_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">=</span> <span class="s2">&quot;evoc_outputs&quot;</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">max_width_px</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">950</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Write the compact EVOC HTML report for one UPOS category.&quot;&quot;&quot;</span>
+
+    <span class="n">required_cols</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;term&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;upos&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quadrant&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;frequency&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Rank&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">required_cols</span><span class="o">.</span><span class="n">difference</span><span class="p">(</span><span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">missing</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;evoc_quadrants_df is missing required columns: </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="s2">&quot;Re-run the updated EVOC threshold module first.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="s2">&quot;concreteness_label&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;concreteness_label&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+
+    <span class="k">if</span> <span class="s2">&quot;emoji_description&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;emoji_description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+
+    <span class="c1"># Empty reports are allowed. If a UPOS category contains</span>
+    <span class="c1"># no retained terms, an HTML report is still generated with</span>
+    <span class="c1"># four empty quadrants displaying &quot;No retained terms&quot;.</span>
+
+    <span class="n">upos_label</span> <span class="o">=</span> <span class="n">UPOS_LABELS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">upos</span><span class="p">,</span> <span class="n">upos</span><span class="p">)</span>
+    <span class="n">afe</span><span class="p">,</span> <span class="n">aoe</span> <span class="o">=</span> <span class="n">get_threshold_values</span><span class="p">(</span><span class="n">pos_thresholds_round_df</span><span class="p">,</span> <span class="n">upos</span><span class="p">)</span>
+
+    <span class="n">blocks</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="n">build_quadrant_block</span><span class="p">(</span>
+            <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
+            <span class="n">quadrant</span><span class="o">=</span><span class="n">quadrant</span><span class="p">,</span>
+            <span class="n">upos</span><span class="o">=</span><span class="n">upos</span><span class="p">,</span>
+            <span class="n">afe</span><span class="o">=</span><span class="n">afe</span><span class="p">,</span>
+            <span class="n">aoe</span><span class="o">=</span><span class="n">aoe</span><span class="p">,</span>
+            <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">quadrant</span> <span class="ow">in</span> <span class="n">QUADRANT_ORDER</span>
+    <span class="p">)</span>
+
+    <span class="n">html_doc</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html&gt;</span>
+<span class="s2">&lt;head&gt;</span>
+<span class="s2">&lt;meta charset=&quot;utf-8&quot;&gt;</span>
+<span class="s2">&lt;title&gt;EVOC Quadrants - </span><span class="si">{</span><span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">upos_label</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/title&gt;</span>
+
+<span class="s2">&lt;style&gt;</span>
+
+<span class="s2">    body </span><span class="se">{{</span>
+<span class="s2">        font-family: Arial, Helvetica, sans-serif;</span>
+<span class="s2">        margin: 12px auto;</span>
+<span class="s2">        padding: 0 6px;</span>
+<span class="s2">        background: #ffffff;</span>
+<span class="s2">        color: #222222;</span>
+<span class="s2">        max-width: </span><span class="si">{</span><span class="n">max_width_px</span><span class="si">}</span><span class="s2">px;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    h1 </span><span class="se">{{</span>
+<span class="s2">        font-size: 18px;</span>
+<span class="s2">        margin: 0 0 4px 0;</span>
+<span class="s2">        font-weight: 700;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .grid </span><span class="se">{{</span>
+<span class="s2">        display: grid;</span>
+<span class="s2">        grid-template-columns: 1fr 1fr;</span>
+<span class="s2">        gap: 8px;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .quad-card </span><span class="se">{{</span>
+<span class="s2">        border: 1px solid #d8d8d8;</span>
+<span class="s2">        background: #ffffff;</span>
+<span class="s2">        break-inside: avoid;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .quad-title </span><span class="se">{{</span>
+<span class="s2">        font-size: 15px;</span>
+<span class="s2">        font-weight: 700;</span>
+<span class="s2">        padding: 5px 7px;</span>
+<span class="s2">        background: #ebebeb;</span>
+<span class="s2">        border-bottom: 1px solid #d8d8d8;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .quad-rule </span><span class="se">{{</span>
+<span class="s2">        font-size: 10px;</span>
+<span class="s2">        font-weight: 500;</span>
+<span class="s2">        color: #555555;</span>
+<span class="s2">        margin-top: 2px;</span>
+<span class="s2">        line-height: 1.15;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .central-nucleus .quad-title </span><span class="se">{{</span><span class="s2"> color: #4f7fa6; </span><span class="se">}}</span>
+<span class="s2">    .first-periphery .quad-title </span><span class="se">{{</span><span class="s2"> color: #4f9a55; </span><span class="se">}}</span>
+<span class="s2">    .contrast-zone .quad-title </span><span class="se">{{</span><span class="s2"> color: #b84848; </span><span class="se">}}</span>
+<span class="s2">    .peripheral-system .quad-title </span><span class="se">{{</span><span class="s2"> color: #8250a0; </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table </span><span class="se">{{</span>
+<span class="s2">        width: 100%;</span>
+<span class="s2">        border-collapse: collapse;</span>
+<span class="s2">        table-layout: fixed;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table th </span><span class="se">{{</span>
+<span class="s2">        font-size: 10.5px;</span>
+<span class="s2">        padding: 4px 4px;</span>
+<span class="s2">        background: #f4f4f4;</span>
+<span class="s2">        border-bottom: 1px solid #dddddd;</span>
+<span class="s2">        text-align: left;</span>
+<span class="s2">        font-weight: 700;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table td </span><span class="se">{{</span>
+<span class="s2">        font-size: 11.5px;</span>
+<span class="s2">        padding: 3px 4px;</span>
+<span class="s2">        border-bottom: 1px solid #eeeeee;</span>
+<span class="s2">        vertical-align: top;</span>
+<span class="s2">        line-height: 1.18;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table th:nth-child(1),</span>
+<span class="s2">    .evoc-table td:nth-child(1) </span><span class="se">{{</span>
+<span class="s2">        width: 30%;</span>
+<span class="s2">        max-width: 30%;</span>
+<span class="s2">        white-space: normal;</span>
+<span class="s2">        overflow: visible;</span>
+<span class="s2">        text-overflow: clip;</span>
+<span class="s2">        overflow-wrap: anywhere;</span>
+<span class="s2">        word-break: normal;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table th:nth-child(2),</span>
+<span class="s2">    .evoc-table td:nth-child(2) </span><span class="se">{{</span>
+<span class="s2">        width: 15%;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table th:nth-child(3),</span>
+<span class="s2">    .evoc-table td:nth-child(3) </span><span class="se">{{</span>
+<span class="s2">        width: 11%;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table th:nth-child(4),</span>
+<span class="s2">    .evoc-table td:nth-child(4) </span><span class="se">{{</span>
+<span class="s2">        width: 12%;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table th:nth-child(5),</span>
+<span class="s2">    .evoc-table td:nth-child(5) </span><span class="se">{{</span>
+<span class="s2">        width: 32%;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .evoc-table th.num,</span>
+<span class="s2">    .evoc-table td.num </span><span class="se">{{</span>
+<span class="s2">        text-align: center;</span>
+<span class="s2">        white-space: nowrap;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    td.term </span><span class="se">{{</span>
+<span class="s2">        font-weight: 500;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    td.desc </span><span class="se">{{</span>
+<span class="s2">        font-size: 10px;</span>
+<span class="s2">        color: #555555;</span>
+<span class="s2">        word-break: normal;</span>
+<span class="s2">        overflow-wrap: anywhere;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">    .conc-concrete </span><span class="se">{{</span><span class="s2"> color: #008578; </span><span class="se">}}</span>
+<span class="s2">    .conc-abstract </span><span class="se">{{</span><span class="s2"> color: #0067c7; </span><span class="se">}}</span>
+<span class="s2">    .conc-mixed </span><span class="se">{{</span><span class="s2"> color: #7a2ca0; </span><span class="se">}}</span>
+<span class="s2">    .conc-missing </span><span class="se">{{</span><span class="s2"> color: #777777; </span><span class="se">}}</span>
+
+<span class="s2">    .empty </span><span class="se">{{</span>
+<span class="s2">        text-align: center;</span>
+<span class="s2">        color: #888888;</span>
+<span class="s2">        font-style: italic;</span>
+<span class="s2">        padding: 8px;</span>
+<span class="s2">    </span><span class="se">}}</span>
+
+<span class="s2">&lt;/style&gt;</span>
+<span class="s2">&lt;/head&gt;</span>
+
+<span class="s2">&lt;body&gt;</span>
+
+<span class="s2">    &lt;h1&gt;EVOC Quadrants: </span><span class="si">{</span><span class="n">html</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">upos_label</span><span class="p">)</span><span class="si">}</span><span class="s2">&lt;/h1&gt;</span>
+
+<span class="s2">    &lt;div class=&quot;grid&quot;&gt;</span>
+<span class="s2">        </span><span class="si">{</span><span class="n">blocks</span><span class="si">}</span>
+<span class="s2">    &lt;/div&gt;</span>
+
+<span class="s2">&lt;/body&gt;</span>
+<span class="s2">&lt;/html&gt;</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="n">output_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">output_dir</span><span class="p">)</span>
+    <span class="n">output_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">output_file</span> <span class="o">=</span> <span class="n">output_path</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;evoc_quadrants_</span><span class="si">{</span><span class="n">upos</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="si">}</span><span class="s2">_compact.html&quot;</span>
+    <span class="n">output_file</span><span class="o">.</span><span class="n">write_text</span><span class="p">(</span><span class="n">html_doc</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved: </span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">output_file</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="generate_evoc_html_reports">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.generate_evoc_html_reports">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">generate_evoc_html_reports</span><span class="p">(</span>
+    <span class="n">evoc_quadrants_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="n">pos_thresholds_round_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">=</span> <span class="s2">&quot;evoc_outputs&quot;</span><span class="p">,</span>
+    <span class="n">top_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">max_width_px</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">950</span><span class="p">,</span>
+    <span class="n">upos_values</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate compact EVOC HTML reports for the requested UPOS categories.&quot;&quot;&quot;</span>
+
+    <span class="n">upos_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">upos_values</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">&quot;NOUN&quot;</span><span class="p">,</span> <span class="s2">&quot;ADJ&quot;</span><span class="p">,</span> <span class="s2">&quot;EMOJI&quot;</span><span class="p">])</span>
+
+    <span class="n">outputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">upos</span> <span class="ow">in</span> <span class="n">upos_values</span><span class="p">:</span>
+
+        <span class="n">outputs</span><span class="p">[</span><span class="n">upos</span><span class="p">]</span> <span class="o">=</span> <span class="n">build_evoc_html_for_upos</span><span class="p">(</span>
+            <span class="n">evoc_quadrants_df</span><span class="o">=</span><span class="n">evoc_quadrants_df</span><span class="p">,</span>
+            <span class="n">upos</span><span class="o">=</span><span class="n">upos</span><span class="p">,</span>
+            <span class="n">pos_thresholds_round_df</span><span class="o">=</span><span class="n">pos_thresholds_round_df</span><span class="p">,</span>
+            <span class="n">output_dir</span><span class="o">=</span><span class="n">output_dir</span><span class="p">,</span>
+            <span class="n">top_n</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span>
+            <span class="n">max_width_px</span><span class="o">=</span><span class="n">max_width_px</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">outputs</span></div>
+
+
+
+<div class="viewcode-block" id="assign_evoc_quadrants">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.assign_evoc_quadrants">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">assign_evoc_quadrants</span><span class="p">(</span>
+    <span class="n">term_stats_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">minimal_freq</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">focal_upos</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">quadrant_order</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">round_digits</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">diffusion_basis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;user_penetration&quot;</span><span class="p">,</span>
+    <span class="n">generate_html</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">html_output_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">=</span> <span class="s2">&quot;evoc_outputs&quot;</span><span class="p">,</span>
+    <span class="n">html_top_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">html_max_width_px</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">950</span><span class="p">,</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">QuadrantConfig</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Assign EVOC quadrants using relative AFE and mean AOE thresholds.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    term_stats_df:</span>
+<span class="sd">        Term-level dataframe.</span>
+<span class="sd">    minimal_freq:</span>
+<span class="sd">        Minimal absolute frequency used to retain terms for quadrant</span>
+<span class="sd">        assignment.</span>
+<span class="sd">    focal_upos:</span>
+<span class="sd">        POS categories retained for EVOC assignment.</span>
+<span class="sd">    quadrant_order:</span>
+<span class="sd">        Ordered quadrant labels.</span>
+<span class="sd">    round_digits:</span>
+<span class="sd">        Number of digits used for rounded threshold comparisons.</span>
+<span class="sd">    diffusion_basis:</span>
+<span class="sd">        Relative diffusion variable used to compute AFE thresholds. Supported</span>
+<span class="sd">        values are ``user_penetration``, ``document_penetration``,</span>
+<span class="sd">        ``post_penetration`` and ``diffusion_penetration``.</span>
+<span class="sd">    generate_html:</span>
+<span class="sd">        If True, write compact EVOC HTML reports by UPOS category.</span>
+<span class="sd">    html_output_dir:</span>
+<span class="sd">        Directory where HTML files are written.</span>
+<span class="sd">    html_top_n:</span>
+<span class="sd">        Number of terms displayed in each quadrant card.</span>
+<span class="sd">    html_max_width_px:</span>
+<span class="sd">        Maximum width of the generated HTML page.</span>
+<span class="sd">    config:</span>
+<span class="sd">        Optional complete configuration. If supplied, explicit keyword</span>
+<span class="sd">        arguments above are ignored unless they are already encoded in config.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    tuple[pandas.DataFrame, pandas.DataFrame, pandas.DataFrame]</span>
+<span class="sd">        ``evoc_quadrants_df``, ``quadrant_counts_df`` and</span>
+<span class="sd">        ``pos_thresholds_round_df``.</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    For backward compatibility, the function always returns three objects.</span>
+<span class="sd">    When HTML reports are generated, their paths are stored in</span>
+<span class="sd">    ``evoc_quadrants_df.attrs[&quot;html_outputs&quot;]``.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span> <span class="ow">or</span> <span class="n">QuadrantConfig</span><span class="p">(</span>
+        <span class="n">minimal_freq</span><span class="o">=</span><span class="n">minimal_freq</span><span class="p">,</span>
+        <span class="n">focal_upos</span><span class="o">=</span><span class="nb">set</span><span class="p">(</span><span class="n">focal_upos</span> <span class="ow">or</span> <span class="n">DEFAULT_FOCAL_UPOS</span><span class="p">),</span>
+        <span class="n">quadrant_order</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">quadrant_order</span> <span class="ow">or</span> <span class="n">QUADRANT_ORDER</span><span class="p">),</span>
+        <span class="n">round_digits</span><span class="o">=</span><span class="n">round_digits</span><span class="p">,</span>
+        <span class="n">diffusion_basis</span><span class="o">=</span><span class="n">diffusion_basis</span><span class="p">,</span>
+        <span class="n">generate_html</span><span class="o">=</span><span class="n">generate_html</span><span class="p">,</span>
+        <span class="n">html_output_dir</span><span class="o">=</span><span class="n">html_output_dir</span><span class="p">,</span>
+        <span class="n">html_top_n</span><span class="o">=</span><span class="n">html_top_n</span><span class="p">,</span>
+        <span class="n">html_max_width_px</span><span class="o">=</span><span class="n">html_max_width_px</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span>
+            <span class="s2">&quot;Assigning EVOC quadrants using relative AFE and mean AOE thresholds...&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">_ensure_n_posts_alias</span><span class="p">(</span><span class="n">term_stats_df</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+
+    <span class="n">required_cols</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">term_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">upos_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">term_type_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">n_users_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">r_pos_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">r_struct_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">salience_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">freq_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">user_penetration_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">posts_per_user_col</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">_require_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">required_cols</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">upos_col</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">focal_upos</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;After POS filtering, no terms remain.&quot;</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">freq_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">freq_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">],</span> <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">user_penetration_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">user_penetration_col</span><span class="p">],</span>
+        <span class="n">errors</span><span class="o">=</span><span class="s2">&quot;coerce&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_select_diffusion_basis</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">cfg</span><span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">freq_col</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+        <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+        <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+        <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">freq_col</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">minimal_freq</span><span class="p">)</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;No terms survive the frequency filter; check minimal_freq.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">pos_thresholds_df</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">upos_col</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+            <span class="n">n_terms_pos</span><span class="o">=</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">term_col</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">),</span>
+            <span class="n">AFE_thr</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span>
+            <span class="n">AOE_thr</span><span class="o">=</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span>
+            <span class="n">mean_absolute_frequency</span><span class="o">=</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">freq_col</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">upos_col</span><span class="p">:</span> <span class="s2">&quot;upos&quot;</span><span class="p">})</span>
+    <span class="p">)</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+        <span class="n">pos_thresholds_df</span><span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;upos&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;AFE_thr&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;AOE_thr&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mean_absolute_frequency&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">],</span>
+        <span class="n">left_on</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">upos_col</span><span class="p">,</span>
+        <span class="n">right_on</span><span class="o">=</span><span class="s2">&quot;upos&quot;</span><span class="p">,</span>
+        <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span>
+        <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;_thr&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">upos_col</span> <span class="o">!=</span> <span class="s2">&quot;upos&quot;</span><span class="p">:</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">upos_col</span><span class="p">:</span> <span class="s2">&quot;upos&quot;</span><span class="p">})</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;upos_thr&quot;</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;upos_thr&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AFE_thr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AOE_thr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Some POS-specific AFE/AOE thresholds are missing.&quot;</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;frequency&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">freq_col</span><span class="p">]</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;relative_diffusion_r&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;relative_diffusion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">round_digits</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Rank_r&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">round_digits</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AFE_thr_r&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AFE_thr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">round_digits</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AOE_thr_r&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AOE_thr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">round_digits</span><span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diffusion_class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;relative_diffusion_r&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AFE_thr_r&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;high_diffusion&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;low_diffusion&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;salience_class&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Rank_r&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;AOE_thr_r&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;high_salience&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;low_salience&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">quadrant_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diffusion_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;high_diffusion&quot;</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;salience_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;high_salience&quot;</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diffusion_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;high_diffusion&quot;</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;salience_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;low_salience&quot;</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diffusion_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;low_diffusion&quot;</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;salience_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;high_salience&quot;</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="p">(</span>
+                <span class="n">df</span><span class="p">[</span><span class="s2">&quot;diffusion_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;low_diffusion&quot;</span><span class="p">)</span>
+                <span class="o">&amp;</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;salience_class&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="s2">&quot;low_salience&quot;</span><span class="p">)</span>
+            <span class="p">),</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Central nucleus&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;First periphery&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Contrast zone&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Peripheral system&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="n">default</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">NA</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">quadrant_values</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">cfg</span><span class="o">.</span><span class="n">human_readable</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">HUMAN_TO_MACHINE_QUADRANT</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">human_readable</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span>
+            <span class="n">df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">],</span>
+            <span class="n">categories</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">quadrant_order</span><span class="p">,</span>
+            <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_score_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_score_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_label_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_label_col</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_in_lexicon_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_in_lexicon_col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">emoji_description_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">emoji_description_col</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;-&quot;</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_label_col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_label_col</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">emoji_description_col</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">df</span><span class="p">[</span><span class="n">cfg</span><span class="o">.</span><span class="n">emoji_description_col</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;string&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">output_cols</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">term_col</span><span class="p">,</span>
+        <span class="s2">&quot;upos&quot;</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">term_type_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">n_users_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">r_pos_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">r_struct_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">salience_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">,</span>
+        <span class="s2">&quot;frequency&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;relative_diffusion&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;quadrant&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;diffusion_class&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;salience_class&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AFE_thr&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;AOE_thr&quot;</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_score_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_label_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">concreteness_in_lexicon_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">emoji_description_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">user_penetration_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">posts_per_user_col</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">optional_cols</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">n_docs_col</span><span class="p">,</span>
+        <span class="n">cfg</span><span class="o">.</span><span class="n">document_penetration_col</span><span class="p">,</span>
+        <span class="s2">&quot;diffusion_penetration&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;first_mention&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;last_mention&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;emoji_in_lookup&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;emoji_match_method&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;emoji_match_similarity&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+
+    <span class="n">output_cols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+        <span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">optional_cols</span>
+        <span class="k">if</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="ow">and</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">output_cols</span>
+    <span class="p">)</span>
+
+    <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="n">output_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">term_col</span> <span class="o">!=</span> <span class="s2">&quot;term&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">term_col</span><span class="p">:</span> <span class="s2">&quot;term&quot;</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">term_type_col</span> <span class="o">!=</span> <span class="s2">&quot;term_type&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">term_type_col</span><span class="p">:</span> <span class="s2">&quot;term_type&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span> <span class="o">!=</span> <span class="s2">&quot;n_posts&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">n_posts_col</span><span class="p">:</span> <span class="s2">&quot;n_posts&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">n_users_col</span> <span class="o">!=</span> <span class="s2">&quot;n_users&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">n_users_col</span><span class="p">:</span> <span class="s2">&quot;n_users&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">r_pos_col</span> <span class="o">!=</span> <span class="s2">&quot;R_pos&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">r_pos_col</span><span class="p">:</span> <span class="s2">&quot;R_pos&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">r_struct_col</span> <span class="o">!=</span> <span class="s2">&quot;R_struct&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">r_struct_col</span><span class="p">:</span> <span class="s2">&quot;R_struct&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">salience_col</span> <span class="o">!=</span> <span class="s2">&quot;S&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">salience_col</span><span class="p">:</span> <span class="s2">&quot;S&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span> <span class="o">!=</span> <span class="s2">&quot;Rank&quot;</span><span class="p">:</span>
+        <span class="n">evoc_quadrants_df</span> <span class="o">=</span> <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+            <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">rank_col</span><span class="p">:</span> <span class="s2">&quot;Rank&quot;</span><span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="n">quadrant_counts_df</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">evoc_quadrants_df</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;quadrant&quot;</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;n_terms&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">human_readable</span><span class="p">:</span>
+        <span class="n">quadrant_counts_df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="p">(</span>
+            <span class="n">quadrant_counts_df</span><span class="p">[</span><span class="s2">&quot;quadrant&quot;</span><span class="p">],</span>
+            <span class="n">categories</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">quadrant_order</span><span class="p">,</span>
+            <span class="n">ordered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">quadrant_counts_df</span> <span class="o">=</span> <span class="n">quadrant_counts_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;quadrant&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span>
+        <span class="n">drop</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+
+    <span class="n">pos_thresholds_round_df</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">pos_thresholds_df</span>
+        <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+            <span class="n">AFE_thr_round</span><span class="o">=</span><span class="n">pos_thresholds_df</span><span class="p">[</span><span class="s2">&quot;AFE_thr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">round_digits</span><span class="p">),</span>
+            <span class="n">AOE_thr_round</span><span class="o">=</span><span class="n">pos_thresholds_df</span><span class="p">[</span><span class="s2">&quot;AOE_thr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">round_digits</span><span class="p">),</span>
+            <span class="n">mean_absolute_frequency_round</span><span class="o">=</span><span class="n">pos_thresholds_df</span><span class="p">[</span>
+                <span class="s2">&quot;mean_absolute_frequency&quot;</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">round_digits</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="p">[</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;upos&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;n_terms_pos&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;AFE_thr_round&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;AOE_thr_round&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;mean_absolute_frequency_round&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">html_outputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">generate_html</span><span class="p">:</span>
+        <span class="n">html_outputs</span> <span class="o">=</span> <span class="n">generate_evoc_html_reports</span><span class="p">(</span>
+            <span class="n">evoc_quadrants_df</span><span class="o">=</span><span class="n">evoc_quadrants_df</span><span class="p">,</span>
+            <span class="n">pos_thresholds_round_df</span><span class="o">=</span><span class="n">pos_thresholds_round_df</span><span class="p">,</span>
+            <span class="n">output_dir</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">html_output_dir</span><span class="p">,</span>
+            <span class="n">top_n</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">html_top_n</span><span class="p">,</span>
+            <span class="n">max_width_px</span><span class="o">=</span><span class="n">cfg</span><span class="o">.</span><span class="n">html_max_width_px</span><span class="p">,</span>
+            <span class="n">upos_values</span><span class="o">=</span><span class="nb">sorted</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">focal_upos</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="n">evoc_quadrants_df</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s2">&quot;html_outputs&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">html_outputs</span>
+
+    <span class="k">if</span> <span class="n">cfg</span><span class="o">.</span><span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EVOC quadrants assigned; terms: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">evoc_quadrants_df</span><span class="p">)</span><span class="si">:</span><span class="s2">,</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Diffusion basis for quadrant assignment: </span><span class="si">{</span><span class="n">cfg</span><span class="o">.</span><span class="n">diffusion_basis</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">html_outputs</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;EVOC HTML reports generated: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">html_outputs</span><span class="p">)</span><span class="si">}</span><span class="s2"> file(s).&quot;</span><span class="p">)</span>
+
+    <span class="n">gc</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">evoc_quadrants_df</span><span class="p">,</span> <span class="n">quadrant_counts_df</span><span class="p">,</span> <span class="n">pos_thresholds_round_df</span></div>
+
+
+
+<div class="viewcode-block" id="assign_quadrants">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.assign_quadrants">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">assign_quadrants</span><span class="p">(</span>
+    <span class="n">term_stats_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">config</span><span class="p">:</span> <span class="n">QuadrantConfig</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Alias for ``assign_evoc_quadrants``.&quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">assign_evoc_quadrants</span><span class="p">(</span>
+        <span class="n">term_stats_df</span><span class="p">,</span>
+        <span class="n">config</span><span class="o">=</span><span class="n">config</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="quadrant_summary_by_pos">
+<a class="viewcode-back" href="../../../api_reference/pyevoc.analysis.quadrants.html#pyevoc.analysis.quadrant_summary_by_pos">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">quadrant_summary_by_pos</span><span class="p">(</span>
+    <span class="n">evoc_quadrants_df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">upos_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;upos&quot;</span><span class="p">,</span>
+    <span class="n">quadrant_col</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;quadrant&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return quadrant counts by UPOS category.&quot;&quot;&quot;</span>
+
+    <span class="n">_require_columns</span><span class="p">(</span><span class="n">evoc_quadrants_df</span><span class="p">,</span> <span class="p">{</span><span class="n">upos_col</span><span class="p">,</span> <span class="n">quadrant_col</span><span class="p">})</span>
+
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="n">evoc_quadrants_df</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">upos_col</span><span class="p">,</span> <span class="n">quadrant_col</span><span class="p">],</span> <span class="n">observed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;n_terms&quot;</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="n">upos_col</span><span class="p">,</span> <span class="n">quadrant_col</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2026, Michelangelo Misuraca.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+  </body>
+</html>
