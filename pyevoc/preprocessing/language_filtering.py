@@ -13,6 +13,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any
 from urllib.request import urlretrieve
 import gc
 import time
@@ -178,7 +179,7 @@ def _normalise_fasttext_label(label: object) -> str | None:
 
 def fasttext_predict_batch(
     texts: pd.Series,
-    model: "fasttext.FastText._FastText",
+    model: Any,
     *,
     batch_size: int = 50000,
     show_progress: bool = True,
