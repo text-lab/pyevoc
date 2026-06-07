@@ -405,15 +405,28 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
   margin: 0;
   min-height: 260px;
 }
-  
+
 .qc {
+  position: relative;
   padding: 1.3rem 1.5rem;
   border-left: 2.5px solid;
   background: var(--cream);
-  border-radius: 0 3px 3px 0;
-  transition: transform 0.18s;
+  border-radius: 0;
+  transition: transform 0.18s, background 0.18s;
+  overflow: hidden;
 }
 .qc:hover { transform: translateX(4px); }
+
+.quad-diagram-img {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.1);
+}
+
+.quad-diagram-img img {
+  width: 100%;
+  display: block;
+}
   
 /* Colour tints per zone */
 .qc-nucleus  { background: var(--nucleus-dim); }
@@ -1095,6 +1108,12 @@ footer {
       </div>
     </div>
 
+    <div class="quad-diagram-img">
+    <img src="assets/evoctarget_example.png" alt="EVOC Target">
+
+  </div>
+    
+  </div>  
 </section>
 
 <!-- PIPELINE BAND -->
