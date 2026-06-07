@@ -178,7 +178,7 @@ def _normalise_fasttext_label(label: object) -> str | None:
 
 def fasttext_predict_batch(
     texts: pd.Series,
-    model,
+    model: "fasttext.FastText._FastText",
     *,
     batch_size: int = 50000,
     show_progress: bool = True,

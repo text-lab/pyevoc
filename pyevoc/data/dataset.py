@@ -47,6 +47,22 @@ class DatasetConfig:
 
 
 def _parse_bound(value: str | None, *, end: bool, timezone: str) -> pd.Timestamp | None:
+    """Parse an optional date string into a timezone-aware :class:`~pandas.Timestamp`.
+
+    If *end* is ``True`` and *value* is a date-only string (≤ 10 characters),
+    the timestamp is advanced to the last nanosecond of that day so that
+    end-of-range filtering is inclusive.
+
+    Args:
+        value: ISO-format date or datetime string, or ``None``.
+        end: Whether this bound is an end date (triggers end-of-day adjustment).
+        timezone: Timezone string used to localise naive timestamps
+            (e.g. ``"UTC"``).
+
+    Returns:
+        A timezone-aware :class:`~pandas.Timestamp`, or ``None`` when
+        *value* is ``None``.
+    """
     if value is None:
         return None
     ts = pd.Timestamp(value)

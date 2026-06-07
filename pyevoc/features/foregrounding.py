@@ -102,6 +102,15 @@ class ForegroundingConfig:
 
 
 def _require_columns(df: pd.DataFrame, columns: list[str]) -> None:
+    """Raise :exc:`ValueError` if any of *columns* are absent from *df*.
+
+    Args:
+        df: DataFrame to inspect.
+        columns: Column names that must be present.
+
+    Raises:
+        ValueError: If one or more columns are missing.
+    """
     missing = [
         col for col in columns
         if col not in df.columns
@@ -112,6 +121,18 @@ def _require_columns(df: pd.DataFrame, columns: list[str]) -> None:
 
 
 def _safe_text_series(df: pd.DataFrame, token_col: str) -> pd.Series:
+    """Return *token_col* from *df* as a string Series with NaN filled as empty strings.
+
+    Args:
+        df: Token-level DataFrame.
+        token_col: Name of the column containing token strings.
+
+    Returns:
+        A :class:`~pandas.Series` of strings with no null values.
+
+    Raises:
+        ValueError: If *token_col* is not present in *df*.
+    """
     if token_col not in df.columns:
         raise ValueError(f"Column '{token_col}' not found in token table.")
 

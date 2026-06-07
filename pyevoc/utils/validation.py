@@ -8,7 +8,7 @@ REQUIRED_COLUMNS = ("user_id", "doc_id", "time", "text")
 
 def validate_columns(
     columns: list[str] | tuple[str, ...],
-    required=REQUIRED_COLUMNS,
+    required: tuple[str, ...] = REQUIRED_COLUMNS,
 ) -> None:
     """Validate that all required columns are present."""
     missing = [c for c in required if c not in columns]

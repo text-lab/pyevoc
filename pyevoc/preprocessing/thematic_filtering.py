@@ -282,9 +282,9 @@ def derive_expansion_terms(
 def add_expansion_hits(
     df: pd.DataFrame,
     expansion_terms: set[str],
-    vectorizer: CountVectorizer,
-    X,
-    config: ThematicFilterConfig,
+    vectorizer: "CountVectorizer",
+    X: "scipy.sparse.spmatrix",
+    config: "ThematicFilterConfig",
 ) -> pd.DataFrame:
     """Add expansion hit counts and boolean expansion-hit flags."""
 
