@@ -382,8 +382,8 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
 /* ── QUADRANTS ── */
 .quads-layout {
   display: grid;
-  grid-template-columns: 1.3fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 3.5rem;
   align-items: stretch;
 }
 
@@ -427,15 +427,18 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
 
 /* Image column */
 .quad-diagram-img {
+  height: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .quad-diagram-img img {
-  width: 140%;
-  max-width: none;
-  height: auto;
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
   display: block;
 }
 
