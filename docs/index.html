@@ -382,23 +382,28 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
 /* ── QUADRANTS ── */
 .quads-layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1.8fr 1fr;
   gap: 3.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
-.quad-list { display: flex; flex-direction: column; gap: 1rem; }
+.quad-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .quad-grid-2x2 {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: auto auto;
+  grid-template-rows: repeat(2, minmax(260px, 1fr));
   gap: 2px;
   background: var(--rule);
   border: 1.5px solid var(--rule);
   border-radius: 4px;
   overflow: hidden;
   max-width: 960px;
+  height: 100%;
 }
 
 .quad-grid-2x2 .qc {
@@ -409,55 +414,71 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
 .qc {
   position: relative;
   padding: 1.3rem 1.5rem;
-  border-left: 2.5px solid;
+  border-left: none;
   background: var(--cream);
   border-radius: 0;
   transition: transform 0.18s, background 0.18s;
   overflow: hidden;
 }
-.qc:hover { transform: translateX(4px); }
 
+.qc:hover {
+  transform: none;
+}
+
+/* Image column */
 .quad-diagram-img {
   height: 100%;
+  min-height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .quad-diagram-img img {
-  width: 100%;
   height: 100%;
+  width: auto;
+  max-width: 100%;
   object-fit: contain;
   display: block;
 }
-  
+
 /* Colour tints per zone */
 .qc-nucleus  { background: var(--nucleus-dim); }
 .qc-periph1  { background: var(--periph1-dim); }
 .qc-contrast { background: var(--contrast-dim); }
 .qc-periph2  { background: var(--periph2-dim); }
+
 .qc-nucleus:hover  { background: #d8e6f0; }
 .qc-periph1:hover  { background: #d4edda; }
 .qc-contrast:hover { background: #f5d0cf; }
 .qc-periph2:hover  { background: #e5d5f0; }
 
-/* Top accent bar (high diffusion row) */
+/* Accent bars */
 .qc-nucleus::before,
 .qc-periph1::before {
   content: '';
-  position: absolute; top: 0; left: 0; right: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 3px;
 }
-.qc-nucleus::before  { background: var(--nucleus-c); }
-.qc-periph1::before  { background: var(--periph1-c); }
 
-/* Bottom accent bar (low diffusion row) */
+.qc-nucleus::before { background: var(--nucleus-c); }
+.qc-periph1::before { background: var(--periph1-c); }
+
 .qc-contrast::after,
 .qc-periph2::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 3px;
 }
-.qc-contrast::after  { background: var(--contrast-c); }
-.qc-periph2::after   { background: var(--periph2-c); }
+
+.qc-contrast::after { background: var(--contrast-c); }
+.qc-periph2::after  { background: var(--periph2-c); }
 
 .qc-pill {
   display: inline-block;
@@ -468,22 +489,45 @@ hr.rule { border: none; border-top: 1px solid var(--rule); margin: 0 5rem; }
   border-radius: 20px;
   margin-bottom: 0.4rem;
 }
-.qc-nucleus .qc-pill { background: var(--nucleus-dim); color: var(--nucleus); }
-.qc-periph1 .qc-pill { background: var(--periph1-dim); color: var(--periph1); }
-.qc-contrast .qc-pill { background: var(--contrast-dim); color: var(--contrast); }
-.qc-periph2 .qc-pill { background: var(--periph2-dim); color: var(--periph2); }
+
+.qc-nucleus .qc-pill  { background: #f7fbff; color: var(--nucleus-c); }
+.qc-periph1 .qc-pill  { background: #f7fff8; color: var(--periph1-c); }
+.qc-contrast .qc-pill { background: #fff7f7; color: var(--contrast-c); }
+.qc-periph2 .qc-pill  { background: #fbf7ff; color: var(--periph2-c); }
 
 .qc-title {
   font-family: var(--font-serif);
   font-size: 1rem;
   margin-bottom: 0.3rem;
 }
-.qc-nucleus .qc-title { color: var(--nucleus-c); }
-.qc-periph1 .qc-title { color: var(--periph1-c); }
-.qc-contrast .qc-title { color: var(--contrast-c); }
-.qc-periph2 .qc-title { color: var(--periph2-c); }
 
-.qc-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+.qc-nucleus .qc-title  { color: var(--nucleus-c); }
+.qc-periph1 .qc-title  { color: var(--periph1-c); }
+.qc-contrast .qc-title { color: var(--contrast-c); }
+.qc-periph2 .qc-title  { color: var(--periph2-c); }
+
+.qc-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .quads-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .quad-diagram-img {
+    display: none;
+  }
+
+  .quad-grid-2x2 {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    max-width: none;
+  }
+}
 
 /* ── METHODOLOGY ── */
 .method-layout {
@@ -1083,38 +1127,59 @@ footer {
 <section class="sec" id="quadrants">
   <div class="sec-label">EVOC Structure</div>
   <h2 class="sec-h2">The four-quadrant framework</h2>
-  <p class="sec-sub">Lexical units are placed in a two-dimensional representational space defined by user-level diffusion (AFE) and discursive salience (AOE), using POS-specific thresholds computed separately for nouns, adjectives, and emojis.</p>
+  <p class="sec-sub">
+    Lexical units are placed in a two-dimensional representational space defined by
+    user-level diffusion (AFE) and discursive salience (AOE), using POS-specific
+    thresholds computed separately for nouns, adjectives, and emojis.
+  </p>
 
   <div class="quads-layout">
     <div class="quad-list quad-grid-2x2">
       <div class="qc qc-nucleus reveal">
         <div class="qc-pill">HIGH DIFFUSION &middot; HIGH SALIENCE</div>
         <div class="qc-title">Central Nucleus</div>
-        <p class="qc-desc">The most stable, consensual, and collectively shared representational elements. Strongly linked to collective memory, social norms, and group identity. These terms provide coherence and organisational stability to the overall representation.</p>
+        <p class="qc-desc">
+          The most stable, consensual, and collectively shared representational elements.
+          Strongly linked to collective memory, social norms, and group identity. These
+          terms provide coherence and organisational stability to the overall representation.
+        </p>
       </div>
+
       <div class="qc qc-periph1 reveal">
         <div class="qc-pill">HIGH DIFFUSION &middot; LOW SALIENCE</div>
         <div class="qc-title">First Periphery</div>
-        <p class="qc-desc">Widely shared but contextually flexible elements that support adaptation to situational contingencies. They protect the stability of the central core while enabling representational evolution and contextual adjustment.</p>
+        <p class="qc-desc">
+          Widely shared but contextually flexible elements that support adaptation to
+          situational contingencies. They protect the stability of the central core while
+          enabling representational evolution and contextual adjustment.
+        </p>
       </div>
+
       <div class="qc qc-contrast reveal">
         <div class="qc-pill">LOW DIFFUSION &middot; HIGH SALIENCE</div>
         <div class="qc-title">Contrast Zone</div>
-        <p class="qc-desc">Salient but less diffused elements associated with minority positions, contested meanings, or emerging interpretative framings. Often represents heterodox viewpoints that challenge the dominant symbolic configuration.</p>
+        <p class="qc-desc">
+          Salient but less diffused elements associated with minority positions, contested
+          meanings, or emerging interpretative framings. Often represents heterodox
+          viewpoints that challenge the dominant symbolic configuration.
+        </p>
       </div>
+
       <div class="qc qc-periph2 reveal">
         <div class="qc-pill">LOW DIFFUSION &middot; LOW SALIENCE</div>
         <div class="qc-title">Peripheral System</div>
-        <p class="qc-desc">Weakly diffused and low-salience elements characterised by contextual variability and lower representational stability. Sensitive to emerging controversies and episodic discursive activations.</p>
+        <p class="qc-desc">
+          Weakly diffused and low-salience elements characterised by contextual variability
+          and lower representational stability. Sensitive to emerging controversies and
+          episodic discursive activations.
+        </p>
       </div>
     </div>
 
     <div class="quad-diagram-img">
-    <img src="assets/evoctarget_example.png" alt="EVOC Target">
-
+      <img src="assets/evoctarget_example.png" alt="Example EVOC target map">
+    </div>
   </div>
-    
-  </div>  
 </section>
 
 <!-- PIPELINE BAND -->
