@@ -22,7 +22,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 import re
-from typing import Iterable
+from typing import Any, Iterable
 
 import numpy as np
 import pandas as pd
@@ -283,7 +283,7 @@ def add_expansion_hits(
     df: pd.DataFrame,
     expansion_terms: set[str],
     vectorizer: "CountVectorizer",
-    X: "scipy.sparse.spmatrix",
+    X: Any,
     config: "ThematicFilterConfig",
 ) -> pd.DataFrame:
     """Add expansion hit counts and boolean expansion-hit flags."""
